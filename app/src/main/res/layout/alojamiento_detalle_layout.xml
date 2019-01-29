@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:id="@+id/scrollviewgeneral"
+        android:layout_width="376dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.578"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="53dp">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="600dp">
+
+            <ScrollView
+                android:id="@+id/scrollViewAlojamientoDescripcion"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewAlojamientoTipo">
+
+                <TextView
+                    android:id="@+id/textViewAlojamientoDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteY="144dp"
+                    tools:text="ESTO ES UNA DESCRIPCIÓN ABREVIADA QUE CONTIENE AL MENOS 100 CARACTERES QUE SON MUUUUUUUUUUUUCHOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOS" />
+            </ScrollView>
+
+            <ImageButton
+                android:id="@+id/imageButtonMapa"
+                android:layout_width="74dp"
+                android:layout_height="59dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:contentDescription="@string/descripcionMapa"
+                android:src="@android:drawable/ic_menu_mapmode"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/buttonReservar"
+                app:layout_constraintHorizontal_bias="0.043"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/checkBoxAutocaravana"
+                app:layout_constraintVertical_bias="0.75" />
+
+            <TextView
+                android:id="@+id/textViewAlojamientoTel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.257"
+                app:layout_constraintStart_toEndOf="@+id/textViewLblTelefono"
+                app:layout_constraintTop_toBottomOf="@+id/scrollViewAlojamientoDescripcion"
+                tools:text="TextView" />
+
+            <TextView
+                android:id="@+id/textViewLblEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/email"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewLblTelefono" />
+
+            <TextView
+                android:id="@+id/textViewAlojamientoNombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="240dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewImagenAlojamiento"
+                tools:text="TextView" />
+
+            <ImageView
+                android:id="@+id/imageViewImagenAlojamiento"
+                android:layout_width="246dp"
+                android:layout_height="58dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="@string/descripcionMapa"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@mipmap/ic_launcher_foreground" />
+
+
+            <TextView
+                android:id="@+id/textViewAlojamientoTipo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.114"
+                app:layout_constraintStart_toEndOf="@+id/textViewLblTipo"
+                app:layout_constraintTop_toBottomOf="@+id/textViewAlojamientoNombre"
+                tools:text="TextView" />
+
+            <TextView
+                android:id="@+id/textViewAlojamientoWeb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.339"
+                app:layout_constraintStart_toEndOf="@+id/textViewLblWeb"
+                app:layout_constraintTop_toBottomOf="@+id/textViewAlojamientoEmail"
+                tools:text="TextView" />
+
+            <TextView
+                android:id="@+id/textViewLblNombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/nombre"
+                app:layout_constraintEnd_toStartOf="@+id/textViewAlojamientoNombre"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewImagenAlojamiento" />
+
+            <TextView
+                android:id="@+id/textViewAlojamientoProvincia"
+                android:layout_width="wrap_content"
+                android:layout_height="19dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.251"
+                app:layout_constraintStart_toEndOf="@+id/textViewLblProvincia"
+                app:layout_constraintTop_toBottomOf="@+id/textViewAlojamientoDireccion"
+                tools:text="TextView" />
+
+            <CheckBox
+                android:id="@+id/checkBoxGastronomico"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/gastronomico"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/checkBoxSurf"
+                app:layout_constraintTop_toTopOf="@+id/checkBoxSurf" />
+
+            <CheckBox
+                android:id="@+id/checkBoxRestaurante"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="@string/restaurante"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/checkBoxClub" />
+
+            <Button
+                android:id="@+id/buttonReservar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:contentDescription="@string/descripcionReservar"
+                android:text="@string/reservar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/checkBoxGastronomico"
+                app:layout_constraintVertical_bias="0.813" />
+
+            <TextView
+                android:id="@+id/textViewLblMunicipio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/municipio"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewLblProvincia" />
+
+            <TextView
+                android:id="@+id/textViewAlojamientoDireccion"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.244"
+                app:layout_constraintStart_toEndOf="@+id/textViewLblDireccion"
+                app:layout_constraintTop_toBottomOf="@+id/textViewAlojamientoWeb"
+                tools:text="fika kalea" />
+
+            <TextView
+                android:id="@+id/textViewLblCP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/cp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewLblMunicipio" />
+
+            <TextView
+                android:id="@+id/textViewLblTelefono"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/telefono"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/scrollViewAlojamientoDescripcion" />
+
+            <CheckBox
+                android:id="@+id/checkBoxAutocaravana"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="@string/autocaravana"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/checkBoxSurf" />
+
+            <TextView
+                android:id="@+id/textViewAlojamientoEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.321"
+                app:layout_constraintStart_toEndOf="@+id/textViewLblEmail"
+                app:layout_constraintTop_toBottomOf="@+id/textViewAlojamientoTel"
+                tools:text="TextView" />
+
+            <TextView
+                android:id="@+id/textViewAlojamientoMunicipio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.244"
+                app:layout_constraintStart_toEndOf="@+id/textViewLblMunicipio"
+                app:layout_constraintTop_toBottomOf="@+id/textViewAlojamientoProvincia"
+                tools:text="Municipio" />
+
+            <TextView
+                android:id="@+id/textViewLblTipo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/tipo"
+                app:layout_constraintBottom_toTopOf="@+id/scrollViewAlojamientoDescripcion"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewLblNombre" />
+
+            <CheckBox
+                android:id="@+id/checkBoxTienda"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="4dp"
+                android:text="@string/tienda"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.235"
+                app:layout_constraintStart_toEndOf="@+id/checkBoxClub"
+                app:layout_constraintTop_toTopOf="@+id/checkBoxClub" />
+
+            <CheckBox
+                android:id="@+id/checkBoxClub"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="44dp"
+                android:layout_marginTop="32dp"
+                android:text="@string/club"
+                app:layout_constraintStart_toEndOf="@+id/checkBoxRestaurante"
+                app:layout_constraintTop_toBottomOf="@+id/textViewAlojamientoCP" />
+
+            <TextView
+                android:id="@+id/textViewLblWeb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/web"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewLblEmail" />
+
+            <TextView
+                android:id="@+id/textViewLblProvincia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/provincia"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewLblDireccion" />
+
+            <CheckBox
+                android:id="@+id/checkBoxSurf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/surf"
+                app:layout_constraintStart_toEndOf="@+id/checkBoxAutocaravana"
+                app:layout_constraintTop_toBottomOf="@+id/checkBoxClub" />
+
+            <TextView
+                android:id="@+id/textViewLblDireccion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/direccion"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewLblWeb" />
+
+            <TextView
+                android:id="@+id/textViewAlojamientoCP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.363"
+                app:layout_constraintStart_toEndOf="@+id/textViewLblCP"
+                app:layout_constraintTop_toBottomOf="@+id/textViewAlojamientoMunicipio"
+                tools:text="TextView" />
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>
