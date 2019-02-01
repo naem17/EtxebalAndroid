@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -9,15 +8,15 @@
         android:id="@+id/textViewInicioSesion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableLeft="@android:drawable/ic_menu_my_calendar"
+        android:drawableStart="@android:drawable/ic_menu_my_calendar"
         android:gravity="center_vertical"
-        tools:text="Inicio Sesión" />
+        android:text="@string/inicioSesion" />
 
     <TextView
-        android:id="@+id/textViewMostrarAlojamientod"
+        android:id="@+id/textViewMisReservas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableLeft="@android:drawable/ic_menu_agenda"
+        android:drawableStart="@android:drawable/ic_menu_agenda"
         android:gravity="center_vertical"
         android:text="@string/misReservas" />
 
@@ -25,7 +24,7 @@
         android:id="@+id/textViewBuscar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableLeft="@android:drawable/ic_menu_search"
+        android:drawableStart="@android:drawable/ic_menu_search"
         android:gravity="center_vertical"
         android:text="@string/buscar" />
 
@@ -33,7 +32,7 @@
         android:id="@+id/textViewCercaDeMi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableLeft="@android:drawable/ic_menu_myplaces"
+        android:drawableStart="@android:drawable/ic_menu_myplaces"
         android:gravity="center_vertical"
         android:text="@string/cercaDeMi" />
 
@@ -41,7 +40,8 @@
         android:id="@+id/textViewAboutUs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableLeft="@android:drawable/ic_menu_edit"
+        android:drawableStart="@android:drawable/ic_menu_edit"
         android:gravity="center_vertical"
         android:text="@string/aboutUs" />
+
 </LinearLayout>
