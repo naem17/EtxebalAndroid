@@ -6,24 +6,24 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textViewNombre Reserva"
+        android:id="@+id/textViewNombreReserva"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="NombreReserva" />
+        tools:text="Nombre Reserva" />
 
     <TextView
         android:id="@+id/textViewDesde"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
         android:text="@string/desde"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewNombre Reserva" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewNombreReserva" />
 
     <EditText
         android:id="@+id/editTextFechaInicio"

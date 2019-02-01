@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textViewInicioSesion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@android:drawable/ic_menu_my_calendar"
+        android:gravity="center_vertical"
+        tools:text="Inicio Sesión" />
+
+    <TextView
+        android:id="@+id/textViewMostrarAlojamientod"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@android:drawable/ic_menu_agenda"
+        android:gravity="center_vertical"
+        android:text="@string/misReservas" />
+
+    <TextView
+        android:id="@+id/textViewBuscar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@android:drawable/ic_menu_search"
+        android:gravity="center_vertical"
+        android:text="@string/buscar" />
+
+    <TextView
+        android:id="@+id/textViewCercaDeMi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@android:drawable/ic_menu_myplaces"
+        android:gravity="center_vertical"
+        android:text="@string/cercaDeMi" />
+
+    <TextView
+        android:id="@+id/textViewAboutUs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@android:drawable/ic_menu_edit"
+        android:gravity="center_vertical"
+        android:text="@string/aboutUs" />
+</LinearLayout>

@@ -37,4 +37,9 @@
     <string name="agroturismos">Agroturismos</string>
     <string name="casasRurales">Casas Rurales</string>
     <string name="aboutUs">About Us</string>
+    <string name="botonPrimero">Primero</string>
+    <string name="botonUltimo">Último</string>
+    <string name="buscar">Buscar</string>
+    <string name="misSitios">Mis Sitios</string>
+    <string name="cercaDeMi">Cerca de Mí</string>
 </resources>

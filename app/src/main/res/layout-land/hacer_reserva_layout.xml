@@ -42,21 +42,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
+            android:drawableRight="@android:drawable/ic_menu_today"
             android:ems="10"
+            android:importantForAutofill="no"
             android:inputType="date"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewLblHasta"
-            android:importantForAutofill="no" />
-
-        <ImageButton
-            android:id="@+id/imageButtonCalendarioFechaFin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:contentDescription="@string/descripcionCalendario"
-            app:layout_constraintStart_toEndOf="@+id/editTextFechaFin"
-            app:layout_constraintTop_toBottomOf="@+id/textViewLblHasta"
-            app:srcCompat="@android:drawable/ic_menu_today" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewLblHasta" />
 
         <TextView
             android:id="@+id/textViewLblNombre"
@@ -89,22 +80,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:drawableRight="@android:drawable/ic_menu_today"
             android:ems="10"
+            android:importantForAutofill="no"
             android:inputType="date"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewLblDesde"
-            android:importantForAutofill="no" />
-
-        <ImageButton
-            android:id="@+id/imageButtonCalendarioFechaInicio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:contentDescription="@string/descripcionCalendario"
-            app:layout_constraintStart_toEndOf="@+id/editTextFechaInicio"
-            app:layout_constraintTop_toBottomOf="@+id/textViewLblDesde"
-            app:srcCompat="@android:drawable/ic_menu_today" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewLblDesde" />
 
         <TextView
             android:id="@+id/textViewLblCantidad"
@@ -136,12 +117,12 @@
             android:layout_width="wrap_content"
             android:layout_height="47dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:text="@string/reservar"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageButtonCalendarioFechaFin"
-            app:layout_constraintTop_toTopOf="@+id/imageButtonCalendarioFechaFin" />
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toEndOf="@+id/editTextFechaFin"
+            app:layout_constraintTop_toTopOf="@+id/editTextFechaFin" />
 
         <Button
             android:id="@+id/buttonCancelar"
@@ -152,9 +133,8 @@
             android:layout_marginEnd="8dp"
             android:text="@string/cancelar"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.52"
-            app:layout_constraintStart_toEndOf="@+id/imageButtonCalendarioFechaInicio"
-            app:layout_constraintTop_toTopOf="@+id/imageButtonCalendarioFechaInicio" />
+            app:layout_constraintStart_toEndOf="@+id/editTextFechaInicio"
+            app:layout_constraintTop_toTopOf="@+id/editTextFechaInicio" />
     </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>

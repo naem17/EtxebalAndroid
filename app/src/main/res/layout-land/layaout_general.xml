@@ -124,11 +124,11 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewInicioSesion"
                 app:srcCompat="@android:drawable/ic_menu_my_calendar" />
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/imageViewInicioSesion"
                 android:layout_width="0dp"
                 android:layout_height="223dp"
                 android:layout_marginStart="8dp"
