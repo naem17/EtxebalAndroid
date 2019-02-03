@@ -26,7 +26,7 @@
     <string name="cantidadPersonas">Cantidad de Personas:</string>
     <string name="cancelar">Cancelar</string>
     <string name="descripcionCalendario">Boton que al hacer click te lleva al calendario</string>
-    <string name="password">Contraseña</string>
+    <string name="password">Contraseña:</string>
     <string name="descripcionLogo">Logo de la Empresa</string>
     <string name="descripcionMasOpciones">Te lleva a la pantalla de filtros rapidos, reservas e información</string>
     <string name="descripcionInicioSesion">Boton que te lleva a iniciar Sesion si no estas logueado o te saca si lo estas</string>
