@@ -15,6 +15,7 @@ import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.UUID;
 
@@ -105,6 +106,11 @@ public class FragmentoAlojamientoDetalle extends Fragment {
             @Override
             public void onClick(View v) {
                 //TODO cambiar al mapa
+                Toast toas = Toast.makeText(getContext(),"hola",Toast.LENGTH_SHORT);
+
+                toas.show();
+                Intent mapita = new Intent(getContext(), MapsActivity.class);
+                startActivity(mapita);
             }
         });
 

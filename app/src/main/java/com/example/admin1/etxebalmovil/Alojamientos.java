@@ -22,7 +22,7 @@ public class Alojamientos {
     private int capacidad;
     private boolean gastronomico;
     private boolean surf;
-    private String coordenadas;
+    private String coordenadas="43.4051437,-2.9657849999999826";
     private String tipo;
     private String tipoEuskera;
     private String provincia;

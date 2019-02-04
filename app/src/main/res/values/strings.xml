@@ -43,4 +43,6 @@
     <string name="misSitios">Mis Sitios</string>
     <string name="cercaDeMi">Cerca de Mí</string>
     <string name="inicioSesion">Inicio Sesión</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_maps_global">Map</string>
 </resources>
