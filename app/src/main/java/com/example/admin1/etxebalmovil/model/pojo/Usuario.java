@@ -6,13 +6,15 @@ import com.example.admin1.etxebalmovil.model.json.JSONTag;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class User implements DatabaseObject {
+public class Usuario implements DatabaseObject {
+    private int mId;
     private String mNick;
+    private String mPassword;
     private String mName;
     private String mLast;
     private String mEmail;
-    private String mPassword;
-    private int mPermision = 0;
+    private String mTlf;
+    private String mPerfil = "";
 
     public String getNick() {
         return mNick;
@@ -30,8 +32,8 @@ public class User implements DatabaseObject {
         return mEmail;
     }
 
-    public int getPermision() {
-        return mPermision;
+    public String getPerfil() {
+        return mPerfil;
     }
 
     public void setNick(String nick) {
@@ -58,8 +60,8 @@ public class User implements DatabaseObject {
         mPassword = password;
     }
 
-    public void setPermision(int permision) {
-        mPermision = permision;
+    public void setPerfil(String perfil) {
+        mPerfil = perfil;
     }
 
     @Override
@@ -69,7 +71,7 @@ public class User implements DatabaseObject {
         this.setName(json.getString(JSONTag.User.TAG_NAME));
         this.setNick(json.getString(JSONTag.User.TAG_NICK));
         this.setPassword(json.getString(JSONTag.User.TAG_PASSWORD));
-        this.setPermision(json.getInt(JSONTag.User.TAG_PERMISION));
+        this.setPerfil(json.getString(JSONTag.User.TAG_PERMISION));
 
         return this;
     }

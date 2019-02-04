@@ -7,11 +7,12 @@ public final class JSONTag {
     public static final String TAG_DUAL = "Dual";
 
     public final class Lodging {
-        public static final String TAG_LODGING = "Alojamendua";
+        public static final String TAG_LODGING = "Alojamiento";
 
-        public static final String TAG_NAME = "Alojamendu_izena";
-        public static final String TAG_DESCRIPTION = "Deskribapena";
-        public static final String TAG_ADDRES = "Helbidea";
+        public static final String TAG_FIRMA = "Firma";
+        public static final String TAG_NAME = "Nombre";
+        public static final String TAG_DESCRIPTION = "Descripcion";
+        public static final String TAG_ADDRES = "Direccion";
         public static final String TAG_MARK = "Marka";
         public static final String TAG_EMAIL = "Email";
         public static final String TAG_WEB = "Web";
@@ -28,18 +29,18 @@ public final class JSONTag {
     }
 
     public final class User {
-        public static final String TAG_USER = "Erabiltzaileak";
+        public static final String TAG_USER = "Usuarios";
 
-        public static final String TAG_PERMISION = "Baimenak";
+        public static final String TAG_PERMISION = "Perfil";
         public static final String TAG_EMAIL = "Email";
-        public static final String TAG_NAME = "Izena";
-        public static final String TAG_PASSWORD = "Pasahitza";
-        public static final String TAG_LASTNAME = "Abizenak";
+        public static final String TAG_NAME = "Nombre";
+        public static final String TAG_PASSWORD = "Contraseña";
+        public static final String TAG_LASTNAME = "Apellidos";
         public static final String TAG_NICK = "Nick";
     }
 
     public final class PostCode {
-        public static final String TAG_POSTCODE = "PostaKodeak";
+        public static final String TAG_POSTCODE = "CodigoPostal";
 
         public static final String TAG_COUNTY_CODE = "Lurralde_kodea";
         public static final String TAG_COUNTY_NAME = "Lurralde_izena";

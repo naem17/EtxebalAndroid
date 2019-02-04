@@ -2,7 +2,7 @@ package com.example.admin1.etxebalmovil.model.json;
 
 import com.example.admin1.etxebalmovil.model.Util;
 import com.example.admin1.etxebalmovil.model.pojo.Reserve;
-import com.example.admin1.etxebalmovil.model.pojo.User;
+import com.example.admin1.etxebalmovil.model.pojo.Usuario;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -58,7 +58,7 @@ public abstract class JSONBuilder {
         return json;
     }
 
-    public static String build(User user) {
+    public static String build(Usuario user) {
         String json = "";
         try {
             ObjectMapper mapper = new ObjectMapper();
@@ -87,12 +87,12 @@ public abstract class JSONBuilder {
         return json;
     }
 
-    private static Map<String, Object> buildInsert(User user) {
+    private static Map<String, Object> buildInsert(Usuario user) {
         Map<String, Object> table = new HashMap<>();
         Map<String, Object> value = new HashMap<>();
         List<Object> values = new ArrayList<>();
 
-        value.put("Baimenak", user.getPermision());
+        value.put("Baimenak", user.getPerfil());
         value.put("Nick", user.getNick());
         value.put("Email", user.getEmail());
         value.put("Pasahitza", Util.md5(user.getPassword()));

@@ -5,7 +5,7 @@ import com.example.admin1.etxebalmovil.model.SessionDataController;
 import com.example.admin1.etxebalmovil.model.pojo.Lodging;
 import com.example.admin1.etxebalmovil.model.pojo.PostCode;
 import com.example.admin1.etxebalmovil.model.pojo.Reserve;
-import com.example.admin1.etxebalmovil.model.pojo.User;
+import com.example.admin1.etxebalmovil.model.pojo.Usuario;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,7 +28,7 @@ import static com.example.admin1.etxebalmovil.model.json.JSONTag.TAG_ERROR;
 
 public abstract class JSONController {
     /* ///////// START OF COMMON CONFIG ///////// */
-    private static final String DB = "reto_gp1";
+    private static final String DB = "reto_gp2";
     /* *** Error Codes *** */
     public static final byte NO_ERROR = 0;
     public static final byte OTHER_ERROR = 1;
@@ -40,9 +40,9 @@ public abstract class JSONController {
     private static final String DATA_TABLE = "data_table[]=";
     /* *** URL Configuration *** */
     private static final String HOST_GET = "https://kasserver.synology.me/etazi/get_json.php?";
-    private static final String USER_FIELD = "Nick";
-    private static final String USER_TABLE = "Erabiltzaileak";
-    private static final String PASS_FIELD = "Pasahitza";
+    private static final String USER_FIELD = "NOMBRE_USUARIO";
+    private static final String USER_TABLE = "USUARIOS";
+    private static final String PASS_FIELD = "CONTRASENIA";
     private static final String HASH_MODE = "md5";
     /* *** Database Admin User *** */
     private static final String USERNAME = "AndroidDummy";
@@ -61,8 +61,8 @@ public abstract class JSONController {
     /* ///////// START OF SET CONFIG ///////// */
     private static final String BASE_URL_SET = "https://kasserver.synology.me/etazi/set_json.php";
 //    private static final String BASE_URL_SET = HOST_SET + "json=";
-    private static final String DB_USER = "gp1";
-    private static final String DB_PASSWORD = "ZBlrkPWaSdVs5F3l";
+    private static final String DB_USER = "gp2";
+    private static final String DB_PASSWORD = "NuG7FqwibR1ZAuKy";
 
     /* ///////// END OF CONFIGS ///////// */
 
@@ -143,16 +143,16 @@ public abstract class JSONController {
             }
 
             // Insert current user
-            User user = (User) data.get(TAG_CURRENT_USER).get(0);
-            if (user.getPermision() > 0) {
+            Usuario usuario = (Usuario) data.get(TAG_CURRENT_USER).get(0);
+            if (!usuario.getPerfil().equals("")) {
                 return INPUT_ERROR;
             }
-            controller.setUser(user);
+            controller.setUsuario(usuario);
 
             // Insert reserves
-            if (loadReserves() == OTHER_ERROR) {
+            /*if (loadReserves() == OTHER_ERROR) {
                 return OTHER_ERROR;
-            }
+            }*/
         } catch (JSONException e) {
             e.printStackTrace();
             return OTHER_ERROR;
@@ -176,7 +176,7 @@ public abstract class JSONController {
             // Select only current user's reserves
             List<DatabaseObject> list = data.get(JSONTag.Reserve.TAG_RESERVE);
             list.sort(Reserve.COMPARE_BY_USER); // Sort by user
-            String user = controller.getUser().getNick();
+            String user = controller.getUsuario().getNick();
             boolean userFound = false;
             for (int i = 0; i < list.size(); i++) {
                 if (((Reserve) list.get(i)).getUserNick().equals(user)) {
@@ -285,7 +285,7 @@ public abstract class JSONController {
                             object = new PostCode();
                             break;
                         case JSONTag.User.TAG_USER:
-                            object = new User();
+                            object = new Usuario();
                             break;
                         default:
                             validTag = false;
@@ -301,7 +301,7 @@ public abstract class JSONController {
             // Check if there is get_user in doRequest
             if (json.has(TAG_CURRENT_USER)) {
                 JSONObject jsonObject = json.getJSONObject(TAG_CURRENT_USER);
-                object = new User();
+                object = new Usuario();
                 data = new ArrayList<>();
                 data.add(object.fromJSON(jsonObject));
                 fullData.put(TAG_CURRENT_USER, data);

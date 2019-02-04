@@ -13,7 +13,7 @@ import com.example.admin1.etxebalmovil.model.pojo.Filter;
 import com.example.admin1.etxebalmovil.model.pojo.Lodging;
 import com.example.admin1.etxebalmovil.model.pojo.PostCode;
 import com.example.admin1.etxebalmovil.model.pojo.Reserve;
-import com.example.admin1.etxebalmovil.model.pojo.User;
+import com.example.admin1.etxebalmovil.model.pojo.Usuario;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ import java.util.List;
  */
 public class SessionDataController {
     private static SessionDataController ourInstance;
-    private User mUser;
+    private Usuario mUsuario;
     private Util.Position mCurrentPos;
     private List<Lodging> mLodgings;
     private List<Reserve> mReserves;
@@ -50,7 +50,7 @@ public class SessionDataController {
         mCitiesInAraba = new ArrayList<>();
         mCitiesInGipuzkoa = new ArrayList<>();
         mPostCodes = new ArrayList<>();
-        mUser = new User();
+        mUsuario = new Usuario();
     }
 
     public Lodging getLodging(String id) {
@@ -77,10 +77,10 @@ public class SessionDataController {
         return lodgings;
     }
 
-    public boolean signUpUser(User user) {
-        byte error = JSONController.setData(JSONBuilder.build(user));
+    public boolean signUpUser(Usuario usuario) {
+        byte error = JSONController.setData(JSONBuilder.build(usuario));
         if (error == JSONController.NO_ERROR) {
-            this.mUser = user;
+            this.mUsuario = usuario;
             return true;
         }
         return false;
@@ -224,12 +224,12 @@ public class SessionDataController {
         return mHistory;
     }
 
-    public User getUser() {
-        return mUser;
+    public Usuario getUsuario() {
+        return mUsuario;
     }
 
-    public void setUser(User user) {
-        mUser = user;
+    public void setUsuario(Usuario usuario) {
+        mUsuario = usuario;
     }
 
     public List<String> getCitiesInBizkaia() {
