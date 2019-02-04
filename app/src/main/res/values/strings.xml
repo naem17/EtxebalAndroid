@@ -37,4 +37,5 @@
     <string name="agroturismos">Agroturismos</string>
     <string name="casasRurales">Casas Rurales</string>
     <string name="aboutUs">About Us</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
