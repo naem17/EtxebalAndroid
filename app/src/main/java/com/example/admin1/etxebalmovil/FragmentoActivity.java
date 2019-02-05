@@ -1,5 +1,7 @@
 package com.example.admin1.etxebalmovil;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,16 +13,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class FragmentoActivity extends AppCompatActivity {
-    private TextView[] opciones;
+    private ArrayList<String> opciones;
     private DrawerLayout drawerLayout;
     private ListView listView;
     public static final int CANTIDAD=5;
@@ -34,33 +40,120 @@ public abstract class FragmentoActivity extends AppCompatActivity {
         setContentView(R.layout.prueba_layout);
 
         //FragmentManager para gestionar los fragmentos
-        FragmentManager fragmentManager=getSupportFragmentManager();
+        FragmentManager fragmentManager = getSupportFragmentManager();
 
 
-        Fragment fragment=fragmentManager.findFragmentById(R.id.prueba);
+        Fragment fragment = fragmentManager.findFragmentById(R.id.prueba);
 
-        if(fragment==null)
-        {
-            FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-            fragment=createFragment();
+        if (fragment == null) {
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragment = createFragment();
             fragmentTransaction.add(R.id.prueba, fragment);
             fragmentTransaction.commit();
         }
-
-
-
         drawerLayout=findViewById(R.id.drawer_layout);
         listView=findViewById(R.id.left_drawer);
-   /*     opciones=new TextView[5];
-        opciones[0]=(TextView) findViewById(R.id.textViewInicioSesion);
-        opciones[1]=(TextView) findViewById(R.id.textViewMisReservas);
-        opciones[2]=(TextView) findViewById(R.id.textViewBuscar);
-        opciones[3]=(TextView) findViewById(R.id.textViewCercaDeMi);
-        opciones[4]=(TextView) findViewById(R.id.textViewAboutUs);*/
-        String[] menu=new String[]{"a","b","c","d","e"};
+        opciones=new ArrayList<>();
+        opciones.add("perfil");
+        opciones.add("reservas");
+        opciones.add("buscar");
+        opciones.add("cerca");
+        opciones.add("alojamientos");
 
-        listView.setAdapter(new ArrayAdapter<String>(this, R.layout.elemento_lista_navegacion,menu));
-        // listView.setOnItemClickListener(new DrawerIemClickListener());
-        //TODO Hacer un array adapter propio para poder mostrar con imágenes
+        listView.setAdapter(new TextviewArrayAdapter(this, R.layout.elemento_lista_navegacion_inicio,opciones));
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                switch (position)
+                {
+                    case 0:
+                    {
+                            Intent intent=FragmentoInicioSesionActivity.newIntent(getBaseContext());
+                            startActivity(intent);
+                            finish();
+                    }
+                    break;
+                    case 1:
+                    {
+                            Intent intent=FragmentoListarReservasActivity.newIntent(getBaseContext());
+                            startActivity(intent);
+                            finish();
+                    }
+                    break;
+                    case 2:
+                    {
+                        Intent intent=AlojamientoBuscarActivity.newIntent(getBaseContext());
+                        startActivity(intent);
+                        finish();
+                    }
+                    break;
+                    case 3:
+                    {
+                        //TODO ir al mapa
+                    }
+                    break;
+                    case 4:
+                    {
+                        Intent intent=FragmentoListarActivity.newIntent(getBaseContext());
+                        startActivity(intent);
+                        finish();
+                    }
+                    break;
+                }
+
+
+            }
+        });
+    }
+
+    public class TextviewArrayAdapter extends ArrayAdapter<String>{
+        public TextviewArrayAdapter(Context context, int resource, ArrayList<String> objects) {
+            super(context, resource, objects);
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            String opcion=getItem(position);
+            switch (opcion)
+            {
+                case "perfil":
+                {
+                    if (convertView == null) {
+                        convertView = LayoutInflater.from(getContext()).inflate(R.layout.elemento_lista_navegacion_inicio, parent, false);
+                    }
+                }break;
+                case "reservas":
+                {
+                    if (convertView == null) {
+                        convertView = LayoutInflater.from(getContext()).inflate(R.layout.elemento_lista_navegacion_reservas, parent, false);
+                    }
+                }break;
+                case "buscar":
+                {
+                    if (convertView == null) {
+                        convertView = LayoutInflater.from(getContext()).inflate(R.layout.elemento_lista_navegacion_buscar, parent, false);
+                    }
+                }break;
+                case "cerca":
+                {
+                    if (convertView == null) {
+                        convertView = LayoutInflater.from(getContext()).inflate(R.layout.elemento_lista_navegacion_cerca_de_mi, parent, false);
+                    }
+                }break;
+                case "alojamientos":
+                {
+                    if (convertView == null) {
+                        convertView = LayoutInflater.from(getContext()).inflate(R.layout.elemento_lista_alojamientos, parent, false);
+                    }
+                }break;
+            }
+
+
+            return convertView;
+        }
+
     }
 }
+
