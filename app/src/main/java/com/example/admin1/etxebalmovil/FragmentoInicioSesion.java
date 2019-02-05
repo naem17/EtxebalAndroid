@@ -24,7 +24,7 @@ public class FragmentoInicioSesion extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
             View v = inflater.inflate(R.layout.iniciar_sesion_fragment_layout, container, false);
 
-            mUsuarioEditText = v.findViewById(R.id.editTextNickName);
+            mUsuarioEditText = v.findViewById(R.id.editTextPalabra);
             mPasswordEditText = v.findViewById(R.id.editTextPassword);
             mIniciarSesion = v.findViewById(R.id.btnLogIn);
             mIniciarSesion.setOnClickListener(new View.OnClickListener() {

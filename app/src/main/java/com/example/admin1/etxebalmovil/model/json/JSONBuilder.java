@@ -72,7 +72,7 @@ public abstract class JSONBuilder {
 
             table = buildInsert(user);
 
-            jsonmap.put("tables", new HashMap<String, Object>(){{put(JSONTag.User.TAG_USER, table);}});
+            jsonmap.put("tables", new HashMap<String, Object>(){{put(JSONTag.Usuario.TAG_USER, table);}});
             // convert map to JSON string
             json = mapper.writeValueAsString(jsonmap);
 
