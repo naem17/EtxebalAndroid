@@ -9,6 +9,7 @@ public class AlojamientosLab {
 
     private static AlojamientosLab alojamientosLab;
     private ArrayList<Alojamientos> alojamientos;
+    private static ArrayList<Alojamientos> filtrados;
 
     private AlojamientosLab(Context context)
     {
@@ -31,10 +32,10 @@ public class AlojamientosLab {
     public ArrayList<Alojamientos> getAlojamientos() {
         return alojamientos;
     }
-
-    public void setAlojamientos(ArrayList<Alojamientos> alojamientos) {
-        this.alojamientos = alojamientos;
+    public ArrayList<Alojamientos> getAlojamientosFiltrados() {
+        return filtrados;
     }
+    public void setAlojamientosFiltrados(ArrayList<Alojamientos> filtrados){this.filtrados=filtrados;}
     public Alojamientos getAlojamiento(UUID id)
     {
         int i=0;
@@ -57,5 +58,28 @@ public class AlojamientosLab {
             i++;
         }
         return i>=alojamientos.size()?null:alojamientos.get(i);
+    }
+    public Alojamientos getAlojamientoFiltrado(UUID id)
+    {
+        int i=0;
+        while(i<filtrados.size() && !filtrados.get(i).getMyID().equals(id))
+            i++;
+        return i>=filtrados.size()?null:filtrados.get(i);
+    }
+    public int getPosicionFiltrados(UUID id)
+    {
+        int i=0;
+        while(i<filtrados.size() && !filtrados.get(i).getMyID().equals(id))
+            i++;
+        return i>=filtrados.size()?-1:i;
+    }
+    public Alojamientos getAlojamientoFiltrado(String firma)
+    {
+        int i=0;
+        while (i<filtrados.size() && filtrados.get(i).getFirma().compareToIgnoreCase(firma)!=0)
+        {
+            i++;
+        }
+        return i>=filtrados.size()?null:filtrados.get(i);
     }
 }

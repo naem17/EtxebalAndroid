@@ -25,6 +25,10 @@ public class FragmentoListarAlojamientos extends Fragment {
     private RecyclerView listaFragmentosAlojamientos;
     private AlojamientoAdapter adapter;
 
+    private boolean filtrados;
+
+    private static final String EXTRA_ALOJAMIENTOS_FILTRADOS = AlojamientosPagerActivity.class.getName() + ".alojamiento_filtrado";
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +40,8 @@ public class FragmentoListarAlojamientos extends Fragment {
         View vista=inflater.inflate(R.layout.alojamiento_recycler_view,container,false);
         listaFragmentosAlojamientos= vista.findViewById(R.id.alojamientoRecyclerView);
         listaFragmentosAlojamientos.setLayoutManager(new LinearLayoutManager(getActivity()));
+        if(getArguments()!=null)
+            filtrados=true;
         updateUI();
         return vista;
     }
@@ -44,6 +50,8 @@ public class FragmentoListarAlojamientos extends Fragment {
     {
         AlojamientosLab alojamientosLab = AlojamientosLab.get(getActivity());
         ArrayList<Alojamientos> alojamientos = alojamientosLab.getAlojamientos();
+        if(filtrados)
+            alojamientos=alojamientosLab.getAlojamientosFiltrados();
         if(adapter==null)
         {
             adapter=new AlojamientoAdapter(alojamientos);

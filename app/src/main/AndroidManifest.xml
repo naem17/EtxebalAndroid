@@ -23,8 +23,8 @@
         </activity>
         <activity android:name=".FragmentoInicioSesionActivity"></activity>
         <activity android:name=".AlojamientoBuscarActivity"></activity>
-        <activity android:name=".ReservasPagerActivity"></activity>
         <activity android:name=".FragmentoListarReservasActivity"></activity>
+        <activity android:name=".ReservasPagerActivity"></activity>
     </application>
 
 </manifest>

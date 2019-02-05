@@ -19,6 +19,7 @@ public class FragmentoListarReservas extends Fragment {
     private RecyclerView listaFragmentosReservas;
     private ReservaAdapter adapterReservas;
 
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,8 +28,8 @@ public class FragmentoListarReservas extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View vista=inflater.inflate(R.layout.alojamiento_recycler_view,container,false);
-        listaFragmentosReservas= vista.findViewById(R.id.alojamientoRecyclerView);
+        View vista=inflater.inflate(R.layout.reserva_recycle_view,container,false);
+        listaFragmentosReservas= vista.findViewById(R.id.reservaRecyclerView);
         listaFragmentosReservas.setLayoutManager(new LinearLayoutManager(getActivity()));
         updateUI();
         return vista;
@@ -80,7 +81,7 @@ public class FragmentoListarReservas extends Fragment {
 
         @Override
         public void onClick(View v) {
-            Intent intent=ReservasPagerActivity.newIntent(getActivity(), reserva.getMyID());
+            Intent intent=ReservasPagerActivity.newIntent(getContext(),reserva.getFirmaAlojamiento(),reserva.getNombreReserva());
             startActivity(intent);
         }
 
@@ -88,7 +89,7 @@ public class FragmentoListarReservas extends Fragment {
         {
             this.reserva=reserva;
 
-            nombreAlojamiento.setText(reserva.getFirmaAlojamiento());
+            nombreAlojamiento.setText(reserva.getNombreAlojamiento());
             nombreReserva.setText(reserva.getNombreReserva());
             cantidad.setText(String.valueOf(reserva.getCantidad()));
             fechaInicio.setText(reserva.getFechaInicio().toString());

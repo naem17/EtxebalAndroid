@@ -8,6 +8,7 @@ public class Reservas {
 
     private String nombreReserva;
     private String nombreCliente;
+    private String nombreAlojamiento;
     private String firmaAlojamiento;
     private String direccion;
     private String email;
@@ -21,21 +22,21 @@ public class Reservas {
         myID=UUID.randomUUID();
     }
 
-    public Reservas(String nombreReserva, String nombreCliente, String firmaAlojamiento, Date fechaInicio, Date fechaFin, int cantidad) {
+    public Reservas(String nombreReserva, String nombreCliente, String nombreAlojamiento, Date fechaInicio, Date fechaFin, int cantidad) {
         this.nombreReserva = nombreReserva;
         this.nombreCliente = nombreCliente;
-        this.firmaAlojamiento = firmaAlojamiento;
+        this.nombreAlojamiento = nombreAlojamiento;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.cantidad = cantidad;
         myID=UUID.randomUUID();
     }
 
-    public Reservas(UUID myID, String nombreReserva, String nombreCliente, String firmaAlojamiento, String direccion, String email, String telefono, Date fechaInicio, Date fechaFin, int cantidad) {
+    public Reservas(UUID myID, String nombreReserva, String nombreCliente, String nombreAlojamiento, String direccion, String email, String telefono, Date fechaInicio, Date fechaFin, int cantidad) {
         this.myID = myID;
         this.nombreReserva = nombreReserva;
         this.nombreCliente = nombreCliente;
-        this.firmaAlojamiento = firmaAlojamiento;
+        this.nombreAlojamiento = nombreAlojamiento;
         this.direccion = direccion;
         this.email = email;
         this.telefono = telefono;
@@ -93,12 +94,12 @@ public class Reservas {
         this.nombreCliente = nombreCliente;
     }
 
-    public String getFirmaAlojamiento() {
-        return firmaAlojamiento;
+    public String getNombreAlojamiento() {
+        return nombreAlojamiento;
     }
 
-    public void setFirmaAlojamiento(String firmaAlojamiento) {
-        this.firmaAlojamiento = firmaAlojamiento;
+    public void setNombreAlojamiento(String nombreAlojamiento) {
+        this.nombreAlojamiento = nombreAlojamiento;
     }
 
     public Date getFechaInicio() {
@@ -123,5 +124,13 @@ public class Reservas {
 
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
+    }
+
+    public String getFirmaAlojamiento() {
+        return firmaAlojamiento;
+    }
+
+    public void setFirmaAlojamiento(String firmaAlojamiento) {
+        this.firmaAlojamiento = firmaAlojamiento;
     }
 }

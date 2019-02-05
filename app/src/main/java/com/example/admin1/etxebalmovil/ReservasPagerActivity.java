@@ -13,33 +13,35 @@ import android.view.View;
 import android.widget.Button;
 
 import java.util.ArrayList;
-import java.util.UUID;
 
 public class ReservasPagerActivity extends AppCompatActivity {
-    private static final String EXTRA_RESERVA_ID = ReservasPagerActivity.class.getName() + ".reservaID";
+    private static final String EXTRA_RESERVA_NOMBRE = ReservasPagerActivity.class.getName() + ".nombre_reserva";
+    private static final String EXTRA_RESERVA_FIRMA = ReservasPagerActivity.class.getName() + ".firma_alojamiento";
     private ViewPager viewPager;
     private ArrayList<Reservas> reservas;
 
     private Button primero;
     private Button ultimo;
 
-    public static Intent newIntent(Context packageContect, UUID reservaID) {
+    public static Intent newIntent(Context packageContect, String firmaAlojamiento, String nombreReserva) {
         Intent intent = new Intent(packageContect, ReservasPagerActivity.class);
-        intent.putExtra(EXTRA_RESERVA_ID, reservaID);
+        intent.putExtra(EXTRA_RESERVA_NOMBRE, nombreReserva);
+        intent.putExtra(EXTRA_RESERVA_FIRMA,firmaAlojamiento);
         return intent;
     }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.alojamientos_detalle_pager_layout);
+        setContentView(R.layout.reserva_detalle_pager_layout);
 
-        primero=findViewById(R.id.buttonPrimero);
-        ultimo=findViewById(R.id.buttonUltimo);
+        primero=findViewById(R.id.buttonPrimeroReservas);
+        ultimo=findViewById(R.id.buttonUltimoReservas);
 
-        UUID reservaID = (UUID) getIntent().getSerializableExtra(EXTRA_RESERVA_ID);
+        String nombreReserva=getIntent().getStringExtra(EXTRA_RESERVA_NOMBRE);
+        String firmaAlojamiento=getIntent().getStringExtra(EXTRA_RESERVA_FIRMA);
 
-        viewPager = findViewById(R.id.viewPager);
+        viewPager = findViewById(R.id.viewPagerReservas);
         reservas = ReservasLab.get(this).getReservas();
 
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -47,7 +49,7 @@ public class ReservasPagerActivity extends AppCompatActivity {
             @Override
             public Fragment getItem(int i) {
                 Reservas reserva = reservas.get(i);
-                return FragmentoReservaDetalle.newInstance(reserva.getMyID());
+                return FragmentoReservaDetalle.newInstance(reserva.getFirmaAlojamiento(), reserva.getNombreReserva());
             }
 
             @Override
@@ -56,7 +58,7 @@ public class ReservasPagerActivity extends AppCompatActivity {
             }
         });
 
-        int j=ReservasLab.get(this).getPosicion(reservaID);
+        int j=ReservasLab.get(this).getPosicion(nombreReserva,firmaAlojamiento);
         viewPager.setCurrentItem(j);
 
         primero.setOnClickListener(new View.OnClickListener() {

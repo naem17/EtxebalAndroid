@@ -18,6 +18,7 @@ public class ReservasLab {
         {
             reservas.add(new Reservas());
             reservas.get(i).setNombreReserva(String.valueOf(i+1));
+            reservas.get(i).setFirmaAlojamiento(String.valueOf((i+1)));
             reservas.get(i).setCantidad(i+1);
             Date fechaInicio=new Date();
             fechaInicio.setYear(2019);
@@ -58,10 +59,17 @@ public class ReservasLab {
             i++;
         return i>=reservas.size()?-1:i;
     }
-    public Reservas getReserva(String firma)
+    public int getPosicion(String nombreReserva, String firmaAlojamiento)
     {
         int i=0;
-        while (i<reservas.size() && reservas.get(i).getNombreReserva().compareToIgnoreCase(firma)!=0)
+        while(i<reservas.size() && reservas.get(i).getNombreReserva().compareToIgnoreCase(nombreReserva)!=0 && reservas.get(i).getFirmaAlojamiento().compareToIgnoreCase(firmaAlojamiento)!=0)
+            i++;
+        return i>=reservas.size()?-1:i;
+    }
+    public Reservas getReserva(String nombreReserva, String firmaAlojamiento)
+    {
+        int i=0;
+        while (i<reservas.size() && reservas.get(i).getNombreReserva().compareToIgnoreCase(nombreReserva)!=0 && reservas.get(i).getFirmaAlojamiento().compareToIgnoreCase(firmaAlojamiento)!=0)
         {
             i++;
         }
