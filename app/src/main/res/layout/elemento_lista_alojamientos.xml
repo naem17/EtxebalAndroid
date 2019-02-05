@@ -1,0 +1,9 @@
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/textViewAboutUs"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:drawableStart="@android:drawable/ic_menu_sort_by_size"
+    android:gravity="center_vertical"
+    android:text="@string/Alojamientos"
+    android:textColor="@android:color/white" />

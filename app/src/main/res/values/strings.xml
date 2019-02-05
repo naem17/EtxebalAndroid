@@ -46,4 +46,5 @@
     <!-- Toast Login -->
     <string name="errorOtro">Algo fallo al iniciar sesion</string>
     <string name="errorUsuario">Alguno de los campos no es correcto</string>
+    <string name="Alojamientos" >Alojamientos</string>
 </resources>
