@@ -26,7 +26,7 @@
             android:minHeight="600dp">
 
             <CheckBox
-                android:id="@+id/checkBox7"
+                android:id="@+id/checkBoxTienda"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -37,12 +37,12 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.52"
-                app:layout_constraintStart_toEndOf="@+id/checkBox6"
-                app:layout_constraintTop_toBottomOf="@+id/checkBox4"
+                app:layout_constraintStart_toEndOf="@+id/checkBoxGastronomico"
+                app:layout_constraintTop_toBottomOf="@+id/checkBoxRestaurante"
                 app:layout_constraintVertical_bias="0.015" />
 
             <CheckBox
-                android:id="@+id/checkBox6"
+                android:id="@+id/checkBoxGastronomico"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -51,11 +51,11 @@
                 android:text="@string/gastronomico"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkBox4"
+                app:layout_constraintTop_toBottomOf="@+id/checkBoxRestaurante"
                 app:layout_constraintVertical_bias="0.019" />
 
             <CheckBox
-                android:id="@+id/checkBox5"
+                android:id="@+id/checkBoxClub"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -64,21 +64,21 @@
                 android:text="@string/club"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.515"
-                app:layout_constraintStart_toEndOf="@+id/checkBox4"
-                app:layout_constraintTop_toBottomOf="@+id/checkBox" />
+                app:layout_constraintStart_toEndOf="@+id/checkBoxRestaurante"
+                app:layout_constraintTop_toBottomOf="@+id/checkBoxAutocaravana" />
 
             <CheckBox
-                android:id="@+id/checkBox4"
+                android:id="@+id/checkBoxRestaurante"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/restaurante"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkBox" />
+                app:layout_constraintTop_toBottomOf="@+id/checkBoxAutocaravana" />
 
             <CheckBox
-                android:id="@+id/checkBox2"
+                android:id="@+id/checkBoxSurfing"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -87,11 +87,11 @@
                 android:text="@string/surfing"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.536"
-                app:layout_constraintStart_toEndOf="@+id/checkBox"
+                app:layout_constraintStart_toEndOf="@+id/checkBoxAutocaravana"
                 app:layout_constraintTop_toBottomOf="@+id/spinnerTipos" />
 
             <CheckBox
-                android:id="@+id/checkBox"
+                android:id="@+id/checkBoxAutocaravana"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -110,15 +110,15 @@
                 android:layout_marginBottom="8dp"
                 android:ems="10"
                 android:enabled="true"
+                android:importantForAutofill="no"
                 android:inputType="number"
                 android:maxLength="@integer/maxCaracteres4"
-                app:layout_constraintBottom_toTopOf="@+id/checkBox"
+                app:layout_constraintBottom_toTopOf="@+id/checkBoxAutocaravana"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.624"
                 app:layout_constraintStart_toEndOf="@+id/spinnerTipos"
                 app:layout_constraintTop_toBottomOf="@+id/spinnerMunicipio"
-                app:layout_constraintVertical_bias="0.209"
-                android:importantForAutofill="no" />
+                app:layout_constraintVertical_bias="0.209" />
 
             <Spinner
                 android:id="@+id/spinnerTipos"
@@ -181,10 +181,10 @@
                 android:layout_marginTop="20dp"
                 android:text="@string/nombre"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextNickName" />
+                app:layout_constraintTop_toBottomOf="@+id/editTextPalabra" />
 
             <EditText
-                android:id="@+id/editTextNickName"
+                android:id="@+id/editTextPalabra"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
