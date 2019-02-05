@@ -1,11 +1,9 @@
 package com.example.admin1.etxebalmovil;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,10 +36,10 @@ public class FragmentoInicioSesion extends Fragment {
                             Toast.makeText(getContext(), "Bienvenido"+ mUsuarioEditText.getText().toString().trim(), Toast.LENGTH_LONG).show();
                             break;
                         case JSONController.INPUT_ERROR:
-                            Toast.makeText(getContext(), "Alguno de los campos no es correcto", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getContext(),    getString(R.string.errorUsuario), Toast.LENGTH_LONG).show();
                             break;
                         case JSONController.OTHER_ERROR:
-                            Toast.makeText(getContext(), "Algo fallo al iniciar sesion", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getContext(), getString(R.string.errorOtro), Toast.LENGTH_LONG).show();
                             break;
                     }
                 }

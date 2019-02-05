@@ -28,15 +28,15 @@ public final class JSONTag {
         public static final String TAG_ZIPFILE = "ZipFile";
     }
 
-    public final class User {
+    public final class Usuario {
         public static final String TAG_USER = "Usuarios";
 
-        public static final String TAG_PERMISION = "Perfil";
-        public static final String TAG_EMAIL = "Email";
-        public static final String TAG_NAME = "Nombre";
-        public static final String TAG_PASSWORD = "Contraseña";
-        public static final String TAG_LASTNAME = "Apellidos";
-        public static final String TAG_NICK = "Nick";
+        public static final String TAG_PERFIL = "PERFIL";
+        public static final String TAG_EMAIL = "EMAIL";
+        public static final String TAG_NAME = "NOMBRE";
+        public static final String TAG_PASSWORD = "CONTRASENIA";
+        public static final String TAG_LASTNAME = "APELLIDOS";
+        public static final String TAG_NICK = "NOMBRE_USUARIO";
     }
 
     public final class PostCode {

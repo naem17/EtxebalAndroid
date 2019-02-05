@@ -256,7 +256,6 @@ public class Alojamientos implements DatabaseObject, Serializable {
 
     @Override
     public DatabaseObject fromJSON(JSONObject json) throws JSONException {
-        this
         return this;
     }
 }

@@ -284,7 +284,7 @@ public abstract class JSONController {
                         case JSONTag.PostCode.TAG_POSTCODE:
                             object = new PostCode();
                             break;
-                        case JSONTag.User.TAG_USER:
+                        case JSONTag.Usuario.TAG_USER:
                             object = new Usuario();
                             break;
                         default:
