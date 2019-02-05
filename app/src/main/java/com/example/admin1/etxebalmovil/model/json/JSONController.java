@@ -60,7 +60,7 @@ public abstract class JSONController {
 
     /* ///////// START OF SET CONFIG ///////// */
     private static final String BASE_URL_SET = "https://kasserver.synology.me/etazi/set_json.php";
-//    private static final String BASE_URL_SET = HOST_SET + "json=";
+    //    private static final String BASE_URL_SET = HOST_SET + "json=";
     private static final String DB_USER = "gp2";
     private static final String DB_PASSWORD = "NuG7FqwibR1ZAuKy";
 
@@ -126,6 +126,8 @@ public abstract class JSONController {
         mUserURL = BASE_URL_GET + LINK + "username=" + username
                 + LINK + "password=" + password
                 + LINK + "hash=" + HASH_MODE;
+        /*https://kasserver.synology.me/etazi/get_json.php?db=reto_gp2&users_table=USUARIOS&username_field
+        =NOMBRE_USUARIO&password_field=CONTRASENIA&username=a&password=a&hash=md5&data_table[]]=DUAL&get_user=true*/
 
         String result = doRequestGET((mUserURL + LINK + DATA_TABLE + JSONTag.TAG_DUAL
                 + LINK + "get_user=true"));
