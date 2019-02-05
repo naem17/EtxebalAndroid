@@ -146,9 +146,6 @@ public abstract class JSONController {
 
             // Insert current user
             Usuario usuario = (Usuario) data.get(TAG_CURRENT_USER).get(0);
-            if (!usuario.getPerfil().equals("")) {
-                return INPUT_ERROR;
-            }
             controller.setUsuario(usuario);
 
             // Insert reserves

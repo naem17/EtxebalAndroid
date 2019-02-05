@@ -58,7 +58,7 @@ public abstract class JSONBuilder {
         return json;
     }
 
-    public static String build(Usuario user) {
+    public static String build(Usuario usuario) {
         String json = "";
         try {
             ObjectMapper mapper = new ObjectMapper();
@@ -70,7 +70,7 @@ public abstract class JSONBuilder {
             jsonmap.put("user", JSONController.getDbUser());
             jsonmap.put("password", JSONController.getDbPassword());
 
-            table = buildInsert(user);
+            table = buildInsert(usuario);
 
             jsonmap.put("tables", new HashMap<String, Object>(){{put(JSONTag.Usuario.TAG_USER, table);}});
             // convert map to JSON string
@@ -87,17 +87,18 @@ public abstract class JSONBuilder {
         return json;
     }
 
-    private static Map<String, Object> buildInsert(Usuario user) {
+    private static Map<String, Object> buildInsert(Usuario usuario) {
         Map<String, Object> table = new HashMap<>();
         Map<String, Object> value = new HashMap<>();
         List<Object> values = new ArrayList<>();
 
-        value.put("Baimenak", user.getPerfil());
-        value.put("Nick", user.getNick());
-        value.put("Email", user.getEmail());
-        value.put("Pasahitza", Util.md5(user.getPassword()));
-        value.put("Izena", user.getName());
-        value.put("Abizenak", user.getLast());
+        value.put("NOMBRE_USUARIO", usuario.getNick());
+        value.put("CONTRASENIA", usuario.getEmail());
+        value.put("NOMBRE", Util.md5(usuario.getPassword()));
+        value.put("APELLIDOS", usuario.getName());
+        value.put("EMAIL", usuario.getLast());
+        value.put("TELEFONO", usuario.getTlf());
+        value.put("PERFIL", usuario.getPerfil());
         values.add(value);
 
         table.put("action", INSERT);
