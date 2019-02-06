@@ -93,10 +93,10 @@ public abstract class JSONBuilder {
         List<Object> values = new ArrayList<>();
 
         value.put("NOMBRE_USUARIO", usuario.getNick());
-        value.put("CONTRASENIA", usuario.getEmail());
-        value.put("NOMBRE", Util.md5(usuario.getPassword()));
-        value.put("APELLIDOS", usuario.getName());
-        value.put("EMAIL", usuario.getLast());
+        value.put("CONTRASENIA", Util.md5(usuario.getPassword()));
+        value.put("NOMBRE", usuario.getName());
+        value.put("APELLIDOS", usuario.getLast());
+        value.put("EMAIL", usuario.getEmail());
         value.put("TELEFONO", usuario.getTlf());
         value.put("PERFIL", usuario.getPerfil());
         values.add(value);

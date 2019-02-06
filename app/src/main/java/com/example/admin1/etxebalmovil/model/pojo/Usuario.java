@@ -82,11 +82,12 @@ public class Usuario implements DatabaseObject {
 
     @Override
     public DatabaseObject fromJSON(JSONObject json) throws JSONException {
-        this.setEmail(json.getString(JSONTag.Usuario.TAG_EMAIL));
-        this.setLast(json.getString(JSONTag.Usuario.TAG_LASTNAME));
-        this.setName(json.getString(JSONTag.Usuario.TAG_NAME));
         this.setNick(json.getString(JSONTag.Usuario.TAG_NICK));
         this.setPassword(json.getString(JSONTag.Usuario.TAG_PASSWORD));
+        this.setName(json.getString(JSONTag.Usuario.TAG_NAME));
+        this.setLast(json.getString(JSONTag.Usuario.TAG_LASTNAME));
+        this.setEmail(json.getString(JSONTag.Usuario.TAG_EMAIL));
+        this.setTlf(json.getString(JSONTag.Usuario.TAG_TELEFONO));
         this.setPerfil(json.getString(JSONTag.Usuario.TAG_PERFIL));
 
         return this;

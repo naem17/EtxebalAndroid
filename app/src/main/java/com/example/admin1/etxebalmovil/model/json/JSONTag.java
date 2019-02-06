@@ -6,26 +6,30 @@ public final class JSONTag {
     public static final String TAG_ERROR = "error";
     public static final String TAG_DUAL = "DUAL";
 
-    public final class Lodging {
-        public static final String TAG_LODGING = "Alojamiento";
+    public final class Alojamiento {
+        public static final String TAG_ALOJAMIENTO = "Alojamiento";
 
-        public static final String TAG_FIRMA = "Firma";
-        public static final String TAG_NAME = "Nombre";
-        public static final String TAG_DESCRIPTION = "Descripcion";
-        public static final String TAG_ADDRES = "Direccion";
-        public static final String TAG_MARK = "Marka";
-        public static final String TAG_EMAIL = "Email";
-        public static final String TAG_WEB = "Web";
-        public static final String TAG_PHONE = "Telefonoa";
-        public static final String TAG_ID = "id_kodea";
-        public static final String TAG_CAPACITY = "Capacity";
-        public static final String TAG_POST_CODE = "Posta_Kodea";
-        public static final String TAG_CITY_CODE = "Herri_kodea";
-        public static final String TAG_LATITUDE = "Latitude";
-        public static final String TAG_LONGITUDE = "Longitude";
-        public static final String TAG_TYPE = "Mota";
-        public static final String TAG_FRIENDLY_URL = "friendlyUrl";
-        public static final String TAG_ZIPFILE = "ZipFile";
+        public static final String TAG_FIRMA = "FIRMA";
+        public static final String TAG_NAME = "NOMBRE";
+        public static final String TAG_DESCRPCION_ABREVIADA = "DESCRIPCION_ABREVIADA";
+        public static final String TAG_DESCRPCION_ABREVIADA_EUSKERA = "DESCRIPCION_ABREVIADA_EUSKERA";
+        public static final String TAG_DESCRIPCION = "DESCRIPCION";
+        public static final String TAG_DESCRIPCION_EUSKERA = "DESCRIPCION_EUSKERA";
+        public static final String TAG_TELEFONO = "TELEFONO";
+        public static final String TAG_DIRECCION = "DIRECCION";
+        public static final String TAG_CALIDAD = "CALIDAD_ASEGURADA";
+        public static final String TAG_EMAIL = "EMAIL";
+        public static final String TAG_CLUB = "CLUB";
+        public static final String TAG_RESTAURANTE = "RESTAURANTE";
+        public static final String TAG_AUROCARAVANA = "AUTOCARAVANA";
+        public static final String TAG_TIENDA = "TIENDA";
+        public static final String TAG_CAPACIDAD = "CAPACIDAD";
+        public static final String TAG_GASTRONOMICO = "TAG_GASTRONOMICO";
+        public static final String TAG_SURFING = "SURFING";
+        public static final String TAG_COORDENADAS = "COORDENADAS";
+        public static final String TAG_ = "SURFING";
+        public static final String TAG_SURFING = "SURFING";
+        public static final String TAG_SURFING = "SURFING";
     }
 
     public final class Usuario {
@@ -37,6 +41,7 @@ public final class JSONTag {
         public static final String TAG_PASSWORD = "CONTRASENIA";
         public static final String TAG_LASTNAME = "APELLIDOS";
         public static final String TAG_NICK = "NOMBRE_USUARIO";
+        public static final String TAG_TELEFONO = "TELEFONO";
     }
 
     public final class PostCode {
