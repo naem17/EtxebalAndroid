@@ -43,7 +43,7 @@ public abstract class JSONBuilder {
                 default:
                     return null;
             }
-            jsonmap.put("tables", new HashMap<String, Object>(){{put(JSONTag.Reserve.TAG_RESERVE, table);}});
+            jsonmap.put("tables", new HashMap<String, Object>(){{put(JSONTag.Reserva.TAG_RESERVA, table);}});
             // convert map to JSON string
             json = mapper.writeValueAsString(jsonmap);
 
@@ -129,19 +129,19 @@ public abstract class JSONBuilder {
         Map<String, Object> where = new HashMap<>();
         List<Object> wheres = new ArrayList<>();
 
-        where.put("field", JSONTag.Reserve.TAG_USER);
+        where.put("field", JSONTag.Reserva.TAG_NOMBRE_CLIENTE);
         where.put("value", reserve.getUserNick());
         wheres.add(where);
         where.clear();
-        where.put("field", JSONTag.Reserve.TAG_LODGING);
+        where.put("field", JSONTag.Reserva.TAG_FIRMA_ALOJAMIENTO);
         where.put("value", reserve.getLodgingCode());
         wheres.add(where);
         where.clear();
-        where.put("field", JSONTag.Reserve.TAG_START);
+        where.put("field", JSONTag.Reserva.TAG_FECHA_INICIO);
         where.put("value", reserve.getStartDate().toString());
         wheres.add(where);
         where.clear();
-        where.put("field", JSONTag.Reserve.TAG_END);
+        where.put("field", JSONTag.Reserva.TAG_FECHA_FIN);
         where.put("value", reserve.getFinishDate().toString());
         wheres.add(where);
 
@@ -158,25 +158,25 @@ public abstract class JSONBuilder {
 
         table.put("action", UPDATE);
         // Add value
-        map.put(JSONTag.Reserve.TAG_START, reserve.getStartDate());
-        map.put(JSONTag.Reserve.TAG_END, reserve.getFinishDate());
+        map.put(JSONTag.Reserva.TAG_FECHA_INICIO, reserve.getStartDate());
+        map.put(JSONTag.Reserva.TAG_FECHA_FIN, reserve.getFinishDate());
         list.add(map);
 
         table.put("values", list);
         // Add where
-        map.put("field", JSONTag.Reserve.TAG_USER);
+        map.put("field", JSONTag.Reserva.TAG_NOMBRE_CLIENTE);
         map.put("value", reserve.getUserNick());
         list.add(map);
         map.clear();
-        map.put("field", JSONTag.Reserve.TAG_LODGING);
+        map.put("field", JSONTag.Reserva.TAG_FIRMA_ALOJAMIENTO);
         map.put("value", reserve.getLodgingCode());
         list.add(map);
         map.clear();
-        map.put("field", JSONTag.Reserve.TAG_START);
+        map.put("field", JSONTag.Reserva.TAG_FECHA_INICIO);
         map.put("value", reserve.getStartDate().toString());
         list.add(map);
         map.clear();
-        map.put("field", JSONTag.Reserve.TAG_END);
+        map.put("field", JSONTag.Reserva.TAG_FECHA_FIN);
         map.put("value", reserve.getFinishDate().toString());
         list.add(map);
 

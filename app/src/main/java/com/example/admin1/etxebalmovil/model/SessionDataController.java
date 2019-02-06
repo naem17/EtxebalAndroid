@@ -10,7 +10,6 @@ import android.support.v4.app.ActivityCompat;
 import com.example.admin1.etxebalmovil.model.json.JSONBuilder;
 import com.example.admin1.etxebalmovil.model.json.JSONController;
 import com.example.admin1.etxebalmovil.model.pojo.Filter;
-import com.example.admin1.etxebalmovil.model.pojo.Lodging;
 import com.example.admin1.etxebalmovil.model.pojo.PostCode;
 import com.example.admin1.etxebalmovil.model.pojo.Reserve;
 import com.example.admin1.etxebalmovil.model.pojo.Usuario;

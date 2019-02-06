@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.util.Comparator;
 import java.util.UUID;
 
-public class Alojamientos implements DatabaseObject, Serializable {
+public class Alojamiento implements DatabaseObject, Serializable {
 
     private UUID mMyID;
 
@@ -35,25 +35,25 @@ public class Alojamientos implements DatabaseObject, Serializable {
     private String mMunicipio;
     private int mCp;
 
-    public static Comparator<Lodging> COMPARE_BY_NAME = new Comparator<Lodging>() {
+    public static Comparator<Alojamiento> COMPARE_BY_NAME = new Comparator<Alojamiento>() {
         @Override
-        public int compare(Lodging o1, Lodging o2) {
-            return o1.getName().compareTo(o2.getName());
+        public int compare(Alojamiento o1, Alojamiento o2) {
+            return o1.getNombre().compareTo(o2.getNombre());
         }
     };
 
-    public Alojamientos(String firma, UUID uuid) {
+    public Alojamiento(String firma, UUID uuid) {
 
         this.mFirma = firma;
         mMyID = uuid;
     }
 
-    public Alojamientos() {
+    public Alojamiento() {
         mMyID = UUID.randomUUID();
         mFirma = mMyID.toString();
     }
 
-    public Alojamientos(String nombre, String descripcion, String descripcionEuskera, String telefono, String direccion, String email, String web, boolean club, boolean restaurante, boolean autocaravana, boolean tienda, int capacidad, boolean gastronomico, boolean surf, String coordenadas, String tipo, String tipoEuskera, String provincia, String municipio, int cp) {
+    public Alojamiento(String nombre, String descripcion, String descripcionEuskera, String telefono, String direccion, String email, String web, boolean club, boolean restaurante, boolean autocaravana, boolean tienda, int capacidad, boolean gastronomico, boolean surf, String coordenadas, String tipo, String tipoEuskera, String provincia, String municipio, int cp) {
         mMyID = UUID.randomUUID();
         mFirma = mMyID.toString();
         mNombre = nombre;

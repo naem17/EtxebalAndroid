@@ -2,7 +2,6 @@ package com.example.admin1.etxebalmovil.model.json;
 
 import com.example.admin1.etxebalmovil.model.DatabaseObject;
 import com.example.admin1.etxebalmovil.model.SessionDataController;
-import com.example.admin1.etxebalmovil.model.pojo.Lodging;
 import com.example.admin1.etxebalmovil.model.pojo.PostCode;
 import com.example.admin1.etxebalmovil.model.pojo.Reserve;
 import com.example.admin1.etxebalmovil.model.pojo.Usuario;

@@ -57,10 +57,10 @@ public class Reserve implements Serializable, DatabaseObject {
 
     @Override
     public DatabaseObject fromJSON(JSONObject json) throws JSONException {
-        this.setFinishDate(Date.valueOf(json.getString(JSONTag.Reserve.TAG_END)));
-        this.setStartDate(Date.valueOf(json.getString(JSONTag.Reserve.TAG_START)));
-        this.setUserNick(json.getString(JSONTag.Reserve.TAG_USER));
-        this.setLodgingCode(json.getString(JSONTag.Reserve.TAG_LODGING));
+        this.setFinishDate(Date.valueOf(json.getString(JSONTag.Reserva.TAG_FECHA_FIN)));
+        this.setStartDate(Date.valueOf(json.getString(JSONTag.Reserva.TAG_FECHA_INICIO)));
+        this.setUserNick(json.getString(JSONTag.Reserva.TAG_NOMBRE_CLIENTE));
+        this.setLodgingCode(json.getString(JSONTag.Reserva.TAG_FIRMA_ALOJAMIENTO));
 
         return this;
     }

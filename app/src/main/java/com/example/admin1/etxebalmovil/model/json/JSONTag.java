@@ -27,9 +27,10 @@ public final class JSONTag {
         public static final String TAG_GASTRONOMICO = "TAG_GASTRONOMICO";
         public static final String TAG_SURFING = "SURFING";
         public static final String TAG_COORDENADAS = "COORDENADAS";
-        public static final String TAG_ = "SURFING";
-        public static final String TAG_SURFING = "SURFING";
-        public static final String TAG_SURFING = "SURFING";
+        public static final String TAG_CODIGO_TIPOS = "CODIGO_TIPOS";
+        public static final String TAG_CODIGO_TIPOS_EUSKERA = "CODIGO_TIPOS_EUSKERA";
+        public static final String TAG_CODIGO_CATEGORIAS = "CODIGO_CATEGORIAS";
+        public static final String TAG_ID_RELACIONES = "ID_RELACIONES";
     }
 
     public final class Usuario {
@@ -44,22 +45,57 @@ public final class JSONTag {
         public static final String TAG_TELEFONO = "TELEFONO";
     }
 
-    public final class PostCode {
-        public static final String TAG_POSTCODE = "CodigoPostal";
+    public final class Provincia{
+        public static final String TAG_PROVINCIA = "Provincia";
 
-        public static final String TAG_COUNTY_CODE = "Lurralde_kodea";
-        public static final String TAG_COUNTY_NAME = "Lurralde_izena";
-        public static final String TAG_CITY_NAME = "Herri_izena";
-        public static final String TAG_CITY_CODE = "Herri_kodea";
-        public static final String TAG_POST_CODE = "Posta_Kodea";
+        public static final String TAG_CODIGO = "CODIGO";
+        public static final String TAG_PROVINCUA = "PROVINCUA";
     }
 
-    public final class Reserve {
-        public static final String TAG_RESERVE = "Erreserbak";
+    public final class Municipio{
+        public static final String TAG_MUNICIPIO = "Municipio";
 
-        public static final String TAG_LODGING = "id_kodea";
-        public static final String TAG_USER = "Nick";
-        public static final String TAG_START = "hasiera_data";
-        public static final String TAG_END = "amaiera_data";
+        public static final String TAG_CODIGO = "CODIGO";
+        public static final String TAG_MUNICIPE = "MUNICIPIO";
+        public static final String TAG_INDICE = "INDICE";
+    }
+
+    public final class Tipo_Euskera{
+        public static final String TAG_TIPO_EUSKERA = "Tipo_Euskera";
+
+        public static final String TAG_CODIGO = "CODIGO";
+        public static final String TAG_TYPE_EUSKERA = "TIPO_EUSKERA";
+    }
+
+    public final class Codigo_Postal{
+        public static final String TAG_TIPO_EUSKERA = "Codigo_Postal";
+
+        public static final String TAG_CODIGO_POSTAL = "CODIGO_POSTAL";
+    }
+
+    public final class Categoria{
+        public static final String TAG_CATEGORIA = "Categoria";
+
+        public static final String TAG_CODIGO = "CODIGO";
+        public static final String TAG_CATEGORY = "CATEGORIA";
+    }
+
+    public final class Tipo {
+        public static final String TAG_TIPO = "Tipo";
+
+        public static final String TAG_CODIGO = "CODIGO";
+        public static final String TAG_TYPE = "TIPO";
+    }
+
+    public final class Reserva {
+        public static final String TAG_RESERVA = "Reservas";
+
+        public static final String TAG_ID = "ID";
+        public static final String TAG_NOMBRE_RESERVA = "NOMBRE_RESERVA";
+        public static final String TAG_NOMBRE_CLIENTE = "NOMBRE_CLIENTE";
+        public static final String TAG_FIRMA_ALOJAMIENTO = "FIRMA_ALOJAMIENTO";
+        public static final String TAG_FECHA_INICIO = "FECHA_INICIO";
+        public static final String TAG_FECHA_FIN = "FECHA_FIN";
+        public static final String TAG_CANTIDAD_PERSONAS = "CANTIDAD_PERSONAS";
     }
 }
