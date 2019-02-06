@@ -1,0 +1,22 @@
+{
+  "data": {
+    "TIPOS": [
+      {
+        "CODIGO": 1,
+        "TIPO": "Albergues"
+      },
+      {
+        "CODIGO": 2,
+        "TIPO": "Campings"
+      },
+      {
+        "CODIGO": 3,
+        "TIPO": "Agroturismos"
+      },
+      {
+        "CODIGO": 4,
+        "TIPO": "Casas Rurales"
+      }
+    ]
+  }
+}

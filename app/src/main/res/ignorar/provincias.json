@@ -1,0 +1,18 @@
+{
+  "data": {
+    "PROVINCIAS": [
+      {
+        "CODIGO": "1",
+        "PROVINCUA": "Araba/Álava"
+      },
+      {
+        "CODIGO": "20",
+        "PROVINCUA": "Gipuzkoa"
+      },
+      {
+        "CODIGO": "48",
+        "PROVINCUA": "Bizkaia"
+      }
+    ]
+  }
+}

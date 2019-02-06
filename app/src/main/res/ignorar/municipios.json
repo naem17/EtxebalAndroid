@@ -1,0 +1,1281 @@
+{
+  "data": {
+    "MUNICIPIOS": [
+      {
+        "CODIGO": "1",
+        "MUNICIPIO": "Alegría-Dulantzi",
+        "INDICE": 1
+      },
+      {
+        "CODIGO": "2",
+        "MUNICIPIO": "Amurrio",
+        "INDICE": 2
+      },
+      {
+        "CODIGO": "3",
+        "MUNICIPIO": "Aramaio",
+        "INDICE": 3
+      },
+      {
+        "CODIGO": "4",
+        "MUNICIPIO": "Artziniega",
+        "INDICE": 4
+      },
+      {
+        "CODIGO": "6",
+        "MUNICIPIO": "Armiñón",
+        "INDICE": 5
+      },
+      {
+        "CODIGO": "8",
+        "MUNICIPIO": "Arratzua-Ubarrundia",
+        "INDICE": 6
+      },
+      {
+        "CODIGO": "9",
+        "MUNICIPIO": "Asparrena",
+        "INDICE": 7
+      },
+      {
+        "CODIGO": "10",
+        "MUNICIPIO": "Ayala/Aiara",
+        "INDICE": 8
+      },
+      {
+        "CODIGO": "11",
+        "MUNICIPIO": "Baños de Ebro/Mañueta",
+        "INDICE": 9
+      },
+      {
+        "CODIGO": "13",
+        "MUNICIPIO": "Barrundia",
+        "INDICE": 10
+      },
+      {
+        "CODIGO": "14",
+        "MUNICIPIO": "Berantevilla",
+        "INDICE": 11
+      },
+      {
+        "CODIGO": "16",
+        "MUNICIPIO": "Bernedo",
+        "INDICE": 12
+      },
+      {
+        "CODIGO": "17",
+        "MUNICIPIO": "Campezo/Kanpezu",
+        "INDICE": 13
+      },
+      {
+        "CODIGO": "18",
+        "MUNICIPIO": "Zigoitia",
+        "INDICE": 14
+      },
+      {
+        "CODIGO": "19",
+        "MUNICIPIO": "Kripan",
+        "INDICE": 15
+      },
+      {
+        "CODIGO": "20",
+        "MUNICIPIO": "Kuartango",
+        "INDICE": 16
+      },
+      {
+        "CODIGO": "21",
+        "MUNICIPIO": "Elburgo/Burgelu",
+        "INDICE": 17
+      },
+      {
+        "CODIGO": "22",
+        "MUNICIPIO": "Elciego",
+        "INDICE": 18
+      },
+      {
+        "CODIGO": "23",
+        "MUNICIPIO": "Elvillar/Bilar",
+        "INDICE": 19
+      },
+      {
+        "CODIGO": "27",
+        "MUNICIPIO": "Iruraiz-Gauna",
+        "INDICE": 20
+      },
+      {
+        "CODIGO": "28",
+        "MUNICIPIO": "Labastida/Bastida",
+        "INDICE": 21
+      },
+      {
+        "CODIGO": "30",
+        "MUNICIPIO": "Lagrán",
+        "INDICE": 22
+      },
+      {
+        "CODIGO": "31",
+        "MUNICIPIO": "Laguardia",
+        "INDICE": 23
+      },
+      {
+        "CODIGO": "32",
+        "MUNICIPIO": "Lanciego/Lantziego",
+        "INDICE": 24
+      },
+      {
+        "CODIGO": "33",
+        "MUNICIPIO": "Lapuebla de Labarca",
+        "INDICE": 25
+      },
+      {
+        "CODIGO": "34",
+        "MUNICIPIO": "Leza",
+        "INDICE": 26
+      },
+      {
+        "CODIGO": "36",
+        "MUNICIPIO": "Laudio/Llodio",
+        "INDICE": 27
+      },
+      {
+        "CODIGO": "37",
+        "MUNICIPIO": "Arraia-Maeztu",
+        "INDICE": 28
+      },
+      {
+        "CODIGO": "39",
+        "MUNICIPIO": "Moreda de Álava/Moreda Araba",
+        "INDICE": 29
+      },
+      {
+        "CODIGO": "41",
+        "MUNICIPIO": "Navaridas",
+        "INDICE": 30
+      },
+      {
+        "CODIGO": "42",
+        "MUNICIPIO": "Okondo",
+        "INDICE": 31
+      },
+      {
+        "CODIGO": "43",
+        "MUNICIPIO": "Oyón-Oion",
+        "INDICE": 32
+      },
+      {
+        "CODIGO": "44",
+        "MUNICIPIO": "Peñacerrada-Urizaharra",
+        "INDICE": 33
+      },
+      {
+        "CODIGO": "46",
+        "MUNICIPIO": "Erriberagoitia/Ribera Alta",
+        "INDICE": 34
+      },
+      {
+        "CODIGO": "47",
+        "MUNICIPIO": "Ribera Baja/Erribera Beitia",
+        "INDICE": 35
+      },
+      {
+        "CODIGO": "49",
+        "MUNICIPIO": "Añana",
+        "INDICE": 36
+      },
+      {
+        "CODIGO": "51",
+        "MUNICIPIO": "Salvatierra/Agurain",
+        "INDICE": 37
+      },
+      {
+        "CODIGO": "52",
+        "MUNICIPIO": "Samaniego",
+        "INDICE": 38
+      },
+      {
+        "CODIGO": "53",
+        "MUNICIPIO": "San Millán/Donemiliaga",
+        "INDICE": 39
+      },
+      {
+        "CODIGO": "54",
+        "MUNICIPIO": "Urkabustaiz",
+        "INDICE": 40
+      },
+      {
+        "CODIGO": "55",
+        "MUNICIPIO": "Valdegovía/Gaubea",
+        "INDICE": 41
+      },
+      {
+        "CODIGO": "56",
+        "MUNICIPIO": "Harana/Valle de Arana",
+        "INDICE": 42
+      },
+      {
+        "CODIGO": "57",
+        "MUNICIPIO": "Villabuena de Álava/Eskuernaga",
+        "INDICE": 43
+      },
+      {
+        "CODIGO": "58",
+        "MUNICIPIO": "Legutio",
+        "INDICE": 44
+      },
+      {
+        "CODIGO": "59",
+        "MUNICIPIO": "Vitoria-Gasteiz",
+        "INDICE": 45
+      },
+      {
+        "CODIGO": "60",
+        "MUNICIPIO": "Yécora/Iekora",
+        "INDICE": 46
+      },
+      {
+        "CODIGO": "61",
+        "MUNICIPIO": "Zalduondo",
+        "INDICE": 47
+      },
+      {
+        "CODIGO": "62",
+        "MUNICIPIO": "Zambrana",
+        "INDICE": 48
+      },
+      {
+        "CODIGO": "63",
+        "MUNICIPIO": "Zuia",
+        "INDICE": 49
+      },
+      {
+        "CODIGO": "901",
+        "MUNICIPIO": "Iruña Oka/Iruña de Oca",
+        "INDICE": 50
+      },
+      {
+        "CODIGO": "902",
+        "MUNICIPIO": "Lantarón",
+        "INDICE": 51
+      },
+      {
+        "CODIGO": "1",
+        "MUNICIPIO": "Abaltzisketa",
+        "INDICE": 52
+      },
+      {
+        "CODIGO": "2",
+        "MUNICIPIO": "Aduna",
+        "INDICE": 53
+      },
+      {
+        "CODIGO": "3",
+        "MUNICIPIO": "Aizarnazabal",
+        "INDICE": 54
+      },
+      {
+        "CODIGO": "4",
+        "MUNICIPIO": "Albiztur",
+        "INDICE": 55
+      },
+      {
+        "CODIGO": "5",
+        "MUNICIPIO": "Alegia",
+        "INDICE": 56
+      },
+      {
+        "CODIGO": "6",
+        "MUNICIPIO": "Alkiza",
+        "INDICE": 57
+      },
+      {
+        "CODIGO": "7",
+        "MUNICIPIO": "Altzo",
+        "INDICE": 58
+      },
+      {
+        "CODIGO": "8",
+        "MUNICIPIO": "Amezketa",
+        "INDICE": 59
+      },
+      {
+        "CODIGO": "9",
+        "MUNICIPIO": "Andoain",
+        "INDICE": 60
+      },
+      {
+        "CODIGO": "10",
+        "MUNICIPIO": "Anoeta",
+        "INDICE": 61
+      },
+      {
+        "CODIGO": "11",
+        "MUNICIPIO": "Antzuola",
+        "INDICE": 62
+      },
+      {
+        "CODIGO": "12",
+        "MUNICIPIO": "Arama",
+        "INDICE": 63
+      },
+      {
+        "CODIGO": "13",
+        "MUNICIPIO": "Aretxabaleta",
+        "INDICE": 64
+      },
+      {
+        "CODIGO": "14",
+        "MUNICIPIO": "Asteasu",
+        "INDICE": 65
+      },
+      {
+        "CODIGO": "15",
+        "MUNICIPIO": "Ataun",
+        "INDICE": 66
+      },
+      {
+        "CODIGO": "16",
+        "MUNICIPIO": "Aia",
+        "INDICE": 67
+      },
+      {
+        "CODIGO": "17",
+        "MUNICIPIO": "Azkoitia",
+        "INDICE": 68
+      },
+      {
+        "CODIGO": "18",
+        "MUNICIPIO": "Azpeitia",
+        "INDICE": 69
+      },
+      {
+        "CODIGO": "19",
+        "MUNICIPIO": "Beasain",
+        "INDICE": 70
+      },
+      {
+        "CODIGO": "20",
+        "MUNICIPIO": "Beizama",
+        "INDICE": 71
+      },
+      {
+        "CODIGO": "21",
+        "MUNICIPIO": "Belauntza",
+        "INDICE": 72
+      },
+      {
+        "CODIGO": "22",
+        "MUNICIPIO": "Berastegi",
+        "INDICE": 73
+      },
+      {
+        "CODIGO": "23",
+        "MUNICIPIO": "Berrobi",
+        "INDICE": 74
+      },
+      {
+        "CODIGO": "24",
+        "MUNICIPIO": "Bidegoian",
+        "INDICE": 75
+      },
+      {
+        "CODIGO": "25",
+        "MUNICIPIO": "Zegama",
+        "INDICE": 76
+      },
+      {
+        "CODIGO": "26",
+        "MUNICIPIO": "Zerain",
+        "INDICE": 77
+      },
+      {
+        "CODIGO": "27",
+        "MUNICIPIO": "Zestoa",
+        "INDICE": 78
+      },
+      {
+        "CODIGO": "28",
+        "MUNICIPIO": "Zizurkil",
+        "INDICE": 79
+      },
+      {
+        "CODIGO": "29",
+        "MUNICIPIO": "Deba",
+        "INDICE": 80
+      },
+      {
+        "CODIGO": "30",
+        "MUNICIPIO": "Eibar",
+        "INDICE": 81
+      },
+      {
+        "CODIGO": "31",
+        "MUNICIPIO": "Elduain",
+        "INDICE": 82
+      },
+      {
+        "CODIGO": "32",
+        "MUNICIPIO": "Elgoibar",
+        "INDICE": 83
+      },
+      {
+        "CODIGO": "33",
+        "MUNICIPIO": "Elgeta",
+        "INDICE": 84
+      },
+      {
+        "CODIGO": "34",
+        "MUNICIPIO": "Eskoriatza",
+        "INDICE": 85
+      },
+      {
+        "CODIGO": "35",
+        "MUNICIPIO": "Ezkio-Itsaso",
+        "INDICE": 86
+      },
+      {
+        "CODIGO": "36",
+        "MUNICIPIO": "Hondarribia",
+        "INDICE": 87
+      },
+      {
+        "CODIGO": "37",
+        "MUNICIPIO": "Gaintza",
+        "INDICE": 88
+      },
+      {
+        "CODIGO": "38",
+        "MUNICIPIO": "Gabiria",
+        "INDICE": 89
+      },
+      {
+        "CODIGO": "39",
+        "MUNICIPIO": "Getaria",
+        "INDICE": 90
+      },
+      {
+        "CODIGO": "40",
+        "MUNICIPIO": "Hernani",
+        "INDICE": 91
+      },
+      {
+        "CODIGO": "41",
+        "MUNICIPIO": "Hernialde",
+        "INDICE": 92
+      },
+      {
+        "CODIGO": "42",
+        "MUNICIPIO": "Ibarra",
+        "INDICE": 93
+      },
+      {
+        "CODIGO": "43",
+        "MUNICIPIO": "Idiazabal",
+        "INDICE": 94
+      },
+      {
+        "CODIGO": "44",
+        "MUNICIPIO": "Ikaztegieta",
+        "INDICE": 95
+      },
+      {
+        "CODIGO": "45",
+        "MUNICIPIO": "Irun",
+        "INDICE": 96
+      },
+      {
+        "CODIGO": "46",
+        "MUNICIPIO": "Irura",
+        "INDICE": 97
+      },
+      {
+        "CODIGO": "47",
+        "MUNICIPIO": "Itsasondo",
+        "INDICE": 98
+      },
+      {
+        "CODIGO": "48",
+        "MUNICIPIO": "Larraul",
+        "INDICE": 99
+      },
+      {
+        "CODIGO": "49",
+        "MUNICIPIO": "Lazkao",
+        "INDICE": 100
+      },
+      {
+        "CODIGO": "50",
+        "MUNICIPIO": "Leaburu",
+        "INDICE": 101
+      },
+      {
+        "CODIGO": "51",
+        "MUNICIPIO": "Legazpi",
+        "INDICE": 102
+      },
+      {
+        "CODIGO": "52",
+        "MUNICIPIO": "Legorreta",
+        "INDICE": 103
+      },
+      {
+        "CODIGO": "53",
+        "MUNICIPIO": "Lezo",
+        "INDICE": 104
+      },
+      {
+        "CODIGO": "54",
+        "MUNICIPIO": "Lizartza",
+        "INDICE": 105
+      },
+      {
+        "CODIGO": "55",
+        "MUNICIPIO": "Arrasate/Mondragón",
+        "INDICE": 106
+      },
+      {
+        "CODIGO": "56",
+        "MUNICIPIO": "Mutriku",
+        "INDICE": 107
+      },
+      {
+        "CODIGO": "57",
+        "MUNICIPIO": "Mutiloa",
+        "INDICE": 108
+      },
+      {
+        "CODIGO": "58",
+        "MUNICIPIO": "Olaberria",
+        "INDICE": 109
+      },
+      {
+        "CODIGO": "59",
+        "MUNICIPIO": "Oñati",
+        "INDICE": 110
+      },
+      {
+        "CODIGO": "60",
+        "MUNICIPIO": "Orexa",
+        "INDICE": 111
+      },
+      {
+        "CODIGO": "61",
+        "MUNICIPIO": "Orio",
+        "INDICE": 112
+      },
+      {
+        "CODIGO": "62",
+        "MUNICIPIO": "Ormaiztegi",
+        "INDICE": 113
+      },
+      {
+        "CODIGO": "63",
+        "MUNICIPIO": "Oiartzun",
+        "INDICE": 114
+      },
+      {
+        "CODIGO": "64",
+        "MUNICIPIO": "Pasaia",
+        "INDICE": 115
+      },
+      {
+        "CODIGO": "65",
+        "MUNICIPIO": "Soraluze/Placencia de las Armas",
+        "INDICE": 116
+      },
+      {
+        "CODIGO": "66",
+        "MUNICIPIO": "Errezil",
+        "INDICE": 117
+      },
+      {
+        "CODIGO": "67",
+        "MUNICIPIO": "Errenteria",
+        "INDICE": 118
+      },
+      {
+        "CODIGO": "68",
+        "MUNICIPIO": "Leintz-Gatzaga",
+        "INDICE": 119
+      },
+      {
+        "CODIGO": "69",
+        "MUNICIPIO": "Donostia/San Sebastián",
+        "INDICE": 120
+      },
+      {
+        "CODIGO": "70",
+        "MUNICIPIO": "Segura",
+        "INDICE": 121
+      },
+      {
+        "CODIGO": "71",
+        "MUNICIPIO": "Tolosa",
+        "INDICE": 122
+      },
+      {
+        "CODIGO": "72",
+        "MUNICIPIO": "Urnieta",
+        "INDICE": 123
+      },
+      {
+        "CODIGO": "73",
+        "MUNICIPIO": "Usurbil",
+        "INDICE": 124
+      },
+      {
+        "CODIGO": "74",
+        "MUNICIPIO": "Bergara",
+        "INDICE": 125
+      },
+      {
+        "CODIGO": "75",
+        "MUNICIPIO": "Villabona",
+        "INDICE": 126
+      },
+      {
+        "CODIGO": "76",
+        "MUNICIPIO": "Ordizia",
+        "INDICE": 127
+      },
+      {
+        "CODIGO": "77",
+        "MUNICIPIO": "Urretxu",
+        "INDICE": 128
+      },
+      {
+        "CODIGO": "78",
+        "MUNICIPIO": "Zaldibia",
+        "INDICE": 129
+      },
+      {
+        "CODIGO": "79",
+        "MUNICIPIO": "Zarautz",
+        "INDICE": 130
+      },
+      {
+        "CODIGO": "80",
+        "MUNICIPIO": "Zumarraga",
+        "INDICE": 131
+      },
+      {
+        "CODIGO": "81",
+        "MUNICIPIO": "Zumaia",
+        "INDICE": 132
+      },
+      {
+        "CODIGO": "901",
+        "MUNICIPIO": "Mendaro",
+        "INDICE": 133
+      },
+      {
+        "CODIGO": "902",
+        "MUNICIPIO": "Lasarte-Oria",
+        "INDICE": 134
+      },
+      {
+        "CODIGO": "903",
+        "MUNICIPIO": "Astigarraga",
+        "INDICE": 135
+      },
+      {
+        "CODIGO": "904",
+        "MUNICIPIO": "Baliarrain",
+        "INDICE": 136
+      },
+      {
+        "CODIGO": "905",
+        "MUNICIPIO": "Orendain",
+        "INDICE": 137
+      },
+      {
+        "CODIGO": "906",
+        "MUNICIPIO": "Altzaga",
+        "INDICE": 138
+      },
+      {
+        "CODIGO": "907",
+        "MUNICIPIO": "Gaztelu",
+        "INDICE": 139
+      },
+      {
+        "CODIGO": "1",
+        "MUNICIPIO": "Abadiño",
+        "INDICE": 140
+      },
+      {
+        "CODIGO": "2",
+        "MUNICIPIO": "Abanto y Ciérvana-Abanto Zierbena",
+        "INDICE": 141
+      },
+      {
+        "CODIGO": "3",
+        "MUNICIPIO": "Amorebieta-Etxano",
+        "INDICE": 142
+      },
+      {
+        "CODIGO": "4",
+        "MUNICIPIO": "Amoroto",
+        "INDICE": 143
+      },
+      {
+        "CODIGO": "5",
+        "MUNICIPIO": "Arakaldo",
+        "INDICE": 144
+      },
+      {
+        "CODIGO": "6",
+        "MUNICIPIO": "Arantzazu",
+        "INDICE": 145
+      },
+      {
+        "CODIGO": "7",
+        "MUNICIPIO": "Munitibar-Arbatzegi Gerrikaitz",
+        "INDICE": 146
+      },
+      {
+        "CODIGO": "8",
+        "MUNICIPIO": "Artzentales",
+        "INDICE": 147
+      },
+      {
+        "CODIGO": "9",
+        "MUNICIPIO": "Arrankudiaga",
+        "INDICE": 148
+      },
+      {
+        "CODIGO": "10",
+        "MUNICIPIO": "Arrieta",
+        "INDICE": 149
+      },
+      {
+        "CODIGO": "11",
+        "MUNICIPIO": "Arrigorriaga",
+        "INDICE": 150
+      },
+      {
+        "CODIGO": "12",
+        "MUNICIPIO": "Bakio",
+        "INDICE": 151
+      },
+      {
+        "CODIGO": "13",
+        "MUNICIPIO": "Barakaldo",
+        "INDICE": 152
+      },
+      {
+        "CODIGO": "14",
+        "MUNICIPIO": "Barrika",
+        "INDICE": 153
+      },
+      {
+        "CODIGO": "15",
+        "MUNICIPIO": "Basauri",
+        "INDICE": 154
+      },
+      {
+        "CODIGO": "16",
+        "MUNICIPIO": "Berango",
+        "INDICE": 155
+      },
+      {
+        "CODIGO": "17",
+        "MUNICIPIO": "Bermeo",
+        "INDICE": 156
+      },
+      {
+        "CODIGO": "18",
+        "MUNICIPIO": "Berriatua",
+        "INDICE": 157
+      },
+      {
+        "CODIGO": "19",
+        "MUNICIPIO": "Berriz",
+        "INDICE": 158
+      },
+      {
+        "CODIGO": "20",
+        "MUNICIPIO": "Bilbao",
+        "INDICE": 159
+      },
+      {
+        "CODIGO": "21",
+        "MUNICIPIO": "Busturia",
+        "INDICE": 160
+      },
+      {
+        "CODIGO": "22",
+        "MUNICIPIO": "Karrantza Harana/Valle de Carranza",
+        "INDICE": 161
+      },
+      {
+        "CODIGO": "23",
+        "MUNICIPIO": "Artea",
+        "INDICE": 162
+      },
+      {
+        "CODIGO": "24",
+        "MUNICIPIO": "Zeanuri",
+        "INDICE": 163
+      },
+      {
+        "CODIGO": "25",
+        "MUNICIPIO": "Zeberio",
+        "INDICE": 164
+      },
+      {
+        "CODIGO": "26",
+        "MUNICIPIO": "Dima",
+        "INDICE": 165
+      },
+      {
+        "CODIGO": "27",
+        "MUNICIPIO": "Durango",
+        "INDICE": 166
+      },
+      {
+        "CODIGO": "28",
+        "MUNICIPIO": "Ea",
+        "INDICE": 167
+      },
+      {
+        "CODIGO": "29",
+        "MUNICIPIO": "Etxebarri",
+        "INDICE": 168
+      },
+      {
+        "CODIGO": "30",
+        "MUNICIPIO": "Etxebarria",
+        "INDICE": 169
+      },
+      {
+        "CODIGO": "31",
+        "MUNICIPIO": "Elantxobe",
+        "INDICE": 170
+      },
+      {
+        "CODIGO": "32",
+        "MUNICIPIO": "Elorrio",
+        "INDICE": 171
+      },
+      {
+        "CODIGO": "33",
+        "MUNICIPIO": "Ereño",
+        "INDICE": 172
+      },
+      {
+        "CODIGO": "34",
+        "MUNICIPIO": "Ermua",
+        "INDICE": 173
+      },
+      {
+        "CODIGO": "35",
+        "MUNICIPIO": "Fruiz",
+        "INDICE": 174
+      },
+      {
+        "CODIGO": "36",
+        "MUNICIPIO": "Galdakao",
+        "INDICE": 175
+      },
+      {
+        "CODIGO": "37",
+        "MUNICIPIO": "Galdames",
+        "INDICE": 176
+      },
+      {
+        "CODIGO": "38",
+        "MUNICIPIO": "Gamiz-Fika",
+        "INDICE": 177
+      },
+      {
+        "CODIGO": "39",
+        "MUNICIPIO": "Garai",
+        "INDICE": 178
+      },
+      {
+        "CODIGO": "40",
+        "MUNICIPIO": "Gatika",
+        "INDICE": 179
+      },
+      {
+        "CODIGO": "41",
+        "MUNICIPIO": "Gautegiz Arteaga",
+        "INDICE": 180
+      },
+      {
+        "CODIGO": "42",
+        "MUNICIPIO": "Gordexola",
+        "INDICE": 181
+      },
+      {
+        "CODIGO": "43",
+        "MUNICIPIO": "Gorliz",
+        "INDICE": 182
+      },
+      {
+        "CODIGO": "44",
+        "MUNICIPIO": "Getxo",
+        "INDICE": 183
+      },
+      {
+        "CODIGO": "45",
+        "MUNICIPIO": "Güeñes",
+        "INDICE": 184
+      },
+      {
+        "CODIGO": "46",
+        "MUNICIPIO": "Gernika-Lumo",
+        "INDICE": 185
+      },
+      {
+        "CODIGO": "47",
+        "MUNICIPIO": "Gizaburuaga",
+        "INDICE": 186
+      },
+      {
+        "CODIGO": "48",
+        "MUNICIPIO": "Ibarrangelu",
+        "INDICE": 187
+      },
+      {
+        "CODIGO": "49",
+        "MUNICIPIO": "Ispaster",
+        "INDICE": 188
+      },
+      {
+        "CODIGO": "50",
+        "MUNICIPIO": "Izurtza",
+        "INDICE": 189
+      },
+      {
+        "CODIGO": "51",
+        "MUNICIPIO": "Lanestosa",
+        "INDICE": 190
+      },
+      {
+        "CODIGO": "52",
+        "MUNICIPIO": "Larrabetzu",
+        "INDICE": 191
+      },
+      {
+        "CODIGO": "53",
+        "MUNICIPIO": "Laukiz",
+        "INDICE": 192
+      },
+      {
+        "CODIGO": "54",
+        "MUNICIPIO": "Leioa",
+        "INDICE": 193
+      },
+      {
+        "CODIGO": "55",
+        "MUNICIPIO": "Lemoa",
+        "INDICE": 194
+      },
+      {
+        "CODIGO": "56",
+        "MUNICIPIO": "Lemoiz",
+        "INDICE": 195
+      },
+      {
+        "CODIGO": "57",
+        "MUNICIPIO": "Lekeitio",
+        "INDICE": 196
+      },
+      {
+        "CODIGO": "58",
+        "MUNICIPIO": "Mallabia",
+        "INDICE": 197
+      },
+      {
+        "CODIGO": "59",
+        "MUNICIPIO": "Mañaria",
+        "INDICE": 198
+      },
+      {
+        "CODIGO": "60",
+        "MUNICIPIO": "Markina-Xemein",
+        "INDICE": 199
+      },
+      {
+        "CODIGO": "61",
+        "MUNICIPIO": "Maruri-Jatabe",
+        "INDICE": 200
+      },
+      {
+        "CODIGO": "62",
+        "MUNICIPIO": "Mendata",
+        "INDICE": 201
+      },
+      {
+        "CODIGO": "63",
+        "MUNICIPIO": "Mendexa",
+        "INDICE": 202
+      },
+      {
+        "CODIGO": "64",
+        "MUNICIPIO": "Meñaka",
+        "INDICE": 203
+      },
+      {
+        "CODIGO": "65",
+        "MUNICIPIO": "Ugao-Miraballes",
+        "INDICE": 204
+      },
+      {
+        "CODIGO": "66",
+        "MUNICIPIO": "Morga",
+        "INDICE": 205
+      },
+      {
+        "CODIGO": "67",
+        "MUNICIPIO": "Muxika",
+        "INDICE": 206
+      },
+      {
+        "CODIGO": "68",
+        "MUNICIPIO": "Mundaka",
+        "INDICE": 207
+      },
+      {
+        "CODIGO": "69",
+        "MUNICIPIO": "Mungia",
+        "INDICE": 208
+      },
+      {
+        "CODIGO": "70",
+        "MUNICIPIO": "Aulesti",
+        "INDICE": 209
+      },
+      {
+        "CODIGO": "71",
+        "MUNICIPIO": "Muskiz",
+        "INDICE": 210
+      },
+      {
+        "CODIGO": "72",
+        "MUNICIPIO": "Otxandio",
+        "INDICE": 211
+      },
+      {
+        "CODIGO": "73",
+        "MUNICIPIO": "Ondarroa",
+        "INDICE": 212
+      },
+      {
+        "CODIGO": "74",
+        "MUNICIPIO": "Urduña/Orduña",
+        "INDICE": 213
+      },
+      {
+        "CODIGO": "75",
+        "MUNICIPIO": "Orozko",
+        "INDICE": 214
+      },
+      {
+        "CODIGO": "76",
+        "MUNICIPIO": "Sukarrieta",
+        "INDICE": 215
+      },
+      {
+        "CODIGO": "77",
+        "MUNICIPIO": "Plentzia",
+        "INDICE": 216
+      },
+      {
+        "CODIGO": "78",
+        "MUNICIPIO": "Portugalete",
+        "INDICE": 217
+      },
+      {
+        "CODIGO": "79",
+        "MUNICIPIO": "Errigoiti",
+        "INDICE": 218
+      },
+      {
+        "CODIGO": "80",
+        "MUNICIPIO": "Valle de Trápaga-Trapagaran",
+        "INDICE": 219
+      },
+      {
+        "CODIGO": "81",
+        "MUNICIPIO": "Lezama",
+        "INDICE": 220
+      },
+      {
+        "CODIGO": "82",
+        "MUNICIPIO": "Santurtzi",
+        "INDICE": 221
+      },
+      {
+        "CODIGO": "83",
+        "MUNICIPIO": "Ortuella",
+        "INDICE": 222
+      },
+      {
+        "CODIGO": "84",
+        "MUNICIPIO": "Sestao",
+        "INDICE": 223
+      },
+      {
+        "CODIGO": "85",
+        "MUNICIPIO": "Sopelana",
+        "INDICE": 224
+      },
+      {
+        "CODIGO": "86",
+        "MUNICIPIO": "Sopuerta",
+        "INDICE": 225
+      },
+      {
+        "CODIGO": "87",
+        "MUNICIPIO": "Trucios-Turtzioz",
+        "INDICE": 226
+      },
+      {
+        "CODIGO": "88",
+        "MUNICIPIO": "Ubide",
+        "INDICE": 227
+      },
+      {
+        "CODIGO": "89",
+        "MUNICIPIO": "Urduliz",
+        "INDICE": 228
+      },
+      {
+        "CODIGO": "90",
+        "MUNICIPIO": "Balmaseda",
+        "INDICE": 229
+      },
+      {
+        "CODIGO": "91",
+        "MUNICIPIO": "Atxondo",
+        "INDICE": 230
+      },
+      {
+        "CODIGO": "92",
+        "MUNICIPIO": "Bedia",
+        "INDICE": 231
+      },
+      {
+        "CODIGO": "93",
+        "MUNICIPIO": "Areatza",
+        "INDICE": 232
+      },
+      {
+        "CODIGO": "94",
+        "MUNICIPIO": "Igorre",
+        "INDICE": 233
+      },
+      {
+        "CODIGO": "95",
+        "MUNICIPIO": "Zaldibar",
+        "INDICE": 234
+      },
+      {
+        "CODIGO": "96",
+        "MUNICIPIO": "Zalla",
+        "INDICE": 235
+      },
+      {
+        "CODIGO": "97",
+        "MUNICIPIO": "Zaratamo",
+        "INDICE": 236
+      },
+      {
+        "CODIGO": "901",
+        "MUNICIPIO": "Derio",
+        "INDICE": 237
+      },
+      {
+        "CODIGO": "902",
+        "MUNICIPIO": "Erandio",
+        "INDICE": 238
+      },
+      {
+        "CODIGO": "903",
+        "MUNICIPIO": "Loiu",
+        "INDICE": 239
+      },
+      {
+        "CODIGO": "904",
+        "MUNICIPIO": "Sondika",
+        "INDICE": 240
+      },
+      {
+        "CODIGO": "905",
+        "MUNICIPIO": "Zamudio",
+        "INDICE": 241
+      },
+      {
+        "CODIGO": "906",
+        "MUNICIPIO": "Forua",
+        "INDICE": 242
+      },
+      {
+        "CODIGO": "907",
+        "MUNICIPIO": "Kortezubi",
+        "INDICE": 243
+      },
+      {
+        "CODIGO": "908",
+        "MUNICIPIO": "Murueta",
+        "INDICE": 244
+      },
+      {
+        "CODIGO": "909",
+        "MUNICIPIO": "Nabarniz",
+        "INDICE": 245
+      },
+      {
+        "CODIGO": "910",
+        "MUNICIPIO": "Iurreta",
+        "INDICE": 246
+      },
+      {
+        "CODIGO": "911",
+        "MUNICIPIO": "Ajangiz",
+        "INDICE": 247
+      },
+      {
+        "CODIGO": "912",
+        "MUNICIPIO": "Alonsotegi",
+        "INDICE": 248
+      },
+      {
+        "CODIGO": "913",
+        "MUNICIPIO": "Zierbena",
+        "INDICE": 249
+      },
+      {
+        "CODIGO": "914",
+        "MUNICIPIO": "Arratzu",
+        "INDICE": 250
+      },
+      {
+        "CODIGO": "915",
+        "MUNICIPIO": "Ziortza-Bolibar",
+        "INDICE": 251
+      },
+      {
+        "CODIGO": "69",
+        "MUNICIPIO": "Donostia / San Sebastián",
+        "INDICE": 252
+      },
+      {
+        "CODIGO": "85",
+        "MUNICIPIO": "Sopela",
+        "INDICE": 253
+      },
+      {
+        "CODIGO": "68",
+        "MUNICIPIO": "Leintz Gatzaga",
+        "INDICE": 254
+      },
+      {
+        "CODIGO": "51",
+        "MUNICIPIO": "Agurain/Salvatierra",
+        "INDICE": 255
+      }
+    ]
+  }
+}

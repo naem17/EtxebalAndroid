@@ -1,0 +1,26 @@
+{
+  "data": {
+    "USUARIOS": [
+      {
+        "ID": 2,
+        "NOMBRE_USUARIO": "a",
+        "CONTRASENIA": "0cc175b9c0f1b6a831c399e269772661",
+        "NOMBRE": "Ibon",
+        "APELLIDOS": "Alonso",
+        "EMAIL": "ibon@ibon.com",
+        "TELEFONO": "666000666",
+        "PERFIL": "A"
+      },
+      {
+        "ID": 1,
+        "NOMBRE_USUARIO": "root",
+        "CONTRASENIA": "81dc9bdb52d04dc20036dbd8313ed055",
+        "NOMBRE": "groot",
+        "APELLIDOS": "ramitas",
+        "EMAIL": "ramichachi@gmail.com",
+        "TELEFONO": "123456789",
+        "PERFIL": "p"
+      }
+    ]
+  }
+}

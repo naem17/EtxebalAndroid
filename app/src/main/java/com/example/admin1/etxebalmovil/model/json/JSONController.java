@@ -3,8 +3,14 @@ package com.example.admin1.etxebalmovil.model.json;
 import com.example.admin1.etxebalmovil.model.DatabaseObject;
 import com.example.admin1.etxebalmovil.model.SessionDataController;
 import com.example.admin1.etxebalmovil.model.pojo.Alojamiento;
+import com.example.admin1.etxebalmovil.model.pojo.Categoria;
 import com.example.admin1.etxebalmovil.model.pojo.CodigoPostal;
+import com.example.admin1.etxebalmovil.model.pojo.Municipio;
+import com.example.admin1.etxebalmovil.model.pojo.Provincia;
+import com.example.admin1.etxebalmovil.model.pojo.Relacion;
 import com.example.admin1.etxebalmovil.model.pojo.Reserva;
+import com.example.admin1.etxebalmovil.model.pojo.Tipo;
+import com.example.admin1.etxebalmovil.model.pojo.TipoEuskera;
 import com.example.admin1.etxebalmovil.model.pojo.Usuario;
 
 import org.json.JSONArray;
@@ -83,26 +89,119 @@ public abstract class JSONController {
 
     public static byte getData() {
         String result = doRequestGET((ADMIN_URL_GET + LINK + DATA_TABLE + JSONTag.Alojamiento.TAG_ALOJAMIENTO
-                + LINK + DATA_TABLE + JSONTag.Codigo_Postal.TAG_POST_CODE));
+                + LINK + DATA_TABLE + JSONTag.Categoria.TAG_CATEGORIA
+                + LINK + DATA_TABLE + JSONTag.Codigo_Postal.TAG_POST_CODE
+                + LINK + DATA_TABLE + JSONTag.Municipio.TAG_MUNICIPIO
+                + LINK + DATA_TABLE + JSONTag.Provincia.TAG_PROVINCIA
+                + LINK + DATA_TABLE + JSONTag.Relacion.TAG_RELACION
+                + LINK + DATA_TABLE + JSONTag.Reserva.TAG_RESERVA
+                + LINK + DATA_TABLE + JSONTag.Tipo.TAG_TIPO
+                + LINK + DATA_TABLE + JSONTag.Tipo_Euskera.TAG_TIPO_EUSKERA
+        ));
 
         try {
             SessionDataController controller = SessionDataController.getInstance();
             HashMap<String, List<DatabaseObject>> data;
 
-            // Insert postcodes first to be able to create lodgings
+            // Se meten las relaciones
+            data = parseJSON(result, JSONTag.Relacion.TAG_RELACION);
+            // Check for errors
+            if (data.isEmpty()) {
+                return OTHER_ERROR;
+            }
+
+            List<Relacion> relaciones = new ArrayList<>();
+            for (DatabaseObject o : data.get(JSONTag.Relacion.TAG_RELACION)) {
+                relaciones.add((Relacion) o);
+            }
+
+            controller.setRelaciones(relaciones);
+
+            //Se meten las provincias
+            data = parseJSON(result, JSONTag.Provincia.TAG_PROVINCIA);
+            // Check for errors
+            if (data.isEmpty()) {
+                return OTHER_ERROR;
+            }
+
+            List<Provincia> provincias = new ArrayList<>();
+            for (DatabaseObject o : data.get(JSONTag.Provincia.TAG_PROVINCIA)) {
+                provincias.add((Provincia) o);
+            }
+
+            controller.setProvincias(provincias);
+
+            //Se meten los municipios
+            data = parseJSON(result, JSONTag.Municipio.TAG_MUNICIPIO);
+            // Check for errors
+            if (data.isEmpty()) {
+                return OTHER_ERROR;
+            }
+
+            List<Municipio> municipios = new ArrayList<>();
+            for (DatabaseObject o : data.get(JSONTag.Municipio.TAG_MUNICIPIO)) {
+                municipios.add((Municipio) o);
+            }
+
+            controller.setMunicipios(municipios);
+
+            //Se meten los codigos postales
             data = parseJSON(result, JSONTag.Codigo_Postal.TAG_POST_CODE);
             // Check for errors
             if (data.isEmpty()) {
                 return OTHER_ERROR;
             }
 
-            List<CodigoPostal> codigoPostales = new ArrayList<>();
+            List<CodigoPostal> codigosPostales = new ArrayList<>();
             for (DatabaseObject o : data.get(JSONTag.Codigo_Postal.TAG_POST_CODE)) {
-                codigoPostales.add((CodigoPostal) o);
+                codigosPostales.add((CodigoPostal) o);
             }
 
-            controller.setCodigosPostales(codigoPostales);
-            // Insert lodgings
+            controller.setCodigosPostales(codigosPostales);
+
+            //Se meten las categorias
+            data = parseJSON(result, JSONTag.Categoria.TAG_CATEGORIA);
+            // Check for errors
+            if (data.isEmpty()) {
+                return OTHER_ERROR;
+            }
+
+            List<Categoria> categorias = new ArrayList<>();
+            for (DatabaseObject o : data.get(JSONTag.Categoria.TAG_CATEGORIA)) {
+                categorias.add((Categoria) o);
+            }
+
+            controller.setCategorias(categorias);
+
+            //Se meten los tipos
+            data = parseJSON(result, JSONTag.Tipo.TAG_TIPO);
+            // Check for errors
+            if (data.isEmpty()) {
+                return OTHER_ERROR;
+            }
+
+            List<Tipo> tipos = new ArrayList<>();
+            for (DatabaseObject o : data.get(JSONTag.Tipo.TAG_TIPO)) {
+                tipos.add((Tipo) o);
+            }
+
+            controller.setTipos(tipos);
+
+            //Se meten los tipos euskera
+            data = parseJSON(result, JSONTag.Tipo_Euskera.TAG_TIPO_EUSKERA);
+            // Check for errors
+            if (data.isEmpty()) {
+                return OTHER_ERROR;
+            }
+
+            List<TipoEuskera> tiposEuskera = new ArrayList<>();
+            for (DatabaseObject o : data.get(JSONTag.Tipo_Euskera.TAG_TIPO_EUSKERA)) {
+                tiposEuskera.add((TipoEuskera) o);
+            }
+
+            controller.setTiposEuskera(tiposEuskera);
+
+            // Se meten los alojamientos
             data = parseJSON(result, JSONTag.Alojamiento.TAG_ALOJAMIENTO);
             // Check for errors
             if (data.isEmpty()) {
@@ -160,12 +259,12 @@ public abstract class JSONController {
     }
 
     private static byte loadReserves() {
-        String result = doRequestGET(mUserURL + LINK + DATA_TABLE + JSONTag.Reserve.TAG_RESERVE);
+        String result = doRequestGET(mUserURL + LINK + DATA_TABLE + JSONTag.Reserva.TAG_RESERVA);
 
         try {
             SessionDataController controller = SessionDataController.getInstance();
-            HashMap<String, List<DatabaseObject>> data = parseJSON(result, JSONTag.Reserve.TAG_RESERVE);
-            List<Reserve> reserves = new ArrayList<>();
+            HashMap<String, List<DatabaseObject>> data = parseJSON(result, JSONTag.Reserva.TAG_RESERVA);
+            List<Reserva> reservas = new ArrayList<>();
             // Check for errors
             if (data.isEmpty()) {
                 return OTHER_ERROR;
@@ -173,13 +272,13 @@ public abstract class JSONController {
 
             // Insert reserves
             // Select only current user's reserves
-            List<DatabaseObject> list = data.get(JSONTag.Reserve.TAG_RESERVE);
-            list.sort(Reserve.COMPARE_BY_USER); // Sort by user
+            List<DatabaseObject> list = data.get(JSONTag.Reserva.TAG_RESERVA);
+            list.sort(Reserva.COMPARE_BY_USER); // Sort by user
             String user = controller.getUsuario().getNick();
             boolean userFound = false;
             for (int i = 0; i < list.size(); i++) {
-                if (((Reserve) list.get(i)).getUserNick().equals(user)) {
-                    reserves.add((Reserve) list.get(i));
+                if (((Reserva) list.get(i)).getmNombreCliente().equals(user)) {
+                    reservas.add((Reserva) list.get(i));
                     userFound = true;
                 } else if (userFound) { // User already found. No more reserves for the current user
                     break;
@@ -191,7 +290,7 @@ public abstract class JSONController {
                 }
             }*/
 
-            controller.setReserves(reserves);
+            controller.setReservas(reservas);
         } catch (JSONException e) {
             e.printStackTrace();
             return OTHER_ERROR;
@@ -274,17 +373,35 @@ public abstract class JSONController {
                 for (int i = 0; i < jsonData.length() && validTag; i++) {
                     JSONObject jsonObject = jsonData.getJSONObject(i);
                     switch (tag) {
-                        case JSONTag.Lodging.TAG_LODGING:
-                            object = new Lodging();
+                        case JSONTag.Alojamiento.TAG_ALOJAMIENTO:
+                            object = new Alojamiento();
                             break;
-                        case JSONTag.Reserve.TAG_RESERVE:
-                            object = new Reserve();
+                        case JSONTag.Reserva.TAG_RESERVA:
+                            object = new Reserva();
                             break;
-                        case JSONTag.PostCode.TAG_POSTCODE:
-                            object = new PostCode();
+                        case JSONTag.Codigo_Postal.TAG_POST_CODE:
+                            object = new CodigoPostal();
                             break;
                         case JSONTag.Usuario.TAG_USER:
                             object = new Usuario();
+                            break;
+                        case JSONTag.Categoria.TAG_CATEGORIA:
+                            object = new Categoria();
+                            break;
+                        case JSONTag.Municipio.TAG_MUNICIPIO:
+                            object = new Municipio();
+                            break;
+                        case JSONTag.Provincia.TAG_PROVINCIA:
+                            object = new Provincia();
+                            break;
+                        case JSONTag.Relacion.TAG_RELACION:
+                            object = new Relacion();
+                            break;
+                        case JSONTag.Tipo.TAG_TIPO:
+                            object = new Tipo();
+                            break;
+                        case JSONTag.Tipo_Euskera.TAG_TIPO_EUSKERA:
+                            object = new TipoEuskera();
                             break;
                         default:
                             validTag = false;

@@ -83,7 +83,7 @@ public class Filter implements Serializable {
 
     public boolean check(Alojamiento alojamiento) {
         if (0 < mRadius) {
-            Util.Position target = new Util.Position(alojamiento.getLatitude(), alojamiento.getLongitude());
+            Util.Position target = new Util.Position(alojamiento.getCoordenadas());
             if (mRadius >= Util.calculateDistance(SessionDataController.getInstance().getPosicionActual(), target)) {
                 return true;
             }
@@ -91,32 +91,12 @@ public class Filter implements Serializable {
         }
 
         if (mSearchField != null && !mSearchField.isEmpty()) {
-            if (!lodging.getName().toLowerCase().contains(mSearchField.toLowerCase())
-                    && !lodging.getDescription().toLowerCase().contains(mSearchField.toLowerCase())) {
+            if (!alojamiento.getNombre().toLowerCase().contains(mSearchField.toLowerCase())
+                    && !alojamiento.getDescripcion().toLowerCase().contains(mSearchField.toLowerCase())) {
                 return false;
             }
         }
-        if (lodging.getCapacity() < mCapacity) {
-            return false;
-        }
-        if (mPostCode != null && mPostCode.length() > 0
-                && !lodging.getPostCode().getPostCode().equals(mPostCode)) {
-            return false;
-        }
-        if (mCounty != null && mCounty.length > 0
-                && !arrayContains(mCounty, lodging.getPostCode().getCountyName())) {
-            return false;
-        }
-        if (mCity != null && mCity.length > 0
-                && !arrayContains(mCity, lodging.getPostCode().getCityName())) {
-            return false;
-        }
-        if (mMark != null && !mMark.isEmpty()
-                && !mMark.toLowerCase().contains(lodging.getMark().toLowerCase())) {
-            return false;
-        }
-        if (mType != null && mType.length > 0
-                && !arrayContains(mType, lodging.getType().toLowerCase())) {
+        if (alojamiento.getCapacidad() < mCapacity) {
             return false;
         }
 

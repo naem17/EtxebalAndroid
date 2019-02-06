@@ -299,7 +299,19 @@ public class Alojamiento implements DatabaseObject, Serializable {
         this.setDireccion(json.getString(JSONTag.Alojamiento.TAG_DIRECCION));
         this.setCalidad(json.getBoolean(JSONTag.Alojamiento.TAG_CALIDAD));
         this.setEmail(json.getString(JSONTag.Alojamiento.TAG_EMAIL));
-        this.setWeb(json.getString(JSONTag.Alojamiento.TAG_W));
+        this.setWeb(json.getString(JSONTag.Alojamiento.TAG_WEB));
+        this.setClub(json.getBoolean(JSONTag.Alojamiento.TAG_CLUB));
+        this.setRestaurante(json.getBoolean(JSONTag.Alojamiento.TAG_RESTAURANTE));
+        this.setAutocaravana(json.getBoolean(JSONTag.Alojamiento.TAG_AUTOCARAVANA));
+        this.setTienda(json.getBoolean(JSONTag.Alojamiento.TAG_TIENDA));
+        this.setCapacidad(json.getInt(JSONTag.Alojamiento.TAG_CAPACIDAD));
+        this.setGastronomico(json.getBoolean(JSONTag.Alojamiento.TAG_GASTRONOMICO));
+        this.setSurf(json.getBoolean(JSONTag.Alojamiento.TAG_SURFING));
+        this.setCoordenadas(json.getString(JSONTag.Alojamiento.TAG_COORDENADAS));
+        this.setCodigoTipo(json.getString(JSONTag.Alojamiento.TAG_CODIGO_TIPOS));
+        this.setCodigoTipoEuskera(json.getString(JSONTag.Alojamiento.TAG_CODIGO_TIPOS_EUSKERA));
+        this.setCodigoCategorias(json.getInt(JSONTag.Alojamiento.TAG_CODIGO_CATEGORIAS));
+        this.setIdRelaciones(json.getInt(JSONTag.Alojamiento.TAG_ID_RELACIONES));
         return this;
     }
 }

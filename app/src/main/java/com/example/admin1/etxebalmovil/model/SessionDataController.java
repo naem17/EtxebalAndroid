@@ -10,12 +10,16 @@ import android.support.v4.app.ActivityCompat;
 import com.example.admin1.etxebalmovil.model.json.JSONBuilder;
 import com.example.admin1.etxebalmovil.model.json.JSONController;
 import com.example.admin1.etxebalmovil.model.pojo.Alojamiento;
+import com.example.admin1.etxebalmovil.model.pojo.Categoria;
 import com.example.admin1.etxebalmovil.model.pojo.CodigoPostal;
 import com.example.admin1.etxebalmovil.model.pojo.Filter;
 import com.example.admin1.etxebalmovil.model.pojo.Municipio;
 import com.example.admin1.etxebalmovil.model.pojo.Provincia;
+import com.example.admin1.etxebalmovil.model.pojo.Relacion;
 import com.example.admin1.etxebalmovil.model.pojo.Reserva;
+import com.example.admin1.etxebalmovil.model.pojo.TipoEuskera;
 import com.example.admin1.etxebalmovil.model.pojo.Usuario;
+import com.example.admin1.etxebalmovil.model.pojo.Tipo;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -30,10 +34,14 @@ public class SessionDataController {
     private Usuario mUsuario;
     private Util.Position mPosicionActual;
     private List<Alojamiento> mAlojamientos;
-    private List<Reserva> mReservas;
+    private List<Categoria> mCategorias;
     private List<CodigoPostal> mCodigosPostales;
-    private List<Provincia> mProvincias;
     private List<Municipio> mMunicipios;
+    private List<Provincia> mProvincias;
+    private List<Relacion> mRelaciones;
+    private List<Reserva> mReservas;
+    private List<Tipo> mTipos;
+    private List<TipoEuskera> mTiposEuskera;
 
     public static SessionDataController getInstance() {
         if (null == ourInstance) {
@@ -44,6 +52,10 @@ public class SessionDataController {
 
     private SessionDataController() {
         mAlojamientos = new ArrayList<>();
+        mCategorias = new ArrayList<>();
+        mRelaciones = new ArrayList<>();
+        mTipos = new ArrayList<>();
+        mTiposEuskera = new ArrayList<>();
         mReservas = new ArrayList<>();
         mProvincias = new ArrayList<>();
         mMunicipios = new ArrayList<>();
@@ -108,18 +120,71 @@ public class SessionDataController {
         return false;
     }
 
-    public Reserva getReserva(String lodgingId) {
+    public Reserva getReserva(String firma) {
         for (Reserva r : mReservas) {
-            if (r.getmFirmaAlojamiento().equals(lodgingId))
+            if (r.getmFirmaAlojamiento().equals(firma))
                 return r;
+        }
+        return null;
+    }
+
+    public Categoria getCategoria(String categoria) {
+        for (Categoria c : mCategorias) {
+            if (c.getmCategoria().equals(categoria))
+                return c;
+        }
+        return null;
+    }
+
+    public Municipio getMunicipio(String municipio) {
+        for (Municipio m : mMunicipios) {
+            if (m.getmMunicipio().equals(municipio))
+                return m;
+        }
+        return null;
+    }
+
+    public Provincia getProvincia(String provincia) {
+        for (Provincia p : mProvincias) {
+            if (p.getmProvincua().equals(provincia))
+                return p;
+        }
+        return null;
+    }
+
+    public Relacion getRelacion(String codigoPostal, String codigoProvincia, String indiceMunicipio) {
+        for (Relacion r : mRelaciones) {
+            if (r.getCodigoPostal().equals(codigoPostal)
+                    && r.getCodigoProvincia().equals(codigoProvincia)
+                    && r.getIndiceMunicipio().equals(indiceMunicipio)) {
+                return r;
+            }
         }
         return null;
     }
 
     public CodigoPostal getCodigoPostal(String codigoPostal) {
         for (CodigoPostal p : mCodigosPostales) {
-            if (codigoPostal.equals(p.getmCodigoPostal())) {
+            if (p.getmCodigoPostal() == Integer.valueOf(codigoPostal)) {
                 return p;
+            }
+        }
+        return null;
+    }
+
+    public Tipo getTipo(String tipo) {
+        for (Tipo t : mTipos) {
+            if (t.getTipo().equals(tipo)) {
+                return t;
+            }
+        }
+        return null;
+    }
+
+    public TipoEuskera getTipoEuskera(String tipoEuskera) {
+        for (TipoEuskera t : mTiposEuskera) {
+            if (t.getTipoEuskera().equals(tipoEuskera)) {
+                return t;
             }
         }
         return null;
@@ -144,6 +209,30 @@ public class SessionDataController {
 
     public void setCodigosPostales(List<CodigoPostal> codigosPostales) {
         mCodigosPostales = codigosPostales;
+    }
+
+    public void setCategorias(List<Categoria> categorias) {
+        mCategorias = categorias;
+    }
+
+    public void setMunicipios(List<Municipio> municipios) {
+        mMunicipios = municipios;
+    }
+
+    public void setProvincias(List<Provincia> provincias) {
+        mProvincias = provincias;
+    }
+
+    public void setRelaciones(List<Relacion> relaciones) {
+        mRelaciones = relaciones;
+    }
+
+    public void setTipos(List<Tipo> tipos) {
+        mTipos = tipos;
+    }
+
+    public void setTiposEuskera(List<TipoEuskera> tiposEuskera) {
+        mTiposEuskera = tiposEuskera;
     }
 
     public void setPosicionActual(Context context) {
@@ -180,12 +269,36 @@ public class SessionDataController {
         return mPosicionActual;
     }
 
-    public List<CodigoPostal> getPostCodes() {
+    public List<CodigoPostal> getCodigosPostales() {
         return mCodigosPostales;
     }
 
-    public List<Reserva> getReserves() {
+    public List<Reserva> getReservas() {
         return mReservas;
+    }
+
+    public List<Categoria> getCategorias() {
+        return mCategorias;
+    }
+
+    public List<Municipio> getMunicipios() {
+        return mMunicipios;
+    }
+
+    public List<Provincia> getProvincias() {
+        return mProvincias;
+    }
+
+    public List<Relacion> getRelaciones() {
+        return mRelaciones;
+    }
+
+    public List<Tipo> getTipos() {
+        return mTipos;
+    }
+
+    public List<TipoEuskera> getTiposEuskera() {
+        return mTiposEuskera;
     }
 
     public Usuario getUsuario() {

@@ -1,0 +1,18 @@
+{
+  "data": {
+    "CATEGORIAS": [
+      {
+        "CODIGO": 1,
+        "CATEGORIA": "S"
+      },
+      {
+        "CODIGO": 2,
+        "CATEGORIA": "T"
+      },
+      {
+        "CODIGO": 3,
+        "CATEGORIA": "P"
+      }
+    ]
+  }
+}
