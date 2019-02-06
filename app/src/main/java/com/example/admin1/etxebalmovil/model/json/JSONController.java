@@ -2,7 +2,7 @@ package com.example.admin1.etxebalmovil.model.json;
 
 import com.example.admin1.etxebalmovil.model.DatabaseObject;
 import com.example.admin1.etxebalmovil.model.SessionDataController;
-import com.example.admin1.etxebalmovil.model.pojo.PostCode;
+import com.example.admin1.etxebalmovil.model.pojo.CodigoPostal;
 import com.example.admin1.etxebalmovil.model.pojo.Reserve;
 import com.example.admin1.etxebalmovil.model.pojo.Usuario;
 
@@ -81,23 +81,23 @@ public abstract class JSONController {
     }
 
     public static byte getData() {
-        String result = doRequestGET((ADMIN_URL_GET + LINK + DATA_TABLE + JSONTag.Lodging.TAG_LODGING
-                + LINK + DATA_TABLE + JSONTag.PostCode.TAG_POSTCODE));
+        String result = doRequestGET((ADMIN_URL_GET + LINK + DATA_TABLE + JSONTag.Alojamiento.TAG_ALOJAMIENTO
+                + LINK + DATA_TABLE + JSONTag.Codigo_Postal.TAG_POST_CODE));
 
         try {
             SessionDataController controller = SessionDataController.getInstance();
             HashMap<String, List<DatabaseObject>> data;
 
             // Insert postcodes first to be able to create lodgings
-            data = parseJSON(result, JSONTag.PostCode.TAG_POSTCODE);
+            data = parseJSON(result, JSONTag.Codigo_Postal.TAG_POST_CODE);
             // Check for errors
             if (data.isEmpty()) {
                 return OTHER_ERROR;
             }
 
-            List<PostCode> postCodes = new ArrayList<>();
-            for (DatabaseObject o : data.get(JSONTag.PostCode.TAG_POSTCODE)) {
-                postCodes.add((PostCode) o);
+            List<CodigoPostal> postCodes = new ArrayList<>();
+            for (DatabaseObject o : data.get(JSONTag.Codigo_Postal.TAG_POST_CODE)) {
+                postCodes.add((CodigoPostal) o);
             }
 
             controller.setPostCodes(postCodes);

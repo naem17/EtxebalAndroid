@@ -9,8 +9,10 @@ import android.support.v4.app.ActivityCompat;
 
 import com.example.admin1.etxebalmovil.model.json.JSONBuilder;
 import com.example.admin1.etxebalmovil.model.json.JSONController;
+import com.example.admin1.etxebalmovil.model.pojo.Alojamiento;
+import com.example.admin1.etxebalmovil.model.pojo.CodigoPostal;
 import com.example.admin1.etxebalmovil.model.pojo.Filter;
-import com.example.admin1.etxebalmovil.model.pojo.PostCode;
+import com.example.admin1.etxebalmovil.model.pojo.Reserva;
 import com.example.admin1.etxebalmovil.model.pojo.Reserve;
 import com.example.admin1.etxebalmovil.model.pojo.Usuario;
 
@@ -26,10 +28,9 @@ public class SessionDataController {
     private static SessionDataController ourInstance;
     private Usuario mUsuario;
     private Util.Position mCurrentPos;
-    private List<Lodging> mLodgings;
-    private List<Reserve> mReserves;
-    private List<Reserve> mHistory;
-    private List<PostCode> mPostCodes;
+    private List<Alojamiento> mAlojamientos;
+    private List<Reserva> mReserves;
+    private List<CodigoPostal> mCodigosPostales;
     private List<String> mCitiesInBizkaia;
     private List<String> mCitiesInAraba;
     private List<String> mCitiesInGipuzkoa;
@@ -42,32 +43,31 @@ public class SessionDataController {
     }
 
     private SessionDataController() {
-        mLodgings = new ArrayList<>();
-        mHistory = new ArrayList<>();
+        mAlojamientos = new ArrayList<>();
         mReserves = new ArrayList<>();
         mCitiesInBizkaia = new ArrayList<>();
         mCitiesInAraba = new ArrayList<>();
         mCitiesInGipuzkoa = new ArrayList<>();
-        mPostCodes = new ArrayList<>();
+        mCodigosPostales = new ArrayList<>();
         mUsuario = new Usuario();
     }
 
-    public Lodging getLodging(String id) {
-        for (Lodging lodging : mLodgings) {
-            if (lodging.getCode().equals(id))
+    public Alojamiento getAlojamiento(String id) {
+        for (Alojamiento lodging : mAlojamientos) {
+            if (lodging.getFirma().equals(id))
                 return lodging;
         }
         return null;
     }
 
-    public List<Lodging> getLodgings() {
-        return mLodgings;
+    public List<Alojamiento> getAlojamientos() {
+        return mAlojamientos;
     }
 
-    public List<Lodging> getLodgings(Filter filter) {
-        List<Lodging> lodgings = new ArrayList<>();
+    public List<Alojamiento> getLodgings(Filter filter) {
+        List<Alojamiento> lodgings = new ArrayList<>();
 
-        for (Lodging lodging : mLodgings) {
+        for (Alojamiento lodging : mAlojamientos) {
             if (filter.check(lodging)) {
                 lodgings.add(lodging);
             }

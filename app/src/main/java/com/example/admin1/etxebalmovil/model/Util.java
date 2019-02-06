@@ -53,9 +53,10 @@ public abstract class Util {
         public double latitude;
         public double longitude;
 
-        public Position(double lat, double lon) {
-            latitude = lat;
-            longitude = lon;
+        public Position(String coordenadas, String latitude) {
+            String[] coords = coordenadas.split(",");
+            latitude = (double) String.valueOf(coords[0]);
+            longitude = (double) String.valueOf(coords[1]);
         }
         public Position() {}
     }

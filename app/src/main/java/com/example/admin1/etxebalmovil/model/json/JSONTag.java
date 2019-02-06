@@ -68,7 +68,7 @@ public final class JSONTag {
     }
 
     public final class Codigo_Postal{
-        public static final String TAG_TIPO_EUSKERA = "Codigo_Postal";
+        public static final String TAG_POST_CODE = "Codigo_Postal";
 
         public static final String TAG_CODIGO_POSTAL = "CODIGO_POSTAL";
     }
