@@ -27,11 +27,12 @@ public class FragmentoListarAlojamientos extends Fragment {
 
     private boolean filtrados;
 
-    private static final String EXTRA_ALOJAMIENTOS_FILTRADOS = AlojamientosPagerActivity.class.getName() + ".alojamiento_filtrado";
+    private static final String EXTRA_ALOJAMIENTOS_FILTRADOS = FragmentoListarActivity.class.getName() + ".alojamiento_filtrado";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        filtrados=getActivity().getIntent().getBooleanExtra(EXTRA_ALOJAMIENTOS_FILTRADOS, false);
     }
 
     @Nullable
@@ -40,8 +41,6 @@ public class FragmentoListarAlojamientos extends Fragment {
         View vista=inflater.inflate(R.layout.alojamiento_recycler_view,container,false);
         listaFragmentosAlojamientos= vista.findViewById(R.id.alojamientoRecyclerView);
         listaFragmentosAlojamientos.setLayoutManager(new LinearLayoutManager(getActivity()));
-        if(getArguments()!=null)
-            filtrados=true;
         updateUI();
         return vista;
     }
@@ -66,7 +65,6 @@ public class FragmentoListarAlojamientos extends Fragment {
         private TextView nombreAlojamiento;
         private TextView tipoAlojamiento;
         private ImageView imagenAlojamiento;
-        private ImageButton mapa;
         private Button reserva;
 
         private Alojamientos alojamiento;
@@ -80,7 +78,6 @@ public class FragmentoListarAlojamientos extends Fragment {
             nombreAlojamiento= itemView.findViewById(R.id.textViewAlojamientoNombre);
             tipoAlojamiento= itemView.findViewById(R.id.textViewAlojamientoTipo);
             imagenAlojamiento= itemView.findViewById(R.id.imageViewImagenAlojamiento);
-            mapa=itemView.findViewById(R.id.imagebUttonMapa);
             reserva=itemView.findViewById(R.id.buttonReservar);
         }
 
@@ -110,13 +107,6 @@ public class FragmentoListarAlojamientos extends Fragment {
                 case "casas rurales":
                     break;
             }
-            //TODO mapa
-            mapa.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
             reserva.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
