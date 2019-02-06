@@ -83,7 +83,8 @@ public class FragmentoAlojamientoDetalle extends Fragment {
         autocaravana= vista.findViewById(R.id.checkBoxAutocaravana);
         tienda= vista.findViewById(R.id.checkBoxTienda);
         surf= vista.findViewById(R.id.checkBoxSurf);
-        gastronomico= vista.findViewById(R.id.checkBoxClub);
+        gastronomico= vista.findViewById(R.id.checkBoxGastronomico);
+        club=vista.findViewById(R.id.checkBoxClub);
 
         nombreAlojamiento.setText(alojamiento.getNombre());
         tipoAlojamiento.setText(alojamiento.getTipo());
@@ -100,6 +101,24 @@ public class FragmentoAlojamientoDetalle extends Fragment {
         tienda.setChecked(alojamiento.isTienda());
         surf.setChecked(alojamiento.isSurf());
         gastronomico.setChecked(alojamiento.isGastronomico());
+        club.setChecked(alojamiento.isClub());
+
+        nombreAlojamiento.setEnabled(false);
+        tipoAlojamiento.setEnabled(false);
+        descripcion.setEnabled(false);
+        email.setEnabled(false);
+        telefono.setEnabled(false);
+        web.setEnabled(false);
+        direccion.setEnabled(false);
+        provincia.setEnabled(false);
+        municipio.setEnabled(false);
+        cp.setEnabled(false);
+        restaurante.setEnabled(false);
+        autocaravana.setEnabled(false);
+        tienda.setEnabled(false);
+        surf.setEnabled(false);
+        gastronomico.setEnabled(false);
+        club.setEnabled(false);
 
         mapa=vista.findViewById(R.id.imageButtonMapa);
         mapa.setOnClickListener(new View.OnClickListener() {

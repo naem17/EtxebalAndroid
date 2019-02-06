@@ -13,50 +13,52 @@ import android.view.View;
 import android.widget.Button;
 
 import java.util.ArrayList;
-import java.util.UUID;
 
-public class AlojamientosPagerActivity extends AppCompatActivity {
-    private static final String EXTRA_ALOJAMIENTO_ID = AlojamientosPagerActivity.class.getName() + ".alojamiento_id";
+public class ReservasPagerActivity extends AppCompatActivity {
+    private static final String EXTRA_RESERVA_NOMBRE = ReservasPagerActivity.class.getName() + ".nombre_reserva";
+    private static final String EXTRA_RESERVA_FIRMA = ReservasPagerActivity.class.getName() + ".firma_alojamiento";
     private ViewPager viewPager;
-    private ArrayList<Alojamientos> alojamientos;
+    private ArrayList<Reservas> reservas;
 
     private Button primero;
     private Button ultimo;
 
-    public static Intent newIntent(Context packageContect, UUID alojamientoID) {
-        Intent intent = new Intent(packageContect, AlojamientosPagerActivity.class);
-        intent.putExtra(EXTRA_ALOJAMIENTO_ID, alojamientoID);
+    public static Intent newIntent(Context packageContect, String firmaAlojamiento, String nombreReserva) {
+        Intent intent = new Intent(packageContect, ReservasPagerActivity.class);
+        intent.putExtra(EXTRA_RESERVA_NOMBRE, nombreReserva);
+        intent.putExtra(EXTRA_RESERVA_FIRMA,firmaAlojamiento);
         return intent;
     }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.alojamientos_detalle_pager_layout);
+        setContentView(R.layout.reserva_detalle_pager_layout);
 
         primero=findViewById(R.id.buttonPrimeroReservas);
-        ultimo=findViewById(R.id.buttonUltimo);
+        ultimo=findViewById(R.id.buttonUltimoReservas);
 
-        UUID alojamientoID = (UUID) getIntent().getSerializableExtra(EXTRA_ALOJAMIENTO_ID);
+        String nombreReserva=getIntent().getStringExtra(EXTRA_RESERVA_NOMBRE);
+        String firmaAlojamiento=getIntent().getStringExtra(EXTRA_RESERVA_FIRMA);
 
         viewPager = findViewById(R.id.viewPagerReservas);
-        alojamientos = AlojamientosLab.get(this).getAlojamientos();
+        reservas = ReservasLab.get(this).getReservas();
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         viewPager.setAdapter(new FragmentStatePagerAdapter(fragmentManager) {
             @Override
             public Fragment getItem(int i) {
-                Alojamientos alojamiento = alojamientos.get(i);
-                return FragmentoAlojamientoDetalle.newInstance(alojamiento.getMyID());
+                Reservas reserva = reservas.get(i);
+                return FragmentoReservaDetalle.newInstance(reserva.getFirmaAlojamiento(), reserva.getNombreReserva());
             }
 
             @Override
             public int getCount() {
-                return alojamientos.size();
+                return reservas.size();
             }
         });
 
-        int j=AlojamientosLab.get(this).getPosicion(alojamientoID);
+        int j=ReservasLab.get(this).getPosicion(nombreReserva,firmaAlojamiento);
         viewPager.setCurrentItem(j);
 
         primero.setOnClickListener(new View.OnClickListener() {
@@ -68,7 +70,7 @@ public class AlojamientosPagerActivity extends AppCompatActivity {
         ultimo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewPager.setCurrentItem(alojamientos.size()-1);
+                viewPager.setCurrentItem(reservas.size()-1);
             }
         });
     }

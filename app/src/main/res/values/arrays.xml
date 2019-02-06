@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="arrayProvincia">
+        <!--TODO escribir los valores correctos-->
+        <item></item>
+        <item>Bizkaia</item>
+        <item>Guipuzkua</item>
+        <item>Vitoria</item>
+    </string-array>
+    <string-array name="arrayTipos" >
+        <item></item>
+        <item>Albergues</item>
+        <item>Campings</item>
+        <item>Casas Rurales</item>
+        <item>Hostales</item>
+    </string-array>
+
+</resources>

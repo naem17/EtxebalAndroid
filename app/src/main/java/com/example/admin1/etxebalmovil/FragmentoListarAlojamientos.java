@@ -26,9 +26,14 @@ public class FragmentoListarAlojamientos extends Fragment {
     private RecyclerView listaFragmentosAlojamientos;
     private AlojamientoAdapter adapter;
 
+    private boolean filtrados;
+
+    private static final String EXTRA_ALOJAMIENTOS_FILTRADOS = FragmentoListarActivity.class.getName() + ".alojamiento_filtrado";
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        filtrados=getActivity().getIntent().getBooleanExtra(EXTRA_ALOJAMIENTOS_FILTRADOS, false);
     }
 
     @Nullable
@@ -45,6 +50,8 @@ public class FragmentoListarAlojamientos extends Fragment {
     {
         AlojamientosLab alojamientosLab = AlojamientosLab.get(getActivity());
         ArrayList<Alojamientos> alojamientos = alojamientosLab.getAlojamientos();
+        if(filtrados)
+            alojamientos=alojamientosLab.getAlojamientosFiltrados();
         if(adapter==null)
         {
             adapter=new AlojamientoAdapter(alojamientos);
@@ -119,13 +126,6 @@ public class FragmentoListarAlojamientos extends Fragment {
                 case "casas rurales":
                     break;
             }
-            //TODO mapa
-            mapa.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
             reserva.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

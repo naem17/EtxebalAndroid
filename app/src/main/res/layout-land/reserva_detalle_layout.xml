@@ -26,7 +26,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
             <TextView
-                android:id="@+id/textView24"
+                android:id="@+id/textViewNombreAlojamientoDetalle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
@@ -36,7 +36,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/textView8"
-                app:layout_constraintTop_toBottomOf="@+id/textView23" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewNombreReserva" />
 
             <TextView
                 android:id="@+id/textView21"
@@ -49,7 +49,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
             <TextView
-                android:id="@+id/textView25"
+                android:id="@+id/textViewDireccion"
                 android:layout_width="wrap_content"
                 android:layout_height="18dp"
                 android:layout_marginStart="8dp"
@@ -59,10 +59,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.213"
                 app:layout_constraintStart_toEndOf="@+id/textView6"
-                app:layout_constraintTop_toBottomOf="@+id/textView24" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewNombreAlojamientoDetalle" />
 
             <EditText
-                android:id="@+id/editText4"
+                android:id="@+id/editTextFechaInicio"
                 android:layout_width="164dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="72dp"
@@ -70,7 +70,7 @@
                 android:ems="10"
                 android:inputType="date"
                 app:layout_constraintStart_toEndOf="@+id/textView20"
-                app:layout_constraintTop_toBottomOf="@+id/textView27" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewEmail" />
 
             <TextView
                 android:id="@+id/textView6"
@@ -83,14 +83,14 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
             <EditText
-                android:id="@+id/editText5"
+                android:id="@+id/editTextFechaFin"
                 android:layout_width="165dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="72dp"
                 android:ems="10"
                 android:inputType="date"
                 app:layout_constraintStart_toEndOf="@+id/textView21"
-                app:layout_constraintTop_toBottomOf="@+id/editText4" />
+                app:layout_constraintTop_toBottomOf="@+id/editTextFechaInicio" />
 
             <ImageButton
                 android:id="@+id/imageButton4"
@@ -100,16 +100,16 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toTopOf="@+id/editText6"
+                app:layout_constraintBottom_toTopOf="@+id/editTextCantidad"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.035"
-                app:layout_constraintStart_toEndOf="@+id/editText5"
+                app:layout_constraintStart_toEndOf="@+id/editTextFechaFin"
                 app:layout_constraintTop_toBottomOf="@+id/imageButton3"
                 app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@android:drawable/ic_menu_today" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/buttonEliminar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -118,10 +118,10 @@
                 android:layout_marginBottom="8dp"
                 android:text="Eliminar"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/button2"
+                app:layout_constraintEnd_toStartOf="@+id/buttonEditar"
                 app:layout_constraintHorizontal_bias="0.458"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText6"
+                app:layout_constraintTop_toBottomOf="@+id/editTextCantidad"
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
@@ -135,7 +135,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
             <TextView
-                android:id="@+id/textView23"
+                android:id="@+id/textViewNombreReserva"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -156,12 +156,12 @@
                 android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.041"
-                app:layout_constraintStart_toEndOf="@+id/editText4"
-                app:layout_constraintTop_toBottomOf="@+id/textView27"
+                app:layout_constraintStart_toEndOf="@+id/editTextFechaInicio"
+                app:layout_constraintTop_toBottomOf="@+id/textViewEmail"
                 app:srcCompat="@android:drawable/ic_menu_today" />
 
             <EditText
-                android:id="@+id/editText6"
+                android:id="@+id/editTextCantidad"
                 android:layout_width="159dp"
                 android:layout_height="45dp"
                 android:layout_marginStart="8dp"
@@ -171,7 +171,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.222"
                 app:layout_constraintStart_toEndOf="@+id/textView22"
-                app:layout_constraintTop_toBottomOf="@+id/editText5" />
+                app:layout_constraintTop_toBottomOf="@+id/editTextFechaFin" />
 
             <TextView
                 android:id="@+id/textView5"
@@ -194,7 +194,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/buttonEditar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -203,7 +203,7 @@
                 android:text="Editar"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText6"
+                app:layout_constraintTop_toBottomOf="@+id/editTextCantidad"
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
@@ -214,13 +214,13 @@
                 android:layout_marginTop="32dp"
                 android:layout_marginBottom="16dp"
                 android:text="Cantidad de Personas:"
-                app:layout_constraintBottom_toTopOf="@+id/button3"
+                app:layout_constraintBottom_toTopOf="@+id/buttonEliminar"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView21"
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/textView26"
+                android:id="@+id/textViewTelefono"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -230,7 +230,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.203"
                 app:layout_constraintStart_toEndOf="@+id/textView9"
-                app:layout_constraintTop_toBottomOf="@+id/textView25" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewDireccion" />
 
             <TextView
                 android:id="@+id/textView9"
@@ -243,7 +243,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
             <TextView
-                android:id="@+id/textView27"
+                android:id="@+id/textViewEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -253,7 +253,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.246"
                 app:layout_constraintStart_toEndOf="@+id/textView11"
-                app:layout_constraintTop_toBottomOf="@+id/textView26" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewTelefono" />
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 
