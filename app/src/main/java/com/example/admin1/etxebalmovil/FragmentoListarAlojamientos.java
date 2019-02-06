@@ -29,10 +29,15 @@ public class FragmentoListarAlojamientos extends Fragment {
 
     private static final String EXTRA_ALOJAMIENTOS_FILTRADOS = FragmentoListarActivity.class.getName() + ".alojamiento_filtrado";
 
+    public FragmentoListarAlojamientos(Boolean filtrados)
+    {
+        this.filtrados=filtrados;
+    }
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        filtrados=getActivity().getIntent().getBooleanExtra(EXTRA_ALOJAMIENTOS_FILTRADOS, false);
+        if(!filtrados)
+            filtrados=getActivity().getIntent().getBooleanExtra(EXTRA_ALOJAMIENTOS_FILTRADOS, false);
     }
 
     @Nullable

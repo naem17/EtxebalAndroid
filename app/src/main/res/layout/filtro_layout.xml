@@ -18,7 +18,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintVertical_bias="0.0">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -34,12 +34,11 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
                 android:text="@string/tienda"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/checkBoxGastronomico"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.52"
                 app:layout_constraintStart_toEndOf="@+id/checkBoxGastronomico"
-                app:layout_constraintTop_toBottomOf="@+id/checkBoxRestaurante"
-                app:layout_constraintVertical_bias="0.015" />
+                app:layout_constraintTop_toBottomOf="@+id/checkBoxRestaurante" />
 
             <CheckBox
                 android:id="@+id/checkBoxGastronomico"
@@ -47,12 +46,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
                 android:text="@string/gastronomico"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkBoxRestaurante"
-                app:layout_constraintVertical_bias="0.019" />
+                app:layout_constraintTop_toBottomOf="@+id/checkBoxRestaurante" />
 
             <CheckBox
                 android:id="@+id/checkBoxClub"
@@ -61,7 +57,9 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
                 android:text="@string/club"
+                app:layout_constraintBottom_toBottomOf="@+id/checkBoxRestaurante"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.515"
                 app:layout_constraintStart_toEndOf="@+id/checkBoxRestaurante"
@@ -82,39 +80,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="68dp"
                 android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
                 android:text="@string/surfing"
+                app:layout_constraintBottom_toBottomOf="@+id/checkBoxAutocaravana"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.536"
                 app:layout_constraintStart_toEndOf="@+id/checkBoxAutocaravana"
-                app:layout_constraintTop_toBottomOf="@+id/spinnerTipos" />
+                app:layout_constraintTop_toTopOf="@+id/checkBoxAutocaravana" />
 
             <CheckBox
                 android:id="@+id/checkBoxAutocaravana"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="68dp"
+                android:layout_marginTop="36dp"
                 android:text="@string/autocaravana"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/spinnerTipos" />
-
-            <EditText
-                android:id="@+id/editTextCantidad"
-                android:layout_width="166dp"
-                android:layout_height="26dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:ems="10"
-                android:enabled="true"
-                android:importantForAutofill="no"
-                android:inputType="number"
-                android:maxLength="@integer/maxCaracteres4"
-                app:layout_constraintBottom_toTopOf="@+id/checkBoxAutocaravana"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/spinnerTipos" />
 
@@ -134,7 +115,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="84dp"
+                android:layout_marginTop="36dp"
                 android:dropDownWidth="wrap_content"
                 android:entries="@array/arrayProvincia"
                 app:layout_constraintStart_toStartOf="parent"
@@ -145,39 +126,77 @@
                 android:layout_width="wrap_content"
                 android:layout_height="72dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="72dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:contentDescription="@string/descripcionBuscar"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.546"
+                app:layout_constraintHorizontal_bias="0.32"
                 app:layout_constraintStart_toEndOf="@+id/autoCompleteTextViewNombreAlojamiento"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextPalabra"
                 app:srcCompat="@android:drawable/ic_search_category_default" />
 
             <AutoCompleteTextView
                 android:id="@+id/autoCompleteTextViewNombreAlojamiento"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="190dp"
+                android:layout_height="40dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="20dp"
-                android:text="@string/nombre"
+                android:hint="Nombre Alojamiento"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextPalabra" />
 
             <EditText
                 android:id="@+id/editTextPalabra"
-                android:layout_width="wrap_content"
+                android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginEnd="8dp"
                 android:autofillHints=""
                 android:ems="10"
+                android:hint="Palabra a buscar en cualquier propiedad"
                 android:inputType="textPersonName"
-                app:layout_constraintEnd_toStartOf="@+id/imageButtonBuscar"
-                app:layout_constraintHorizontal_bias="0.296"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <FrameLayout
+                android:id="@+id/resultadosLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageButtonAscendente">
+
+            </FrameLayout>
+
+            <ImageButton
+                android:id="@+id/imageButtonAscendente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="84dp"
+                android:layout_marginTop="12dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/checkBoxGastronomico"
+                app:srcCompat="@android:drawable/arrow_up_float" />
+
+            <ImageButton
+                android:id="@+id/imageButtonDescendente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageButtonAscendente"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageButtonAscendente"
+                app:layout_constraintTop_toTopOf="@+id/imageButtonAscendente"
+                app:srcCompat="@android:drawable/arrow_down_float" />
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 

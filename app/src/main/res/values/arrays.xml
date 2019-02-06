@@ -2,13 +2,13 @@
 <resources>
     <string-array name="arrayProvincia">
         <!--TODO escribir los valores correctos-->
-        <item></item>
+        <item>Provincias:</item>
         <item>Bizkaia</item>
         <item>Guipuzkua</item>
         <item>Vitoria</item>
     </string-array>
     <string-array name="arrayTipos" >
-        <item></item>
+        <item>Tipos Alojamientos:</item>
         <item>Albergues</item>
         <item>Campings</item>
         <item>Casas Rurales</item>

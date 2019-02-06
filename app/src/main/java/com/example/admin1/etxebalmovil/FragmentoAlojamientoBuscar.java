@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -21,13 +24,11 @@ public class FragmentoAlojamientoBuscar extends Fragment {
     private EditText palabra;
     private AutoCompleteTextView nombreAlojamiento;
     private ImageButton buscar;
+    private ImageButton ascendente;
+    private ImageButton descendente;
 
     private Spinner provincia;
-    private Spinner municipio;
-    private Spinner cp;
     private Spinner tipos;
-
-    private EditText cantidad;
 
     private CheckBox autocaravana;
     private CheckBox restaurante;
@@ -55,15 +56,27 @@ public class FragmentoAlojamientoBuscar extends Fragment {
        palabra=view.findViewById(R.id.editTextPalabra);
        nombreAlojamiento=view.findViewById(R.id.autoCompleteTextViewNombreAlojamiento);
        buscar=view.findViewById(R.id.imageButtonBuscar);
+       ascendente=view.findViewById(R.id.imageButtonAscendente);
+       descendente=view.findViewById(R.id.imageButtonDescendente);
        provincia=view.findViewById(R.id.spinnerProvincia);
        tipos=view.findViewById(R.id.spinnerTipos);
-       cantidad=view.findViewById(R.id.editTextCantidad);
        autocaravana=view.findViewById(R.id.checkBoxAutocaravana);
        restaurante=view.findViewById(R.id.checkBoxRestaurante);
        gastronomico=view.findViewById(R.id.checkBoxGastronomico);
        surfing=view.findViewById(R.id.checkBoxSurfing);
        club=view.findViewById(R.id.checkBoxSurfing);
        tienda=view.findViewById(R.id.checkBoxTienda);
+
+       ascendente.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               if(AlojamientosLab.get(getActivity()).getAlojamientosFiltrados().size()!=0)
+               {
+                   ArrayList<Alojamientos> filtrados=AlojamientosLab.get(getActivity()).getAlojamientosFiltrados();
+                   
+               }
+           }
+       });
 
        buscar.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -73,37 +86,71 @@ public class FragmentoAlojamientoBuscar extends Fragment {
                ArrayList<Alojamientos> total=AlojamientosLab.get(getActivity()).getAlojamientos();
                for (Alojamientos alojamiento:total) {
                    boolean concuerda=true;
-                   if(!alojamiento.getNombre().contains(nombreAlojamiento.getText()))
+                   if(concuerda && nombreAlojamiento.getText()!=null && alojamiento.getNombre()!=null) {
+                       if (!alojamiento.getNombre().contains(nombreAlojamiento.getText()))
+                           concuerda = false;
+                   }
+                   if(concuerda && provincia.getSelectedItemPosition()!=0 && alojamiento.getProvincia()!=null) {
+                       if (alojamiento.getProvincia().compareToIgnoreCase(provincia.getSelectedItem().toString()) != 0)
+                               concuerda = false;
+                       }
+                       if(concuerda && tipos.getSelectedItemPosition()!=0 && alojamiento.getTipo()!=null) {
+                           if (alojamiento.getTipo().compareToIgnoreCase(tipos.getSelectedItem().toString()) != 0)
+                               concuerda = false;
+                       }
+                       if(concuerda && !alojamiento.isAutocaravana() && autocaravana.isChecked())
+                           concuerda=false;
+                   if(concuerda && !alojamiento.isRestaurante() && restaurante.isChecked())
                        concuerda=false;
-                   if(alojamiento.getProvincia().compareToIgnoreCase((String) provincia.getSelectedItem())!=0)
+                   if(concuerda && !alojamiento.isGastronomico() && gastronomico.isChecked())
                        concuerda=false;
-                   if(alojamiento.getMunicipio().compareToIgnoreCase((String) municipio.getSelectedItem())!=0)
+                   if(concuerda && !alojamiento.isSurf() && surfing.isChecked())
                        concuerda=false;
-                   if(alojamiento.getCp()!=(int) cp.getSelectedItem())
+                   if(concuerda && !alojamiento.isClub() && club.isChecked())
                        concuerda=false;
-                   if(alojamiento.getTipo().compareToIgnoreCase((String) tipos.getSelectedItem())!=0)
+                   if(concuerda && !alojamiento.isTienda() && tienda.isChecked())
                        concuerda=false;
-                   if(String.valueOf(alojamiento.getCapacidad()).compareToIgnoreCase(String.valueOf(cantidad.getText()))!=0)
-                       concuerda=false;
-                   if(alojamiento.isAutocaravana()!=autocaravana.isChecked())
-                       concuerda=false;
-                   if(alojamiento.isRestaurante()!=restaurante.isChecked())
-                       concuerda=false;
-                   if(alojamiento.isGastronomico()!=gastronomico.isChecked())
-                       concuerda=false;
-                   if(alojamiento.isSurf()!=surfing.isChecked())
-                       concuerda=false;
-                   if(alojamiento.isClub()!=club.isChecked())
-                       concuerda=false;
-                   if(alojamiento.isTienda()!=tienda.isChecked())
-                       concuerda=false;
+                   if(concuerda && palabra.getText()!=null)
+                   {
+                       if(alojamiento.getNombre()!=null && !palabra.getText().toString().contains(alojamiento.getNombre()))
+                           if(alojamiento.getTipo()!=null && !palabra.getText().toString().contains(alojamiento.getTipo()))
+                               if(alojamiento.getTelefono()!=null && !palabra.getText().toString().contains(alojamiento.getTelefono()))
+                                   if(alojamiento.getEmail()!=null && !palabra.getText().toString().contains(alojamiento.getEmail()))
+                                       if(alojamiento.getWeb()!=null && !palabra.getText().toString().contains(alojamiento.getWeb()))
+                                           if(alojamiento.getDireccion()!=null && !palabra.getText().toString().contains(alojamiento.getDireccion()))
+                                               if(alojamiento.getProvincia()!=null && !palabra.getText().toString().contains(alojamiento.getProvincia()))
+                                                   if(alojamiento.getMunicipio()!=null && !palabra.getText().toString().contains(alojamiento.getMunicipio()))
+                                                       if(alojamiento.getDescripcion()!=null && !palabra.getText().toString().contains(alojamiento.getDescripcion()))
+                                                            if(alojamiento.getCp()>0 && !palabra.getText().toString().contains(String.valueOf(alojamiento.getCp())))
+                                                                concuerda=false;
+                   }
                    if(concuerda)
                        filtrados.add(alojamiento);
                }
-               AlojamientosLab.get(getActivity()).setAlojamientosFiltrados(filtrados);
-               Intent intent=FragmentoListarActivity.newIntent(getContext(),true);
-               startActivity(intent);
-               getActivity().finish();
+               if(filtrados.size()!=0) {
+
+                   AlojamientosLab.get(getActivity()).setAlojamientosFiltrados(filtrados);
+                 /*  Intent intent = FragmentoListarActivity.newIntent(getContext(), true);
+                   startActivity(intent);
+                   getActivity().finish();
+                   */
+                   FragmentManager fragmentManager=getFragmentManager();
+                   FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                   FragmentoListarAlojamientos fragmentoListarAlojamientos=new FragmentoListarAlojamientos(true);
+                   fragmentTransaction.replace(R.id.resultadosLayout,fragmentoListarAlojamientos);
+                   fragmentTransaction.commit();
+               }else
+               {
+                   Toast.makeText(getActivity(), "No existen alojamientos que coincidan con su búsqueda.",
+                           Toast.LENGTH_LONG).show();
+                   filtrados.removeAll(filtrados);
+                   AlojamientosLab.get(getActivity()).setAlojamientosFiltrados(filtrados);
+                   FragmentManager fragmentManager=getFragmentManager();
+                   FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                   FragmentoListarAlojamientos fragmentoListarAlojamientos=new FragmentoListarAlojamientos(true);
+                   fragmentTransaction.replace(R.id.resultadosLayout,fragmentoListarAlojamientos);
+                   fragmentTransaction.commit();
+               }
            }
        });
 
