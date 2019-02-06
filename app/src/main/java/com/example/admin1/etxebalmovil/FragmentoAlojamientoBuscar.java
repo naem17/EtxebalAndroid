@@ -1,5 +1,6 @@
 package com.example.admin1.etxebalmovil;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,6 +13,8 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+
+import java.util.ArrayList;
 
 public class FragmentoAlojamientoBuscar extends Fragment {
 
@@ -53,8 +56,6 @@ public class FragmentoAlojamientoBuscar extends Fragment {
        nombreAlojamiento=view.findViewById(R.id.autoCompleteTextViewNombreAlojamiento);
        buscar=view.findViewById(R.id.imageButtonBuscar);
        provincia=view.findViewById(R.id.spinnerProvincia);
-       municipio=view.findViewById(R.id.spinnerMunicipio);
-       cp=view.findViewById(R.id.spinnerCp);
        tipos=view.findViewById(R.id.spinnerTipos);
        cantidad=view.findViewById(R.id.editTextCantidad);
        autocaravana=view.findViewById(R.id.checkBoxAutocaravana);
@@ -67,7 +68,42 @@ public class FragmentoAlojamientoBuscar extends Fragment {
        buscar.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               //TODO filtrar y mostrar los resultados
+               //TODO filtrar y mostrar los resultados y mirar que los parámetros no sean null
+               ArrayList<Alojamientos> filtrados=new ArrayList<Alojamientos>();
+               ArrayList<Alojamientos> total=AlojamientosLab.get(getActivity()).getAlojamientos();
+               for (Alojamientos alojamiento:total) {
+                   boolean concuerda=true;
+                   if(!alojamiento.getNombre().contains(nombreAlojamiento.getText()))
+                       concuerda=false;
+                   if(alojamiento.getProvincia().compareToIgnoreCase((String) provincia.getSelectedItem())!=0)
+                       concuerda=false;
+                   if(alojamiento.getMunicipio().compareToIgnoreCase((String) municipio.getSelectedItem())!=0)
+                       concuerda=false;
+                   if(alojamiento.getCp()!=(int) cp.getSelectedItem())
+                       concuerda=false;
+                   if(alojamiento.getTipo().compareToIgnoreCase((String) tipos.getSelectedItem())!=0)
+                       concuerda=false;
+                   if(String.valueOf(alojamiento.getCapacidad()).compareToIgnoreCase(String.valueOf(cantidad.getText()))!=0)
+                       concuerda=false;
+                   if(alojamiento.isAutocaravana()!=autocaravana.isChecked())
+                       concuerda=false;
+                   if(alojamiento.isRestaurante()!=restaurante.isChecked())
+                       concuerda=false;
+                   if(alojamiento.isGastronomico()!=gastronomico.isChecked())
+                       concuerda=false;
+                   if(alojamiento.isSurf()!=surfing.isChecked())
+                       concuerda=false;
+                   if(alojamiento.isClub()!=club.isChecked())
+                       concuerda=false;
+                   if(alojamiento.isTienda()!=tienda.isChecked())
+                       concuerda=false;
+                   if(concuerda)
+                       filtrados.add(alojamiento);
+               }
+               AlojamientosLab.get(getActivity()).setAlojamientosFiltrados(filtrados);
+               Intent intent=FragmentoListarActivity.newIntent(getContext(),true);
+               startActivity(intent);
+               getActivity().finish();
            }
        });
 

@@ -105,7 +105,7 @@
                 android:layout_width="166dp"
                 android:layout_height="26dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
                 android:ems="10"
@@ -115,39 +115,19 @@
                 android:maxLength="@integer/maxCaracteres4"
                 app:layout_constraintBottom_toTopOf="@+id/checkBoxAutocaravana"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.624"
-                app:layout_constraintStart_toEndOf="@+id/spinnerTipos"
-                app:layout_constraintTop_toBottomOf="@+id/spinnerMunicipio"
-                app:layout_constraintVertical_bias="0.209" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spinnerTipos" />
 
             <Spinner
                 android:id="@+id/spinnerTipos"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="19dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="56dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/spinnerProvincia" />
-
-            <Spinner
-                android:id="@+id/spinnerCp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="84dp"
-                android:layout_marginEnd="8dp"
+                android:entries="@array/arrayTipos"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.477"
-                app:layout_constraintStart_toEndOf="@+id/spinnerMunicipio"
-                app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextViewNombreAlojamiento" />
-
-            <Spinner
-                android:id="@+id/spinnerMunicipio"
-                android:layout_width="wrap_content"
-                android:layout_height="27dp"
-                android:layout_marginStart="76dp"
-                android:layout_marginTop="84dp"
+                app:layout_constraintHorizontal_bias="0.78"
                 app:layout_constraintStart_toEndOf="@+id/spinnerProvincia"
-                app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextViewNombreAlojamiento" />
+                app:layout_constraintTop_toTopOf="@+id/spinnerProvincia" />
 
             <Spinner
                 android:id="@+id/spinnerProvincia"
@@ -156,6 +136,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="84dp"
                 android:dropDownWidth="wrap_content"
+                android:entries="@array/arrayProvincia"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextViewNombreAlojamiento" />
 
@@ -164,11 +145,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="72dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="36dp"
+                android:layout_marginTop="72dp"
                 android:layout_marginEnd="8dp"
                 android:contentDescription="@string/descripcionBuscar"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.512"
+                app:layout_constraintHorizontal_bias="0.546"
                 app:layout_constraintStart_toEndOf="@+id/autoCompleteTextViewNombreAlojamiento"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@android:drawable/ic_search_category_default" />
@@ -190,13 +171,13 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
+                android:autofillHints=""
                 android:ems="10"
                 android:inputType="textPersonName"
                 app:layout_constraintEnd_toStartOf="@+id/imageButtonBuscar"
                 app:layout_constraintHorizontal_bias="0.296"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:autofillHints="" />
+                app:layout_constraintTop_toTopOf="parent" />
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 

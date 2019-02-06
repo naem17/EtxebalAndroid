@@ -50,12 +50,12 @@ public class HacerReservaFragment extends Fragment {
             }
         });
 
-       /* cancelar.setOnClickListener(new View.OnClickListener() {
+        cancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                getActivity().finish();
             }
-        });*/
+        });
         return view;
     }
 

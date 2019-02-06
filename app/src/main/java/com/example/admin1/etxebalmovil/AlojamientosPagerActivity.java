@@ -34,12 +34,12 @@ public class AlojamientosPagerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.alojamientos_detalle_pager_layout);
 
-        primero=findViewById(R.id.buttonPrimero);
+        primero=findViewById(R.id.buttonPrimeroReservas);
         ultimo=findViewById(R.id.buttonUltimo);
 
         UUID alojamientoID = (UUID) getIntent().getSerializableExtra(EXTRA_ALOJAMIENTO_ID);
 
-        viewPager = findViewById(R.id.viewPager);
+        viewPager = findViewById(R.id.viewPagerReservas);
         alojamientos = AlojamientosLab.get(this).getAlojamientos();
 
         FragmentManager fragmentManager = getSupportFragmentManager();

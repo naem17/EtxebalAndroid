@@ -10,6 +10,7 @@ public class FragmentoListarReservasActivity extends FragmentoActivity {
         Intent intent = new Intent(packageContect, FragmentoListarReservasActivity.class);
         return intent;
     }
+
         @Override
         protected Fragment createFragment () {
         return new FragmentoListarReservas();
