@@ -18,10 +18,11 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class FragmentoAlojamientoBuscar extends Fragment {
 
-    private EditText palabra;
     private AutoCompleteTextView nombreAlojamiento;
     private ImageButton buscar;
     private ImageButton ascendente;
@@ -53,7 +54,6 @@ public class FragmentoAlojamientoBuscar extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
        View view=inflater.inflate(R.layout.filtro_layout,container,false);
-       palabra=view.findViewById(R.id.editTextPalabra);
        nombreAlojamiento=view.findViewById(R.id.autoCompleteTextViewNombreAlojamiento);
        buscar=view.findViewById(R.id.imageButtonBuscar);
        ascendente=view.findViewById(R.id.imageButtonAscendente);
@@ -73,7 +73,33 @@ public class FragmentoAlojamientoBuscar extends Fragment {
                if(AlojamientosLab.get(getActivity()).getAlojamientosFiltrados().size()!=0)
                {
                    ArrayList<Alojamientos> filtrados=AlojamientosLab.get(getActivity()).getAlojamientosFiltrados();
-                   
+                   Collections.sort(filtrados);
+
+                       AlojamientosLab.get(getActivity()).setAlojamientosFiltrados(filtrados);
+
+                       FragmentManager fragmentManager=getFragmentManager();
+                       FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                       FragmentoListarAlojamientos fragmentoListarAlojamientos=new FragmentoListarAlojamientos(true);
+                       fragmentTransaction.replace(R.id.resultadosLayout,fragmentoListarAlojamientos);
+                       fragmentTransaction.commit();
+               }
+           }
+       });
+       descendente.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               if(AlojamientosLab.get(getActivity()).getAlojamientosFiltrados().size()!=0)
+               {
+                   ArrayList<Alojamientos> filtrados=AlojamientosLab.get(getActivity()).getAlojamientosFiltrados();
+                   Collections.sort(filtrados, Alojamientos.ALOJAMIENTO_NOMBRE_DESC);
+
+                   AlojamientosLab.get(getActivity()).setAlojamientosFiltrados(filtrados);
+
+                   FragmentManager fragmentManager=getFragmentManager();
+                   FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                   FragmentoListarAlojamientos fragmentoListarAlojamientos=new FragmentoListarAlojamientos(true);
+                   fragmentTransaction.replace(R.id.resultadosLayout,fragmentoListarAlojamientos);
+                   fragmentTransaction.commit();
                }
            }
        });
@@ -81,12 +107,11 @@ public class FragmentoAlojamientoBuscar extends Fragment {
        buscar.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               //TODO filtrar y mostrar los resultados y mirar que los parámetros no sean null
                ArrayList<Alojamientos> filtrados=new ArrayList<Alojamientos>();
                ArrayList<Alojamientos> total=AlojamientosLab.get(getActivity()).getAlojamientos();
                for (Alojamientos alojamiento:total) {
                    boolean concuerda=true;
-                   if(concuerda && nombreAlojamiento.getText()!=null && alojamiento.getNombre()!=null) {
+                   if(concuerda && nombreAlojamiento.getText().toString().compareTo("")!=0 && alojamiento.getNombre()!=null) {
                        if (!alojamiento.getNombre().contains(nombreAlojamiento.getText()))
                            concuerda = false;
                    }
@@ -98,6 +123,7 @@ public class FragmentoAlojamientoBuscar extends Fragment {
                            if (alojamiento.getTipo().compareToIgnoreCase(tipos.getSelectedItem().toString()) != 0)
                                concuerda = false;
                        }
+
                        if(concuerda && !alojamiento.isAutocaravana() && autocaravana.isChecked())
                            concuerda=false;
                    if(concuerda && !alojamiento.isRestaurante() && restaurante.isChecked())
@@ -110,30 +136,14 @@ public class FragmentoAlojamientoBuscar extends Fragment {
                        concuerda=false;
                    if(concuerda && !alojamiento.isTienda() && tienda.isChecked())
                        concuerda=false;
-                   if(concuerda && palabra.getText()!=null)
-                   {
-                       if(alojamiento.getNombre()!=null && !palabra.getText().toString().contains(alojamiento.getNombre()))
-                           if(alojamiento.getTipo()!=null && !palabra.getText().toString().contains(alojamiento.getTipo()))
-                               if(alojamiento.getTelefono()!=null && !palabra.getText().toString().contains(alojamiento.getTelefono()))
-                                   if(alojamiento.getEmail()!=null && !palabra.getText().toString().contains(alojamiento.getEmail()))
-                                       if(alojamiento.getWeb()!=null && !palabra.getText().toString().contains(alojamiento.getWeb()))
-                                           if(alojamiento.getDireccion()!=null && !palabra.getText().toString().contains(alojamiento.getDireccion()))
-                                               if(alojamiento.getProvincia()!=null && !palabra.getText().toString().contains(alojamiento.getProvincia()))
-                                                   if(alojamiento.getMunicipio()!=null && !palabra.getText().toString().contains(alojamiento.getMunicipio()))
-                                                       if(alojamiento.getDescripcion()!=null && !palabra.getText().toString().contains(alojamiento.getDescripcion()))
-                                                            if(alojamiento.getCp()>0 && !palabra.getText().toString().contains(String.valueOf(alojamiento.getCp())))
-                                                                concuerda=false;
-                   }
+
                    if(concuerda)
                        filtrados.add(alojamiento);
                }
                if(filtrados.size()!=0) {
 
                    AlojamientosLab.get(getActivity()).setAlojamientosFiltrados(filtrados);
-                 /*  Intent intent = FragmentoListarActivity.newIntent(getContext(), true);
-                   startActivity(intent);
-                   getActivity().finish();
-                   */
+
                    FragmentManager fragmentManager=getFragmentManager();
                    FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
                    FragmentoListarAlojamientos fragmentoListarAlojamientos=new FragmentoListarAlojamientos(true);

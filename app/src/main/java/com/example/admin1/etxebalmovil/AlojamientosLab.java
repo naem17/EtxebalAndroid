@@ -20,6 +20,7 @@ public class AlojamientosLab {
             alojamientos.add(new Alojamientos());
             alojamientos.get(i).setNombre("Nombre "+(i+1));
             alojamientos.get(i).setTipo("A");
+            alojamientos.get(i).setCapacidad(i+1);
         }
     }
     public static AlojamientosLab get(Context context)

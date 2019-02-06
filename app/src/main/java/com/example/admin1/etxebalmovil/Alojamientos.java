@@ -1,9 +1,11 @@
 package com.example.admin1.etxebalmovil;
 
+
 import java.io.Serializable;
+import java.util.Comparator;
 import java.util.UUID;
 
-public class Alojamientos {
+public class Alojamientos implements Comparable{
 
     private UUID myID;
 
@@ -235,8 +237,19 @@ public class Alojamientos {
     public int getCp() {
         return cp;
     }
-
     public void setCp(int cp) {
         this.cp = cp;
     }
+
+    @Override
+    public int compareTo(Object o) {
+        return getNombre().compareToIgnoreCase(((Alojamientos)o).getNombre());
+    }
+    public static Comparator<Alojamientos> ALOJAMIENTO_NOMBRE_DESC = new Comparator<Alojamientos>() {
+        @Override
+        public int compare(Alojamientos o1, Alojamientos o2) {
+            return o2.getNombre().compareToIgnoreCase(o1.getNombre());
+        }
+    };
+
 }

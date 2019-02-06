@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="arrayProvincia">
-        <!--TODO escribir los valores correctos-->
+        <!--TODO escribir los valores correctos de la BBDD-->
         <item>Provincias:</item>
         <item>Bizkaia</item>
         <item>Guipuzkua</item>

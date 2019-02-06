@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.admin1.etxebalmovil.model.json.JSONController;
 
 public class FragmentoInicioSesion extends Fragment {
 
@@ -27,6 +26,7 @@ public class FragmentoInicioSesion extends Fragment {
             mUsuarioEditText = v.findViewById(R.id.editTextPalabra);
             mPasswordEditText = v.findViewById(R.id.editTextPassword);
             mIniciarSesion = v.findViewById(R.id.btnLogIn);
+            /*
             mIniciarSesion.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -43,7 +43,7 @@ public class FragmentoInicioSesion extends Fragment {
                             break;
                     }
                 }
-            });
+            });*/
             return v;
    }
 }
