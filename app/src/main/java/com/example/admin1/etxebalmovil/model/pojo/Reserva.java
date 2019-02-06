@@ -10,7 +10,7 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.util.Comparator;
 
-public class Reserve implements Serializable, DatabaseObject {
+public class Reserva implements Serializable, DatabaseObject {
     private String mLodgingCode;
     private String mUserNick;
     private Date mStartDate;
@@ -19,7 +19,7 @@ public class Reserve implements Serializable, DatabaseObject {
     public static Comparator<DatabaseObject> COMPARE_BY_USER = new Comparator<DatabaseObject>() {
         @Override
         public int compare(DatabaseObject o1, DatabaseObject o2) {
-            return ((Reserve)o1).getUserNick().compareTo(((Reserve)o2).getUserNick());
+            return ((Reserva)o1).getUserNick().compareTo(((Reserva)o2).getUserNick());
         }
     };
 
