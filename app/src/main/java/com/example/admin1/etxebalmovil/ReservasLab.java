@@ -13,22 +13,7 @@ public class ReservasLab {
     private ReservasLab(Context context)
     {
         reservas=new ArrayList<>();
-        //TODO Quitar las reservas por defecto
-        for(int i=0; i<10;i++)
-        {
-            reservas.add(new Reservas());
-            reservas.get(i).setNombreReserva(String.valueOf(i+1));
-            reservas.get(i).setFirmaAlojamiento(String.valueOf((i+1)));
-            reservas.get(i).setCantidad(i+1);
-            Date fechaInicio=new Date();
-            fechaInicio.setYear(2019);
-            fechaInicio.setMonth(i);
-            Date fechaFin=new Date();
-            fechaFin.setYear(2019);
-            fechaFin.setMonth(i+1);
-            reservas.get(i).setFechaInicio(fechaInicio);
-            reservas.get(i).setFechaFin(fechaFin);
-        }
+        //TODO añadir lo del JSON
     }
     public static ReservasLab get(Context context)
     {

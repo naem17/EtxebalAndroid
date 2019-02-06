@@ -15,12 +15,13 @@ public class AlojamientosLab {
     {
         alojamientos=new ArrayList<>();
         //TODO AÑADIR DEL JSON LOS ALOJAMIENTOS
-        for(int i=0; i<4;i++)
+        for(int i=0; i<10;i++)
         {
             alojamientos.add(new Alojamientos());
             alojamientos.get(i).setNombre("Nombre "+(i+1));
             alojamientos.get(i).setTipo("A");
 
+            alojamientos.get(i).setCapacidad(i+1);
         }
         //Coordenadas barrika surf
         alojamientos.get(0).setCoordenadas("43.4051437,-2.9657849999999826");

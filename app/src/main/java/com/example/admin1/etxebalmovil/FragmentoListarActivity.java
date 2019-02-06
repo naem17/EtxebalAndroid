@@ -11,20 +11,20 @@ import android.support.v4.app.FragmentActivity;
 import java.util.UUID;
 
 public class FragmentoListarActivity extends FragmentoActivity {
-    private static final String EXTRA_ALOJAMIENTOS_FILTRADOS = AlojamientosPagerActivity.class.getName() + ".alojamiento_filtrado";
+    private static final String EXTRA_ALOJAMIENTOS_FILTRADOS = FragmentoListarActivity.class.getName() + ".alojamiento_filtrado";
 
     public static Intent newIntent(Context packageContect) {
         Intent intent = new Intent(packageContect, FragmentoListarActivity.class);
         return intent;
     }
     public static Intent newIntent (Context packageContect, Boolean filtrados){
-        Intent intent = new Intent(packageContect, FragmentoListarReservasActivity.class);
+        Intent intent = new Intent(packageContect, FragmentoListarActivity.class);
         intent.putExtra(EXTRA_ALOJAMIENTOS_FILTRADOS, filtrados);
         return intent;
     }
     @Override
     protected Fragment createFragment() {
-        return new FragmentoListarAlojamientos();
+        return new FragmentoListarAlojamientos(false);
     }
 
     @Override

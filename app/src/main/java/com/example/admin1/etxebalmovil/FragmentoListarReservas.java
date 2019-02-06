@@ -1,5 +1,7 @@
 package com.example.admin1.etxebalmovil;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -98,7 +100,29 @@ public class FragmentoListarReservas extends Fragment {
             cancelar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //TODO borrar la reserva
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+
+                        builder.setTitle("Eliminar Reserva");
+
+                        builder.setMessage("¿Desea Eliminar la reserva?")
+                                .setCancelable(false)
+                                .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+
+                                        ArrayList<Reservas> reservas=ReservasLab.get(getActivity()).getReservas();
+                                        reservas.remove(reserva);
+                                        Intent intent = FragmentoListarReservasActivity.newIntent(getContext());
+                                        startActivity(intent);
+                                        getActivity().finish();
+                                    }
+                                })
+                                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                    }
+                                });
+                        AlertDialog alertDialog = builder.create();
+                        alertDialog.show();
                 }
             });
         }
