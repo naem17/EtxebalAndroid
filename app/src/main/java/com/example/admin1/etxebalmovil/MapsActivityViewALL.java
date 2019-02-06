@@ -1,7 +1,6 @@
 package com.example.admin1.etxebalmovil;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -10,10 +9,13 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Parcelable;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
@@ -21,51 +23,42 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-//ESTE MAPA ES PARA DETERMINAR TU UBICACION EN TIEMPO REAL
-public class MapsActivityGlobal extends FragmentActivity implements OnMapReadyCallback {
+import java.util.UUID;
 
+public class MapsActivityViewALL extends FragmentActivity implements OnMapReadyCallback {
+
+    private ArrayList<Alojamientos> alojamientos;
     private GoogleMap mMap;
+
     private Marker marcador;
     double lat = 0.0;
     double log = 0.0;
     String mensaje1 = "";
     String direccion = "";
 
+    public static Intent newIntent(Context packageContect) {
+        Intent intent = new Intent(packageContect,MapsActivityViewALL.class);
+        return intent;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps_global);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        setContentView(R.layout.activity_maps);
+        alojamientos=AlojamientosLab.get(getBaseContext()).getAlojamientos();
+
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-    }
-
-
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
-
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
-        miUbicacion();
     }
 
     //Activar los permisos del gps cuando esten apagados
@@ -167,5 +160,37 @@ public class MapsActivityGlobal extends FragmentActivity implements OnMapReadyCa
     public void mensaje(){
         Toast toast= Toast.makeText(this,mensaje1,Toast.LENGTH_SHORT);
         toast.show();
+    }
+    /**
+     * Manipulates the map once available.
+     * This callback is triggered when the map is ready to be used.
+     * This is where we can add markers or lines, add listeners or move the camera. In this case,
+     * we just add a marker near Sydney, Australia.
+     * If Google Play services is not installed on the device, the user will be prompted to install
+     * it inside the SupportMapFragment. This method will only be triggered once the user has
+     * installed Google Play services and returned to the app.
+     */
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+        miUbicacion();
+
+        LatLng target = null;
+      // coordenadas=mAlojamientos.getCoordenadas().split(",");
+        
+        for(int i=0;i<alojamientos.size();i++){
+            String[] coordenadas;
+            coordenadas=alojamientos.get(i).getCoordenadas().split(",");
+
+            Log.d("VistaTodo",coordenadas[0]+ coordenadas[1]);
+
+            target = new LatLng(Double.parseDouble(coordenadas[0]), Double.parseDouble(coordenadas[1]));
+            mMap.addMarker(new MarkerOptions()
+                    .position(target)
+                    .title("Nombre:" +alojamientos.get(i).getNombre())
+                    .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher)));
+        }
+        //Poner el Zoom en la marca
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(target, 20f));
     }
 }

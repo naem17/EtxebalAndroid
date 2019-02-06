@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -25,7 +26,8 @@ private static final String EXTRA_ALOJAMIENTOS=AlojamientosLab.class.getName() +
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        mAlojamientos = (Alojamientos) getIntent().getSerializableExtra(EXTRA_ALOJAMIENTOS);
+        UUID myID=(UUID) getIntent().getSerializableExtra(EXTRA_ALOJAMIENTOS);
+        mAlojamientos=AlojamientosLab.get(getBaseContext()).getAlojamiento(myID);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -57,17 +59,15 @@ private static final String EXTRA_ALOJAMIENTOS=AlojamientosLab.class.getName() +
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         String[] coordenadas = new String[2];
-        mAlojamientos = new Alojamientos();
-        mAlojamientos.setCoordenadas("43.4051437,-2.9657849999999826");
-        mAlojamientos.setNombre(("HolitaMapita"));
 
         coordenadas=mAlojamientos.getCoordenadas().split(",");
         Log.d("MapaActivity",coordenadas[0]+ coordenadas[1]);
         LatLng target = new LatLng(Double.parseDouble(coordenadas[0]), Double.parseDouble(coordenadas[1]));
+
         MarkerOptions options = new MarkerOptions();
         options.position(target).title(mAlojamientos.getNombre());
         mMap.addMarker(options);
-
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(target, 13f));
+        //Poner el Zoom en la marca
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(target, 20f));
     }
 }

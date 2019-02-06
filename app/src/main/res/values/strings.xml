@@ -45,5 +45,6 @@
     <string name="inicioSesion">Inicio Sesión</string>
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_maps_global">Map</string>
-    <string name="Alojamientos" >Alojamientos</string>
+    <string name="Alojamientos">Alojamientos</string>
+    <string name="title_activity_maps_view_all">Map</string>
 </resources>

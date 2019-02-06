@@ -2,6 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.admin1.etxebalmovil">
 
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -23,27 +31,28 @@
             android:value="@string/google_maps_key" />
 
         <activity
+            android:name=".MapsActivityViewALL"
+            android:label="@string/title_activity_maps_view_all"></activity>
+        <activity
             android:name=".MapsActivityGlobal"
-            android:label="@string/title_activity_maps_global"></activity>
+            android:label="@string/title_activity_maps_global" />
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
         <activity android:name=".FragmentoListarActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AlojamientosActivity">
-        </activity>
-        <activity android:name=".AlojamientosPagerActivity">
-        </activity>
-        <activity android:name=".AlojamientosHacerReservaActivity">
-        </activity>
-        <activity android:name=".FragmentoInicioSesionActivity"></activity>
-        <activity android:name=".AlojamientoBuscarActivity"></activity>
-        <activity android:name=".FragmentoListarReservasActivity"></activity>
-        <activity android:name=".ReservasPagerActivity"></activity>
+        <activity android:name=".AlojamientosActivity"></activity>
+        <activity android:name=".AlojamientosPagerActivity"></activity>
+        <activity android:name=".AlojamientosHacerReservaActivity"></activity>
+        <activity android:name=".FragmentoInicioSesionActivity" />
+        <activity android:name=".AlojamientoBuscarActivity" />
+        <activity android:name=".FragmentoListarReservasActivity" />
+        <activity android:name=".ReservasPagerActivity" />
     </application>
 
 </manifest>

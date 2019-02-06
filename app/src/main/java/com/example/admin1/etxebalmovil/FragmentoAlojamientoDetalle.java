@@ -45,6 +45,7 @@ public class FragmentoAlojamientoDetalle extends Fragment {
     private Alojamientos alojamiento;
 
     private static final String ARG_ALOJAMIENTO_ID="alojamiento_id";
+    private static final String EXTRA_ALOJAMIENTOS=AlojamientosLab.class.getName() + ".alojamiento_id";
 
     public static FragmentoAlojamientoDetalle newInstance(UUID alojamientoID)
     {
@@ -121,14 +122,15 @@ public class FragmentoAlojamientoDetalle extends Fragment {
         club.setEnabled(false);
 
         mapa=vista.findViewById(R.id.imageButtonMapa);
+
         mapa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //TODO cambiar al mapa
-                Toast toas = Toast.makeText(getContext(),"hola",Toast.LENGTH_SHORT);
+               // Toast toas = Toast.makeText(getContext(),"hola",Toast.LENGTH_SHORT);
 
-                toas.show();
-                Intent mapita = new Intent(getContext(), MapsActivity.class);
+              //  toas.show();
+                Intent mapita = MapsActivity.newIntent(getContext(), alojamiento.getMyID());
                 startActivity(mapita);
             }
         });
