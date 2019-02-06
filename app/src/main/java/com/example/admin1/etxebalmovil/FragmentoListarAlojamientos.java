@@ -17,6 +17,7 @@ import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -65,6 +66,7 @@ public class FragmentoListarAlojamientos extends Fragment {
         private TextView nombreAlojamiento;
         private TextView tipoAlojamiento;
         private ImageView imagenAlojamiento;
+        private ImageButton mapa;
         private Button reserva;
 
         private Alojamientos alojamiento;
@@ -78,11 +80,28 @@ public class FragmentoListarAlojamientos extends Fragment {
             nombreAlojamiento= itemView.findViewById(R.id.textViewAlojamientoNombre);
             tipoAlojamiento= itemView.findViewById(R.id.textViewAlojamientoTipo);
             imagenAlojamiento= itemView.findViewById(R.id.imageViewImagenAlojamiento);
+            mapa=(ImageButton) itemView.findViewById(R.id.imagebUttonMapa);
+            mapa.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast toas = Toast.makeText(getContext(),"hola",Toast.LENGTH_SHORT);
+
+                    toas.show();
+                    Intent mapita = new Intent(getActivity(), MapsActivity.class);
+                    startActivity(mapita);
+
+                }
+            });
             reserva=itemView.findViewById(R.id.buttonReservar);
+
+
+
+
         }
 
         @Override
         public void onClick(View v) {
+
             Intent intent=AlojamientosPagerActivity.newIntent(getActivity(), alojamiento.getMyID());
             startActivity(intent);
         }

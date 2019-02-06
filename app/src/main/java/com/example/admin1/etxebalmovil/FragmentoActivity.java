@@ -18,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -91,6 +92,10 @@ public abstract class FragmentoActivity extends AppCompatActivity {
                     case 3:
                     {
                         //TODO ir al mapa
+                        Toast toas = Toast.makeText(getBaseContext(),"Bienvenido al mapita",Toast.LENGTH_SHORT);
+                        toas.show();
+                        Intent todoMapita= (Intent) MapsActivityViewALL.newIntent(getBaseContext());
+                        startActivity(todoMapita);
                     }
                     break;
                     case 4:
