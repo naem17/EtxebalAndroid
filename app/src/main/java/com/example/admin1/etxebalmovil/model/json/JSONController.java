@@ -2,8 +2,9 @@ package com.example.admin1.etxebalmovil.model.json;
 
 import com.example.admin1.etxebalmovil.model.DatabaseObject;
 import com.example.admin1.etxebalmovil.model.SessionDataController;
+import com.example.admin1.etxebalmovil.model.pojo.Alojamiento;
 import com.example.admin1.etxebalmovil.model.pojo.CodigoPostal;
-import com.example.admin1.etxebalmovil.model.pojo.Reserve;
+import com.example.admin1.etxebalmovil.model.pojo.Reserva;
 import com.example.admin1.etxebalmovil.model.pojo.Usuario;
 
 import org.json.JSONArray;
@@ -95,25 +96,25 @@ public abstract class JSONController {
                 return OTHER_ERROR;
             }
 
-            List<CodigoPostal> postCodes = new ArrayList<>();
+            List<CodigoPostal> codigoPostales = new ArrayList<>();
             for (DatabaseObject o : data.get(JSONTag.Codigo_Postal.TAG_POST_CODE)) {
-                postCodes.add((CodigoPostal) o);
+                codigoPostales.add((CodigoPostal) o);
             }
 
-            controller.setPostCodes(postCodes);
+            controller.setCodigosPostales(codigoPostales);
             // Insert lodgings
-            data = parseJSON(result, JSONTag.Lodging.TAG_LODGING);
+            data = parseJSON(result, JSONTag.Alojamiento.TAG_ALOJAMIENTO);
             // Check for errors
             if (data.isEmpty()) {
                 return OTHER_ERROR;
             }
 
-            List<Lodging> lodgings = new ArrayList<>();
-            for (DatabaseObject o : data.get(JSONTag.Lodging.TAG_LODGING)) {
-                lodgings.add((Lodging) o);
+            List<Alojamiento> alojamientos = new ArrayList<>();
+            for (DatabaseObject o : data.get(JSONTag.Alojamiento.TAG_ALOJAMIENTO)) {
+                alojamientos.add((Alojamiento) o);
             }
 
-            controller.setLodgings(lodgings);
+            controller.setAlojamientos(alojamientos);
         } catch (JSONException e) {
             e.printStackTrace();
             return OTHER_ERROR;

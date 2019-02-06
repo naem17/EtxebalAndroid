@@ -19,6 +19,7 @@ public final class JSONTag {
         public static final String TAG_DIRECCION = "DIRECCION";
         public static final String TAG_CALIDAD = "CALIDAD_ASEGURADA";
         public static final String TAG_EMAIL = "EMAIL";
+        public static final String TAG_WEB = "WEB";
         public static final String TAG_CLUB = "CLUB";
         public static final String TAG_RESTAURANTE = "RESTAURANTE";
         public static final String TAG_AUROCARAVANA = "AUTOCARAVANA";
@@ -43,6 +44,15 @@ public final class JSONTag {
         public static final String TAG_LASTNAME = "APELLIDOS";
         public static final String TAG_NICK = "NOMBRE_USUARIO";
         public static final String TAG_TELEFONO = "TELEFONO";
+    }
+
+    public final class Relacion{
+        public static final String TAG_RELACION = "RELACION_CP_MUNICIPIO_PROVINCIA";
+
+        public static final String TAG_ID = "ID";
+        public static final String TAG_CODIGO_POSTAL = "CODIGO_POSTAL";
+        public static final String TAG_CODIGO_PROVINCIA = "CODIGO_PROVINCIA";
+        public static final String TAG_INDICE_MUNICIPIO = "INDICE_MUNICIPIO";
     }
 
     public final class Provincia{

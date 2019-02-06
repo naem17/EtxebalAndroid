@@ -40,7 +40,7 @@ public abstract class Util {
 
         double x = Math.pow(Math.sin(latDiff / 2), 2) + Math.cos(toRad(currentPos.latitude))
                 * Math.cos(toRad(targetPos.latitude)) * Math.pow(Math.sin(lonDiff / 2), 2);
-        double a = 2 * Math.atan2(Math.sqrt(x), Math.sqrt(1-x));
+        double a = 2 * Math.atan2(Math.sqrt(x), Math.sqrt(1 - x));
 
         return EARTH_RADIUS * a;
     }
@@ -53,11 +53,13 @@ public abstract class Util {
         public double latitude;
         public double longitude;
 
-        public Position(String coordenadas, String latitude) {
+        public Position(String coordenadas) {
             String[] coords = coordenadas.split(",");
-            latitude = (double) String.valueOf(coords[0]);
-            longitude = (double) String.valueOf(coords[1]);
+            latitude = Double.parseDouble(coords[0]);
+            longitude = Double.parseDouble(coords[1]);
         }
-        public Position() {}
+
+        public Position() {
+        }
     }
 }

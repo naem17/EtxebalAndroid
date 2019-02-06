@@ -84,7 +84,7 @@ public class Filter implements Serializable {
     public boolean check(Alojamiento alojamiento) {
         if (0 < mRadius) {
             Util.Position target = new Util.Position(alojamiento.getLatitude(), alojamiento.getLongitude());
-            if (mRadius >= Util.calculateDistance(SessionDataController.getInstance().getCurrentPos(), target)) {
+            if (mRadius >= Util.calculateDistance(SessionDataController.getInstance().getPosicionActual(), target)) {
                 return true;
             }
             return false;

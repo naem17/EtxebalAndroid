@@ -1,7 +1,7 @@
 package com.example.admin1.etxebalmovil.model.json;
 
 import com.example.admin1.etxebalmovil.model.Util;
-import com.example.admin1.etxebalmovil.model.pojo.Reserve;
+import com.example.admin1.etxebalmovil.model.pojo.Reserva;
 import com.example.admin1.etxebalmovil.model.pojo.Usuario;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -18,7 +18,7 @@ public abstract class JSONBuilder {
     public static final String UPDATE = "update";
     public static final String DELETE = "delete";
 
-    public static String build(String action, Reserve reserve) {
+    public static String build(String action, Reserva reserva) {
         String json = "";
         try {
             ObjectMapper mapper = new ObjectMapper();
@@ -32,13 +32,13 @@ public abstract class JSONBuilder {
 
             switch (action) {
                 case INSERT:
-                    table = buildInsert(reserve);
+                    table = buildInsert(reserva);
                     break;
                 case UPDATE:
-                    table = buildUpdate(reserve);
+                    table = buildUpdate(reserva);
                     break;
                 case DELETE:
-                    table = buildDelete(reserve);
+                    table = buildDelete(reserva);
                     break;
                 default:
                     return null;
@@ -107,15 +107,15 @@ public abstract class JSONBuilder {
         return table;
     }
 
-    private static Map<String, Object> buildInsert(Reserve reserve) {
+    private static Map<String, Object> buildInsert(Reserva reserva) {
         Map<String, Object> table = new HashMap<>();
         Map<String, Object> value = new HashMap<>();
         List<Object> values = new ArrayList<>();
 
-        value.put("id_kodea", reserve.getLodgingCode());
-        value.put("Nick", reserve.getUserNick());
-        value.put("hasiera_data", reserve.getStartDate());
-        value.put("amaiera_data", reserve.getFinishDate());
+        value.put("id_kodea", reserva.getmFirmaAlojamiento());
+        value.put("Nick", reserva.getmNombreCliente());
+        value.put("hasiera_data", reserva.getmFechaInicio());
+        value.put("amaiera_data", reserva.getmFechaFin());
         values.add(value);
 
         table.put("action", INSERT);
@@ -124,25 +124,25 @@ public abstract class JSONBuilder {
         return table;
     }
 
-    private static Map<String, Object> buildDelete(Reserve reserve) {
+    private static Map<String, Object> buildDelete(Reserva reserva) {
         Map<String, Object> table = new HashMap<>();
         Map<String, Object> where = new HashMap<>();
         List<Object> wheres = new ArrayList<>();
 
         where.put("field", JSONTag.Reserva.TAG_NOMBRE_CLIENTE);
-        where.put("value", reserve.getUserNick());
+        where.put("value", reserva.getmNombreCliente());
         wheres.add(where);
         where.clear();
         where.put("field", JSONTag.Reserva.TAG_FIRMA_ALOJAMIENTO);
-        where.put("value", reserve.getLodgingCode());
+        where.put("value", reserva.getmFirmaAlojamiento());
         wheres.add(where);
         where.clear();
         where.put("field", JSONTag.Reserva.TAG_FECHA_INICIO);
-        where.put("value", reserve.getStartDate().toString());
+        where.put("value", reserva.getmFechaInicio().toString());
         wheres.add(where);
         where.clear();
         where.put("field", JSONTag.Reserva.TAG_FECHA_FIN);
-        where.put("value", reserve.getFinishDate().toString());
+        where.put("value", reserva.getmFechaFin().toString());
         wheres.add(where);
 
         table.put("action", DELETE);
@@ -151,33 +151,33 @@ public abstract class JSONBuilder {
         return table;
     }
 
-    private static Map<String, Object> buildUpdate(Reserve reserve) {
+    private static Map<String, Object> buildUpdate(Reserva reserva) {
         Map<String, Object> table = new HashMap<>();
         Map<String, Object> map = new HashMap<>();
         List<Object> list = new ArrayList<>();
 
         table.put("action", UPDATE);
         // Add value
-        map.put(JSONTag.Reserva.TAG_FECHA_INICIO, reserve.getStartDate());
-        map.put(JSONTag.Reserva.TAG_FECHA_FIN, reserve.getFinishDate());
+        map.put(JSONTag.Reserva.TAG_FECHA_INICIO, reserva.getmFechaInicio());
+        map.put(JSONTag.Reserva.TAG_FECHA_FIN, reserva.getmFechaFin());
         list.add(map);
 
         table.put("values", list);
         // Add where
         map.put("field", JSONTag.Reserva.TAG_NOMBRE_CLIENTE);
-        map.put("value", reserve.getUserNick());
+        map.put("value", reserva.getmNombreCliente());
         list.add(map);
         map.clear();
         map.put("field", JSONTag.Reserva.TAG_FIRMA_ALOJAMIENTO);
-        map.put("value", reserve.getLodgingCode());
+        map.put("value", reserva.getmFirmaAlojamiento());
         list.add(map);
         map.clear();
         map.put("field", JSONTag.Reserva.TAG_FECHA_INICIO);
-        map.put("value", reserve.getStartDate().toString());
+        map.put("value", reserva.getmFechaInicio().toString());
         list.add(map);
         map.clear();
         map.put("field", JSONTag.Reserva.TAG_FECHA_FIN);
-        map.put("value", reserve.getFinishDate().toString());
+        map.put("value", reserva.getmFechaFin().toString());
         list.add(map);
 
         table.put("where", list);

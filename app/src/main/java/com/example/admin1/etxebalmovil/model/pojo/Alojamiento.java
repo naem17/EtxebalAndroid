@@ -1,6 +1,7 @@
 package com.example.admin1.etxebalmovil.model.pojo;
 
 import com.example.admin1.etxebalmovil.model.DatabaseObject;
+import com.example.admin1.etxebalmovil.model.json.JSONTag;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,10 +16,13 @@ public class Alojamiento implements DatabaseObject, Serializable {
 
     private String mFirma;
     private String mNombre;
+    private String mDescripcionAbreviada;
+    private String mDescripcionAbreviadaEuskera;
     private String mDescripcion;
     private String mDescripcionEuskera;
     private String mTelefono;
     private String mDireccion;
+    private boolean mCalidad;
     private String mEmail;
     private String mWeb;
     private boolean mClub;
@@ -29,11 +33,10 @@ public class Alojamiento implements DatabaseObject, Serializable {
     private boolean mGastronomico;
     private boolean mSurf;
     private String mCoordenadas;
-    private String mTipo;
-    private String mTipoEuskera;
-    private String mProvincia;
-    private String mMunicipio;
-    private int mCp;
+    private String mCodigoTipo;
+    private String mCodigoTipoEuskera;
+    private int mCodigoCategorias;
+    private int mIdRelaciones;
 
     public static Comparator<Alojamiento> COMPARE_BY_NAME = new Comparator<Alojamiento>() {
         @Override
@@ -53,14 +56,17 @@ public class Alojamiento implements DatabaseObject, Serializable {
         mFirma = mMyID.toString();
     }
 
-    public Alojamiento(String nombre, String descripcion, String descripcionEuskera, String telefono, String direccion, String email, String web, boolean club, boolean restaurante, boolean autocaravana, boolean tienda, int capacidad, boolean gastronomico, boolean surf, String coordenadas, String tipo, String tipoEuskera, String provincia, String municipio, int cp) {
+    public Alojamiento(String nombre, String descripcionAbreviada, String descripcionAbreviadaEuskera, String descripcion, String descripcionEuskera, String telefono, String direccion, boolean calidad, String email, String web, boolean club, boolean restaurante, boolean autocaravana, boolean tienda, int capacidad, boolean gastronomico, boolean surf, String coordenadas, String codigoTipo, String codigoTipoEuskera, int codigoCategorias, int idRelaciones) {
         mMyID = UUID.randomUUID();
         mFirma = mMyID.toString();
         mNombre = nombre;
+        mDescripcionAbreviada = descripcionAbreviada;
+        mDescripcionAbreviadaEuskera = descripcionAbreviadaEuskera;
         mDescripcion = descripcion;
         mDescripcionEuskera = descripcionEuskera;
         mTelefono = telefono;
         mDireccion = direccion;
+        mCalidad = calidad;
         mEmail = email;
         mWeb = web;
         mClub = club;
@@ -71,19 +77,14 @@ public class Alojamiento implements DatabaseObject, Serializable {
         mGastronomico = gastronomico;
         mSurf = surf;
         mCoordenadas = coordenadas;
-        mTipo = tipo;
-        mTipoEuskera = tipoEuskera;
-        mProvincia = provincia;
-        mMunicipio = municipio;
-        mCp = cp;
+        mCodigoTipo = codigoTipo;
+        mCodigoTipoEuskera = codigoTipoEuskera;
+        mCodigoCategorias = codigoCategorias;
+        mIdRelaciones = idRelaciones;
     }
 
     public UUID getMyID() {
         return mMyID;
-    }
-
-    public void setMyID(UUID myID) {
-        mMyID = myID;
     }
 
     public String getFirma() {
@@ -215,47 +216,90 @@ public class Alojamiento implements DatabaseObject, Serializable {
     }
 
     public String getTipo() {
-        return mTipo;
+        return mCodigoTipo;
     }
 
     public void setTipo(String tipo) {
-        mTipo = tipo;
+        mCodigoTipo = tipo;
     }
 
     public String getTipoEuskera() {
-        return mTipoEuskera;
+        return mCodigoTipoEuskera;
     }
 
     public void setTipoEuskera(String tipoEuskera) {
-        mTipoEuskera = tipoEuskera;
+        mCodigoTipoEuskera = tipoEuskera;
     }
 
-    public String getProvincia() {
-        return mProvincia;
+    public String getDescripcionAbreviada() {
+        return mDescripcionAbreviada;
     }
 
-    public void setProvincia(String provincia) {
-        mProvincia = provincia;
+    public void setDescripcionAbreviada(String descripcionAbreviada) {
+        mDescripcionAbreviada = descripcionAbreviada;
     }
 
-    public String getMunicipio() {
-        return mMunicipio;
+    public String getDescripcionAbreviadaEuskera() {
+        return mDescripcionAbreviadaEuskera;
     }
 
-    public void setMunicipio(String municipio) {
-        mMunicipio = municipio;
+    public void setDescripcionAbreviadaEuskera(String descripcionAbreviadaEuskera) {
+        mDescripcionAbreviadaEuskera = descripcionAbreviadaEuskera;
     }
 
-    public int getCp() {
-        return mCp;
+    public boolean isCalidad() {
+        return mCalidad;
     }
 
-    public void setCp(int cp) {
-        mCp = cp;
+    public void setCalidad(boolean calidad) {
+        mCalidad = calidad;
+    }
+
+    public String getCodigoTipo() {
+        return mCodigoTipo;
+    }
+
+    public void setCodigoTipo(String codigoTipo) {
+        mCodigoTipo = codigoTipo;
+    }
+
+    public String getCodigoTipoEuskera() {
+        return mCodigoTipoEuskera;
+    }
+
+    public void setCodigoTipoEuskera(String codigoTipoEuskera) {
+        mCodigoTipoEuskera = codigoTipoEuskera;
+    }
+
+    public int getCodigoCategorias() {
+        return mCodigoCategorias;
+    }
+
+    public void setCodigoCategorias(int codigoCategorias) {
+        mCodigoCategorias = codigoCategorias;
+    }
+
+    public int getIdRelaciones() {
+        return mIdRelaciones;
+    }
+
+    public void setIdRelaciones(int idRelaciones) {
+        mIdRelaciones = idRelaciones;
     }
 
     @Override
     public DatabaseObject fromJSON(JSONObject json) throws JSONException {
+        this.setFirma(json.getString(JSONTag.Alojamiento.TAG_FIRMA));
+        this.setNombre(json.getString(JSONTag.Alojamiento.TAG_NAME));
+        this.setDescripcionAbreviada(json.getString(JSONTag.Alojamiento.TAG_DESCRPCION_ABREVIADA));
+        this.setDescripcionAbreviadaEuskera(json.getString(JSONTag.Alojamiento.TAG_DESCRPCION_ABREVIADA_EUSKERA));
+        this.setDescripcion(json.getString(JSONTag.Alojamiento.TAG_DESCRIPCION));
+        this.setDescripcionEuskera(json.getString(JSONTag.Alojamiento.TAG_DESCRIPCION_EUSKERA));
+        this.setTelefono(json.getString(JSONTag.Alojamiento.TAG_TELEFONO));
+        this.setDireccion(json.getString(JSONTag.Alojamiento.TAG_DIRECCION));
+        this.setCalidad(json.getBoolean(JSONTag.Alojamiento.TAG_CALIDAD));
+        this.setEmail(json.getString(JSONTag.Alojamiento.TAG_EMAIL));
+        this.setWeb(json.getString(JSONTag.Alojamiento.TAG_W));
         return this;
     }
 }
