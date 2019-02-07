@@ -46,7 +46,7 @@
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".FragmentoListarActivity">
+        <activity android:name=".FragmentoInicioSesionActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -56,7 +56,7 @@
         <activity android:name=".AlojamientosActivity"></activity>
         <activity android:name=".AlojamientosPagerActivity"></activity>
         <activity android:name=".AlojamientosHacerReservaActivity"></activity>
-        <activity android:name=".FragmentoInicioSesionActivity" />
+        <activity android:name=".FragmentoListarActivity" />
         <activity android:name=".AlojamientoBuscarActivity" />
         <activity android:name=".FragmentoListarReservasActivity" />
         <activity android:name=".ReservasPagerActivity" />

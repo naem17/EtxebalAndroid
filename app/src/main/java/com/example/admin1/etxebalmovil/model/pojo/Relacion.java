@@ -43,8 +43,13 @@ public class Relacion implements DatabaseObject, Serializable {
         this.indiceMunicipio = indiceMunicipio;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public DatabaseObject fromJSON(JSONObject json) throws JSONException {
+        this.setId(json.getInt(JSONTag.Relacion.TAG_ID));
         this.setCodigoPostal(json.getString(JSONTag.Relacion.TAG_CODIGO_POSTAL));
         this.setCodigoProvincia(json.getString(JSONTag.Relacion.TAG_CODIGO_PROVINCIA));
         this.setIndiceMunicipio(json.getString(JSONTag.Relacion.TAG_INDICE_MUNICIPIO));
