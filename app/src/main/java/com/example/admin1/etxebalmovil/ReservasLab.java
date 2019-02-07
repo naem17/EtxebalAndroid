@@ -6,6 +6,9 @@ import com.example.admin1.etxebalmovil.model.SessionDataController;
 import com.example.admin1.etxebalmovil.model.json.JSONController;
 import com.example.admin1.etxebalmovil.model.pojo.Reserva;
 
+import com.example.admin1.etxebalmovil.model.SessionDataController;
+import com.example.admin1.etxebalmovil.model.pojo.Reserva;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,13 +20,8 @@ public class ReservasLab {
 
     private ReservasLab(Context context)
     {
-        List<Reserva> reservasJSON= SessionDataController.getInstance().getReservas();
         reservas=new ArrayList<>();
-        for (Reserva reserva:reservasJSON) {
-            Reservas aux=new Reservas();
-            aux.fromReservaJSON(reserva);
-            reservas.add(aux);
-        }
+        //TODO añadir lo del JSON
     }
     public static ReservasLab get(Context context)
     {
@@ -46,10 +44,6 @@ public class ReservasLab {
         while(i<reservas.size() && !reservas.get(i).getMyID().equals(id))
             i++;
         return i>=reservas.size()?null:reservas.get(i);
-    }
-    public  void setReserva(Reservas reserva)
-    {
-        this.reservas.add(reserva);
     }
     public int getPosicion(UUID id)
     {

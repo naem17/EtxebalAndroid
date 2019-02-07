@@ -15,10 +15,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.admin1.etxebalmovil.model.json.JSONBuilder;
-import com.example.admin1.etxebalmovil.model.json.JSONController;
+import com.example.admin1.etxebalmovil.model.SessionDataController;
+import com.example.admin1.etxebalmovil.model.pojo.Reserva;
 
-import java.util.UUID;
+import java.sql.Date;
+import java.time.LocalDate;
 
 public class HacerReservaFragment extends Fragment {
     private TextView nombreAlojamiento;
@@ -28,6 +29,7 @@ public class HacerReservaFragment extends Fragment {
     private Button reservar;
     private Button cancelar;
     private Alojamientos alojamiento;
+    private SessionDataController mSessionDataController;
 
     private static final String EXTRA_ALOJAMIENTO_ID = AlojamientosPagerActivity.class.getName() + ".alojamiento_id";
 
@@ -77,10 +79,9 @@ public class HacerReservaFragment extends Fragment {
                                     //TODO meter los datos del cliente
                                     reserva.setTelefono(alojamiento.getTelefono());
                                     reserva.setMyID(UUID.randomUUID());
-                                    reserva.setNombreReserva(reserva.getMyID().toString());
+                                    reserva.setNombreReserva(alojamiento.getNombre()+" "+reserva.getMyID().toString());
+                                    ReservasLab.get(getContext()).getReservas().add(reserva);
                                     //TODO guardarla en la BBDD
-                                    JSONController.setData(JSONBuilder.build(JSONBuilder.INSERT,reserva.toReservaJSON()));
-                                    JSONController.getData();
                                     dialog.cancel();
                                     Intent intent=FragmentoListarReservasActivity.newIntent(getContext());
                                     startActivity(intent);

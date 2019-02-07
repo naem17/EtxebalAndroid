@@ -1,6 +1,5 @@
 package com.example.admin1.etxebalmovil;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -15,7 +14,6 @@ import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.UUID;
 
@@ -72,6 +70,17 @@ public class FragmentoAlojamientoDetalle extends Fragment {
         nombreAlojamiento= vista.findViewById(R.id.textViewAlojamientoNombre);
         tipoAlojamiento= vista.findViewById(R.id.textViewAlojamientoTipo);
         imagenAlojamiento= vista.findViewById(R.id.imageViewImagenAlojamiento);
+        /*PROBAR SI SALEN LOS ICONOS*/
+        if (alojamiento.getTipo().equalsIgnoreCase("Albergues") || alojamiento.getTipo().equalsIgnoreCase("aterpetxeak")){
+            imagenAlojamiento.setImageResource(R.drawable.ic_alberguess);
+        }else if (alojamiento.getTipo().equalsIgnoreCase("Campings")  || alojamiento.getTipo().equalsIgnoreCase("Kanpinak")){
+            imagenAlojamiento.setImageResource(R.drawable.ic_campings);
+        }else  if (alojamiento.getTipo().equalsIgnoreCase("Casas Rurales")  || alojamiento.getTipo().equalsIgnoreCase("Nekazaritza-turismoak")){
+            imagenAlojamiento.setImageResource(R.drawable.ic_agroturismo);
+        }else {
+            imagenAlojamiento.setImageResource(R.drawable.ic_casasrurales);
+        }
+        /*----------------------------------------------------------------------*/
         descripcion= vista.findViewById(R.id.textViewAlojamientoDesc);
         email= vista.findViewById(R.id.textViewAlojamientoEmail);
         telefono= vista.findViewById(R.id.textViewAlojamientoTel);
@@ -139,6 +148,7 @@ public class FragmentoAlojamientoDetalle extends Fragment {
                 startActivity(intent);
             }
         });
+
         return vista;
     }
 }
