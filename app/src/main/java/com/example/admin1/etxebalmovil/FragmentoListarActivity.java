@@ -27,11 +27,4 @@ public class FragmentoListarActivity extends FragmentoActivity {
         return new FragmentoListarAlojamientos(false);
     }
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-    }
 }

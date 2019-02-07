@@ -2,7 +2,16 @@ package com.example.admin1.etxebalmovil;
 
 import android.content.Context;
 
+import com.example.admin1.etxebalmovil.model.SessionDataController;
+import com.example.admin1.etxebalmovil.model.json.JSONController;
+import com.example.admin1.etxebalmovil.model.pojo.Alojamiento;
+import com.example.admin1.etxebalmovil.model.pojo.Municipio;
+import com.example.admin1.etxebalmovil.model.pojo.Provincia;
+import com.example.admin1.etxebalmovil.model.pojo.Relacion;
+import com.example.admin1.etxebalmovil.model.pojo.Tipo;
+
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class AlojamientosLab {
@@ -13,29 +22,59 @@ public class AlojamientosLab {
 
     private AlojamientosLab(Context context)
     {
-        alojamientos=new ArrayList<>();
-        //TODO AÑADIR DEL JSON LOS ALOJAMIENTOS
-        for(int i=0; i<10;i++)
-        {
+            List<Alojamiento> alojamiento= SessionDataController.getInstance().getAlojamientos();
+            alojamientos=new ArrayList<>();
+        for (Alojamiento alo : alojamiento) {
             alojamientos.add(new Alojamientos());
-            alojamientos.get(i).setNombre("Nombre "+(i+1));
-            alojamientos.get(i).setTipo("A");
+            int posicionAlojamiento=alojamientos.size()-1;
 
-            alojamientos.get(i).setCapacidad(i+1);
+            alojamientos.get(posicionAlojamiento).setFirma(alo.getFirma());
+            alojamientos.get(posicionAlojamiento).setNombre(alo.getNombre());
+            alojamientos.get(posicionAlojamiento).setDescripcion(alo.getDescripcion());
+            alojamientos.get(posicionAlojamiento).setDescripcionEuskera(alo.getDescripcionEuskera());
+            alojamientos.get(posicionAlojamiento).setTelefono(alo.getTelefono());
+            alojamientos.get(posicionAlojamiento).setDireccion(alo.getDireccion());
+            alojamientos.get(posicionAlojamiento).setEmail(alo.getEmail());
+            alojamientos.get(posicionAlojamiento).setWeb(alo.getWeb());
+            alojamientos.get(posicionAlojamiento).setClub(alo.isClub());
+            alojamientos.get(posicionAlojamiento).setRestaurante(alo.isRestaurante());
+            alojamientos.get(posicionAlojamiento).setAutocaravana(alo.isAutocaravana());
+            alojamientos.get(posicionAlojamiento).setTienda(alo.isTienda());
+            alojamientos.get(posicionAlojamiento).setCapacidad(alo.getCapacidad());
+            alojamientos.get(posicionAlojamiento).setGastronomico(alo.isGastronomico());
+            alojamientos.get(posicionAlojamiento).setSufring(alo.isSurf());
+            alojamientos.get(posicionAlojamiento).setCoordenadas(alo.getCoordenadas());
+            alojamientos.get(posicionAlojamiento).setTipoEuskera(alo.getTipoEuskera());
+
+            if(alo.getTipo().compareToIgnoreCase("null")!=0) {
+                List<Tipo> tipos = SessionDataController.getInstance().getTipos();
+                int codigoTipo = 0;
+                while (codigoTipo < tipos.size() && Integer.valueOf(alo.getTipo()) != tipos.get(codigoTipo).getCodigo())
+                    codigoTipo++;
+                alojamientos.get(posicionAlojamiento).setTipo(tipos.get(codigoTipo).getTipo());
+            } else
+                alojamientos.get(posicionAlojamiento).setTipo("Indefinido");
+            List<Relacion> relacions=SessionDataController.getInstance().getRelaciones();
+            int indiceRelacion=0;
+            while (indiceRelacion<relacions.size() && relacions.get(indiceRelacion).getId()!=alo.getIdRelaciones())
+                indiceRelacion++;
+            List<Provincia> provincias=SessionDataController.getInstance().getProvincias();
+
+            int codigo=0;
+            while (codigo<provincias.size() && provincias.get(codigo).getmCodigo()!=Integer.valueOf(relacions.get(indiceRelacion).getCodigoProvincia()))
+                codigo++;
+            alojamientos.get(posicionAlojamiento).setProvincia(provincias.get(codigo).getmProvincua());
+
+            List<Municipio> municipios=SessionDataController.getInstance().getMunicipios();
+            codigo=0;
+            while (codigo<municipios.size() && municipios.get(codigo).getmIndice()!=Integer.valueOf(relacions.get(indiceRelacion).getIndiceMunicipio()))
+                codigo++;
+            alojamientos.get(posicionAlojamiento).setMunicipio(municipios.get(codigo).getmMunicipio());
+
+            alojamientos.get(posicionAlojamiento).setCp(Integer.valueOf(relacions.get(indiceRelacion).getCodigoPostal()));
+
+
         }
-        //Coordenadas barrika surf
-        alojamientos.get(0).setCoordenadas("43.4051437,-2.9657849999999826");
-        alojamientos.get(0).setTipo("Albergues");
-        //Coordenadas ganbarahpostel
-        alojamientos.get(1).setCoordenadas("43.2583377,-2.9186009000000013");
-        alojamientos.get(1).setTipo("Campings");
-        //Coordenadas Ziortz
-        alojamientos.get(2).setCoordenadas("43.247532247026115,-2.558726650262429");
-        alojamientos.get(2).setTipo("Casas Rurales");
-        //Coordenadas bbkBilbaoGoodHostel
-        alojamientos.get(3).setCoordenadas("43.2467587,-2.909747100000004");
-        alojamientos.get(3).setTipo("Agroturismo");
-
     }
     public static AlojamientosLab get(Context context)
     {

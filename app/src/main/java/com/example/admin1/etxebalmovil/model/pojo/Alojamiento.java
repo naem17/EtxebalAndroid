@@ -297,20 +297,25 @@ public class Alojamiento implements DatabaseObject, Serializable {
         this.setDescripcionEuskera(json.getString(JSONTag.Alojamiento.TAG_DESCRIPCION_EUSKERA));
         this.setTelefono(json.getString(JSONTag.Alojamiento.TAG_TELEFONO));
         this.setDireccion(json.getString(JSONTag.Alojamiento.TAG_DIRECCION));
-        this.setCalidad(json.getBoolean(JSONTag.Alojamiento.TAG_CALIDAD));
+        this.setCalidad((json.getInt(JSONTag.Alojamiento.TAG_CALIDAD) == 1 ? true : false));
         this.setEmail(json.getString(JSONTag.Alojamiento.TAG_EMAIL));
         this.setWeb(json.getString(JSONTag.Alojamiento.TAG_WEB));
-        this.setClub(json.getBoolean(JSONTag.Alojamiento.TAG_CLUB));
-        this.setRestaurante(json.getBoolean(JSONTag.Alojamiento.TAG_RESTAURANTE));
-        this.setAutocaravana(json.getBoolean(JSONTag.Alojamiento.TAG_AUTOCARAVANA));
-        this.setTienda(json.getBoolean(JSONTag.Alojamiento.TAG_TIENDA));
+        this.setClub((json.getInt(JSONTag.Alojamiento.TAG_CLUB) == 1 ? true : false));
+        this.setRestaurante(json.getInt(JSONTag.Alojamiento.TAG_RESTAURANTE) == 1 ? true : false);
+        this.setAutocaravana(json.getInt(JSONTag.Alojamiento.TAG_AUTOCARAVANA) == 1 ? true : false);
+        this.setTienda(json.getInt(JSONTag.Alojamiento.TAG_TIENDA) == 1 ? true : false);
         this.setCapacidad(json.getInt(JSONTag.Alojamiento.TAG_CAPACIDAD));
-        this.setGastronomico(json.getBoolean(JSONTag.Alojamiento.TAG_GASTRONOMICO));
-        this.setSurf(json.getBoolean(JSONTag.Alojamiento.TAG_SURFING));
+        this.setGastronomico(json.getInt(JSONTag.Alojamiento.TAG_GASTRONOMICO) == 1 ? true : false);
+        this.setSurf(json.getInt(JSONTag.Alojamiento.TAG_SURFING) == 1 ? true : false);
         this.setCoordenadas(json.getString(JSONTag.Alojamiento.TAG_COORDENADAS));
         this.setCodigoTipo(json.getString(JSONTag.Alojamiento.TAG_CODIGO_TIPOS));
         this.setCodigoTipoEuskera(json.getString(JSONTag.Alojamiento.TAG_CODIGO_TIPOS_EUSKERA));
-        this.setCodigoCategorias(json.getInt(JSONTag.Alojamiento.TAG_CODIGO_CATEGORIAS));
+       try {
+           this.setCodigoCategorias((json.getInt(JSONTag.Alojamiento.TAG_CODIGO_CATEGORIAS)));
+       }catch (Exception e)
+       {
+           this.setCodigoCategorias(-1);
+       }
         this.setIdRelaciones(json.getInt(JSONTag.Alojamiento.TAG_ID_RELACIONES));
         return this;
     }

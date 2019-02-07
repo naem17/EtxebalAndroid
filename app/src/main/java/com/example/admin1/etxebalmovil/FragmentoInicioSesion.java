@@ -1,5 +1,6 @@
 package com.example.admin1.etxebalmovil;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -33,8 +34,15 @@ public class FragmentoInicioSesion extends Fragment {
                 public void onClick(View v) {
                     byte errorCode = JSONController.logInUser(mUsuarioEditText.getText().toString().trim(), mPasswordEditText.getText().toString().trim());
                     switch  (errorCode) {
-                        case JSONController.NO_ERROR:
-                            Toast.makeText(getContext(), "Bienvenido"+ mUsuarioEditText.getText().toString().trim(), Toast.LENGTH_LONG).show();
+                        case JSONController.NO_ERROR: {
+                            Toast.makeText(getContext(), "Bienvenido " + mUsuarioEditText.getText().toString().trim(), Toast.LENGTH_LONG).show();
+                            JSONController.getData();
+                            Intent intent=FragmentoListarActivity.newIntent(getContext());
+                            startActivity(intent);
+                            //TODO preguntar si quiere log out
+
+
+                        }
                             break;
                         case JSONController.INPUT_ERROR:
                             Toast.makeText(getContext(),    getString(R.string.errorUsuario), Toast.LENGTH_LONG).show();

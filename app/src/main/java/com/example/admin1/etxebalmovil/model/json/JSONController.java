@@ -25,6 +25,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -273,7 +274,8 @@ public abstract class JSONController {
             // Insert reserves
             // Select only current user's reserves
             List<DatabaseObject> list = data.get(JSONTag.Reserva.TAG_RESERVA);
-            list.sort(Reserva.COMPARE_BY_USER); // Sort by user
+            Collections.sort(list, Reserva.COMPARE_BY_USER);
+            //list.sort(Reserva.COMPARE_BY_USER); // Sort by user
             String user = controller.getUsuario().getNick();
             boolean userFound = false;
             for (int i = 0; i < list.size(); i++) {
