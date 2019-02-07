@@ -34,6 +34,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
+import java.lang.annotation.Target;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -43,8 +44,8 @@ public class MapsActivityViewALL extends FragmentActivity implements OnMapReadyC
 
     private ArrayList<Alojamientos> alojamientos;
     private GoogleMap mMap;
-private Spinner lista;
-private String[] datos={"3 Km","5 Km","10 Km"};
+    private Spinner lista;
+    private String[] datos={"3 Km","5 Km","10 Km"};
     private Marker marcador;
     double lat = 0.0;
     double log = 0.0;
@@ -69,7 +70,6 @@ private String[] datos={"3 Km","5 Km","10 Km"};
             public void onItemSelected(AdapterView<?> parent, View view, int i, long id) {
                 switch (i){
                     case 0:
-                    Util.toRad(3);
                     Toast toas=Toast.makeText(getBaseContext(),datos[i],Toast.LENGTH_SHORT);
                     toas.show();
                         break;
@@ -221,9 +221,8 @@ mMap.getUiSettings().setZoomControlsEnabled(true);
       // coordenadas=mAlojamientos.getCoordenadas().split(",");
         
         for(int i=0;i<alojamientos.size();i++) {
-            if (!(alojamientos.get(i).getCoordenadas().isEmpty())) {
+            if (alojamientos.get(i).getCoordenadas().compareToIgnoreCase("null")!=0 && !alojamientos.get(i).getCoordenadas().isEmpty()) {
                 coordenadas = alojamientos.get(i).getCoordenadas().split(",");
-                Log.d("VistaTodo", coordenadas[0] + coordenadas[1]);
                 target = new LatLng(Double.parseDouble(coordenadas[0]), Double.parseDouble(coordenadas[1]));
                 mMap.addMarker(new MarkerOptions()
                         .position(target)
