@@ -32,8 +32,6 @@ public class HacerReservaFragment extends Fragment {
     private Button cancelar;
     private Alojamientos alojamiento;
     private Calendar mCalendar;
-    private ImageButton mDateButton1;
-    private ImageButton mDateButton2;
     private DatePickerDialog mDatePickerDialog;
     private static final int REQUEST_DATE = 0;
     private static final int REQUEST_CONFIRMATION = 1;
@@ -57,16 +55,12 @@ public class HacerReservaFragment extends Fragment {
         cantidad = view.findViewById(R.id.editTextCantidad);
         reservar = view.findViewById(R.id.buttonReservar);
         cancelar = view.findViewById(R.id.buttonCancelar);
-        mDateButton1 = (ImageButton) view.findViewById(R.id.imageDate1);
-        mDateButton2 = (ImageButton) view.findViewById(R.id.imageDate2);
 
         nombreAlojamiento.setText(alojamiento.getNombre());
 
-        reservar.setOnClickListener(new View.OnClickListener()
-
-            {
-                @Override
-                public void onClick (View v){
+        reservar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 
                 builder.setTitle("Nueva Reserva");
@@ -82,6 +76,7 @@ public class HacerReservaFragment extends Fragment {
                                 if (capacidad <= 0 || capacidad > alojamiento.getCapacidad())
                                     correcto = false;
                                 if (correcto) {
+                                    mSessionDataController = SessionDataController.getInstance();
                                     Reserva reserva = new Reserva();
                                     reserva.setmCantidadPersonas(capacidad);
                                     //TODO set dates
@@ -114,22 +109,20 @@ public class HacerReservaFragment extends Fragment {
                 alertDialog.show();
 
             }
-            });
+        });
 
-        cancelar.setOnClickListener(new View.OnClickListener()
-
-            {
-                @Override
-                public void onClick (View v){
+        cancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 getActivity().finish();
             }
-            });
+        });
         return view;
-        }
+    }
 
-        @Override
-        public void onCreate (@Nullable Bundle savedInstanceState){
-            super.onCreate(savedInstanceState);
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
             /*mDateButton1.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -158,5 +151,5 @@ public class HacerReservaFragment extends Fragment {
                 dialog.show(getFragmentManager(), DIALOG_DATE);
                 }
             });*/
-        }
     }
+}

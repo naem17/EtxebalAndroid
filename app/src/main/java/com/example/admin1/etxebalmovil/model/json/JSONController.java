@@ -71,6 +71,7 @@ public abstract class JSONController {
     private static final String DB_USER = "gp2";
     private static final String DB_PASSWORD = "NuG7FqwibR1ZAuKy";
 
+    private static Usuario mCurrentUser;
     /* ///////// END OF CONFIGS ///////// */
 
     public static byte setData(String jsonString) {
@@ -246,6 +247,7 @@ public abstract class JSONController {
 
             // Insert current user
             Usuario usuario = (Usuario) data.get(TAG_CURRENT_USER).get(0);
+            mCurrentUser = usuario;
             controller.setUsuario(usuario);
 
             // Insert reserves
@@ -452,30 +454,6 @@ public abstract class JSONController {
 
         return OTHER_ERROR;
     }
-
-/*    public static void test() {
-        try {
-            String url = BASE_URL_GET + "&username=c&password=a&hash=md5&data_table[]=PostaKodeak";
-            JSONObject json = new JSONObject(doRequest(url));
-            JSONArray data;
-            List<PostCode> objects = new ArrayList<>();
-
-            if (!json.has(TAG_ERROR)) {
-                data = json.getJSONObject(TAG_DATA).getJSONArray("PostaKodeak");
-                for (int i = 0; i < data.length(); i++) {
-                    JSONObject object = data.getJSONObject(i);
-                    PostCode postCode = new PostCode();
-                    objects.add((PostCode) postCode.fromJSON(object));
-                }
-
-            }
-
-            SessionDataController.getInstance().setPostCodes(objects);
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }*/
 
     public static String getDB() {
         return DB;

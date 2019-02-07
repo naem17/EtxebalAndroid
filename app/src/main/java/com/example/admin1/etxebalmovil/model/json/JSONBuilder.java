@@ -115,8 +115,8 @@ public abstract class JSONBuilder {
         value.put(JSONTag.Reserva.TAG_NOMBRE_RESERVA, reserva.getmNombreReserva());
         value.put(JSONTag.Reserva.TAG_NOMBRE_CLIENTE, reserva.getmNombreCliente());
         value.put(JSONTag.Reserva.TAG_FIRMA_ALOJAMIENTO, reserva.getmFirmaAlojamiento());
-        value.put(JSONTag.Reserva.TAG_FECHA_INICIO, reserva.getmFechaInicio());
-        value.put(JSONTag.Reserva.TAG_FECHA_FIN, reserva.getmFechaFin());
+        value.put(JSONTag.Reserva.TAG_FECHA_INICIO, ""+reserva.getmFechaInicio().toString()+"");
+        value.put(JSONTag.Reserva.TAG_FECHA_FIN, ""+reserva.getmFechaFin().toString()+"");
         value.put(JSONTag.Reserva.TAG_CANTIDAD_PERSONAS, reserva.getmCantidadPersonas());
         values.add(value);
 
@@ -140,11 +140,11 @@ public abstract class JSONBuilder {
         wheres.add(where);
         where.clear();
         where.put("field", JSONTag.Reserva.TAG_FECHA_INICIO);
-        where.put("value", reserva.getmFechaInicio().toString());
+        where.put("value", ""+reserva.getmFechaInicio().toString()+"");
         wheres.add(where);
         where.clear();
         where.put("field", JSONTag.Reserva.TAG_FECHA_FIN);
-        where.put("value", reserva.getmFechaFin().toString());
+        where.put("value", ""+reserva.getmFechaFin().toString()+"");
         wheres.add(where);
 
         table.put("action", DELETE);
@@ -160,8 +160,8 @@ public abstract class JSONBuilder {
 
         table.put("action", UPDATE);
         // Add value
-        map.put(JSONTag.Reserva.TAG_FECHA_INICIO, reserva.getmFechaInicio());
-        map.put(JSONTag.Reserva.TAG_FECHA_FIN, reserva.getmFechaFin());
+        map.put(JSONTag.Reserva.TAG_FECHA_INICIO, ""+reserva.getmFechaInicio().toString()+"");
+        map.put(JSONTag.Reserva.TAG_FECHA_FIN, ""+reserva.getmFechaFin().toString()+"");
         list.add(map);
 
         table.put("values", list);
@@ -175,11 +175,11 @@ public abstract class JSONBuilder {
         list.add(map);
         map.clear();
         map.put("field", JSONTag.Reserva.TAG_FECHA_INICIO);
-        map.put("value", reserva.getmFechaInicio().toString());
+        map.put("value", ""+reserva.getmFechaInicio().toString()+"");
         list.add(map);
         map.clear();
         map.put("field", JSONTag.Reserva.TAG_FECHA_FIN);
-        map.put("value", reserva.getmFechaFin().toString());
+        map.put("value", ""+reserva.getmFechaFin().toString()+"");
         list.add(map);
 
         table.put("where", list);
