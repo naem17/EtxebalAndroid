@@ -2,13 +2,19 @@ package com.example.admin1.etxebalmovil;
 
 import android.content.Context;
 
+import com.example.admin1.etxebalmovil.model.SessionDataController;
+import com.example.admin1.etxebalmovil.model.pojo.Reserva;
+
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 public class ReservasLab {
     private static ReservasLab reservasLab;
     public ArrayList<Reservas> reservas;
+    public ArrayList<Reserva> mReservas;
+    private SessionDataController mSessionDataController;
 
     private ReservasLab(Context context)
     {
@@ -26,6 +32,13 @@ public class ReservasLab {
 
         return reservas;
     }
+
+    public List<Reserva> getmReservas() {
+
+        return mSessionDataController.getReservas();
+    }
+
+
 
     public void setReservas(ArrayList<Reservas> reservas) {
         this.reservas = reservas;

@@ -15,7 +15,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.UUID;
+import com.example.admin1.etxebalmovil.model.SessionDataController;
+import com.example.admin1.etxebalmovil.model.pojo.Reserva;
+
+import java.sql.Date;
+import java.time.LocalDate;
 
 public class HacerReservaFragment extends Fragment {
     private TextView nombreAlojamiento;
@@ -25,6 +29,7 @@ public class HacerReservaFragment extends Fragment {
     private Button reservar;
     private Button cancelar;
     private Alojamientos alojamiento;
+    private SessionDataController mSessionDataController;
 
     private static final String EXTRA_ALOJAMIENTO_ID = AlojamientosPagerActivity.class.getName() + ".alojamiento_id";
 
@@ -65,17 +70,17 @@ public class HacerReservaFragment extends Fragment {
                                     correcto=false;
                                 if(correcto)
                                 {
-                                    Reservas reserva = new Reservas();
-                                    reserva.setCantidad(capacidad);
+                                    Reserva reserva = new Reserva();
+                                    reserva.setmCantidadPersonas(capacidad);
                                     //TODO set dates
-                                    reserva.setFirmaAlojamiento(alojamiento.getFirma());
-                                    reserva.setDireccion(alojamiento.getDireccion());
-                                    reserva.setEmail(alojamiento.getEmail());
+                                    reserva.setmFirmaAlojamiento(alojamiento.getFirma());
                                     //TODO meter los datos del cliente
-                                    reserva.setTelefono(alojamiento.getTelefono());
-                                    reserva.setMyID(UUID.randomUUID());
-                                    reserva.setNombreReserva(alojamiento.getNombre()+" "+reserva.getMyID().toString());
-                                    ReservasLab.get(getContext()).getReservas().add(reserva);
+                                    reserva.setmNombreReserva(mSessionDataController.getUsuario().getName() + " : " + alojamiento.getFirma());
+                                    reserva.setmNombreCliente(mSessionDataController.getUsuario().getNick());
+                                    reserva.setmFechaInicio(Date.valueOf(fechaInicio.getText().toString()));
+                                    reserva.setmFechaFin(Date.valueOf(fechaFin.getText().toString()));
+                                    mSessionDataController.addReserva(reserva);
+                                    ReservasLab.get(getContext()).getmReservas().add(reserva);
                                     //TODO guardarla en la BBDD
                                     dialog.cancel();
                                     Intent intent=FragmentoListarReservasActivity.newIntent(getContext());

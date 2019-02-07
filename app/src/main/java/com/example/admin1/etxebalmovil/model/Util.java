@@ -45,7 +45,7 @@ public abstract class Util {
         return EARTH_RADIUS * a;
     }
 
-    private static double toRad(double value) {
+    public static double toRad(double value) {
         return (Math.PI / 180) * value;
     }
 
