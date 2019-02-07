@@ -15,6 +15,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.admin1.etxebalmovil.model.SessionDataController;
+
 import java.util.ArrayList;
 
 public class FragmentoListarReservas extends Fragment {
@@ -94,8 +96,11 @@ public class FragmentoListarReservas extends Fragment {
             nombreAlojamiento.setText(reserva.getNombreAlojamiento());
             nombreReserva.setText(reserva.getNombreReserva());
             cantidad.setText(String.valueOf(reserva.getCantidad()));
+            //TODO Añadir fechas
+            /*
             fechaInicio.setText(reserva.getFechaInicio().toString());
             fechaFin.setText(reserva.getFechaFin().toString());
+            */
 
             cancelar.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -209,6 +209,8 @@ public abstract class JSONController {
                 return OTHER_ERROR;
             }
 
+            loadReserves();
+
             List<Alojamiento> alojamientos = new ArrayList<>();
             for (DatabaseObject o : data.get(JSONTag.Alojamiento.TAG_ALOJAMIENTO)) {
                 alojamientos.add((Alojamiento) o);

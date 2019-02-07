@@ -91,11 +91,11 @@ public abstract class FragmentoActivity extends AppCompatActivity {
                     break;
                     case 3:
                     {
-                        //TODO ir al mapa
                         Toast toas = Toast.makeText(getBaseContext(),"Bienvenido al mapita",Toast.LENGTH_SHORT);
                         toas.show();
                         Intent todoMapita= (Intent) MapsActivityViewALL.newIntent(getBaseContext());
                         startActivity(todoMapita);
+                        finish();
                     }
                     break;
                     case 4:

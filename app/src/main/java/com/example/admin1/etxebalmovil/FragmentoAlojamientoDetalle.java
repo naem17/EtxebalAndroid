@@ -126,10 +126,6 @@ public class FragmentoAlojamientoDetalle extends Fragment {
         mapa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO cambiar al mapa
-               // Toast toas = Toast.makeText(getContext(),"hola",Toast.LENGTH_SHORT);
-
-              //  toas.show();
                 Intent mapita = MapsActivity.newIntent(getContext(), alojamiento.getMyID());
                 startActivity(mapita);
             }

@@ -15,6 +15,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.admin1.etxebalmovil.model.json.JSONBuilder;
+import com.example.admin1.etxebalmovil.model.json.JSONController;
+
 import java.util.UUID;
 
 public class HacerReservaFragment extends Fragment {
@@ -74,9 +77,10 @@ public class HacerReservaFragment extends Fragment {
                                     //TODO meter los datos del cliente
                                     reserva.setTelefono(alojamiento.getTelefono());
                                     reserva.setMyID(UUID.randomUUID());
-                                    reserva.setNombreReserva(alojamiento.getNombre()+" "+reserva.getMyID().toString());
-                                    ReservasLab.get(getContext()).getReservas().add(reserva);
+                                    reserva.setNombreReserva(reserva.getMyID().toString());
                                     //TODO guardarla en la BBDD
+                                    JSONController.setData(JSONBuilder.build(JSONBuilder.INSERT,reserva.toReservaJSON()));
+                                    JSONController.getData();
                                     dialog.cancel();
                                     Intent intent=FragmentoListarReservasActivity.newIntent(getContext());
                                     startActivity(intent);

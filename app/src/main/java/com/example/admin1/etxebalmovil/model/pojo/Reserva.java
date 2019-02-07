@@ -88,8 +88,11 @@ public class Reserva implements Serializable, DatabaseObject {
         this.setmNombreReserva(json.getString(JSONTag.Reserva.TAG_NOMBRE_RESERVA));
         this.setmNombreCliente(json.getString(JSONTag.Reserva.TAG_NOMBRE_CLIENTE));
         this.setmFirmaAlojamiento(json.getString(JSONTag.Reserva.TAG_FIRMA_ALOJAMIENTO));
+        //TODO cargar fechas java
+        /*
         this.setmFechaInicio(Date.valueOf(json.getString(JSONTag.Reserva.TAG_FECHA_INICIO)));
         this.setmFechaFin(Date.valueOf(json.getString(JSONTag.Reserva.TAG_FECHA_FIN)));
+        */
         this.setmCantidadPersonas(json.getInt(JSONTag.Reserva.TAG_CANTIDAD_PERSONAS));
         return this;
     }

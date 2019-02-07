@@ -11,7 +11,6 @@ import java.util.UUID;
 
 public class FragmentoInicioSesionActivity extends FragmentoActivity {
 
-    //TODO que sea main activity y loguee
 
     public static Intent newIntent(Context packageContect) {
         Intent intent = new Intent(packageContect, FragmentoInicioSesionActivity.class);

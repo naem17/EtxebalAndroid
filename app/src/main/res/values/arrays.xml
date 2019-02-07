@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="arrayProvincia">
-        <!--TODO escribir los valores correctos de la BBDD-->
     </string-array>
     <string-array name="arrayTipos" >
     </string-array>

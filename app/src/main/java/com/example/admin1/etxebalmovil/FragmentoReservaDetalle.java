@@ -15,6 +15,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.admin1.etxebalmovil.model.json.JSONBuilder;
+import com.example.admin1.etxebalmovil.model.json.JSONController;
+
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -79,8 +82,11 @@ public class FragmentoReservaDetalle extends Fragment {
         direccion.setText(reserva.getDireccion());
         telefono.setText(reserva.getTelefono());
         email.setText(reserva.getEmail());
+        //TODO meter fecha
+        /*
         fechaInicio.setText(reserva.getFechaInicio().toString());
         fechaFin.setText(reserva.getFechaFin().toString());
+        */
         cantidad.setText(String.valueOf(reserva.getCantidad()));
 
         eliminar.setOnClickListener(new View.OnClickListener() {
@@ -135,7 +141,7 @@ public class FragmentoReservaDetalle extends Fragment {
                                     public void onClick(DialogInterface dialog, int id) {
                                        boolean correcto=true;
                                        //TODO DatePicker
-                                       int capacidad=Integer.valueOf(cantidad.toString());
+                                       int capacidad=Integer.valueOf(cantidad.getText().toString());
 
                                        if(capacidad<=0 || capacidad>AlojamientosLab.get(getContext()).getAlojamiento(reserva.getFirmaAlojamiento()).getCapacidad())
                                            correcto=false;
@@ -148,6 +154,12 @@ public class FragmentoReservaDetalle extends Fragment {
                                            fechaInicio.setEnabled(false);
                                            fechaFin.setEnabled(false);
                                            cantidad.setEnabled(false);
+                                           /*
+                                           JSONController.setData(JSONBuilder.build(JSONBuilder.DELETE,reserva.toReservaJSON()));
+                                           JSONController.setData(JSONBuilder.build(JSONBuilder.INSERT,reserva.toReservaJSON()));
+                                           */
+                                           JSONController.setData(JSONBuilder.build(JSONBuilder.UPDATE, reserva.toReservaJSON()));
+                                           JSONController.getData();
                                            dialog.cancel();
                                        }else
                                        {

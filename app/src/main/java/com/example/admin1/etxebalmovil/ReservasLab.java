@@ -2,8 +2,13 @@ package com.example.admin1.etxebalmovil;
 
 import android.content.Context;
 
+import com.example.admin1.etxebalmovil.model.SessionDataController;
+import com.example.admin1.etxebalmovil.model.json.JSONController;
+import com.example.admin1.etxebalmovil.model.pojo.Reserva;
+
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 public class ReservasLab {
@@ -12,8 +17,13 @@ public class ReservasLab {
 
     private ReservasLab(Context context)
     {
+        List<Reserva> reservasJSON= SessionDataController.getInstance().getReservas();
         reservas=new ArrayList<>();
-        //TODO añadir lo del JSON
+        for (Reserva reserva:reservasJSON) {
+            Reservas aux=new Reservas();
+            aux.fromReservaJSON(reserva);
+            reservas.add(aux);
+        }
     }
     public static ReservasLab get(Context context)
     {
@@ -36,6 +46,10 @@ public class ReservasLab {
         while(i<reservas.size() && !reservas.get(i).getMyID().equals(id))
             i++;
         return i>=reservas.size()?null:reservas.get(i);
+    }
+    public  void setReserva(Reservas reserva)
+    {
+        this.reservas.add(reserva);
     }
     public int getPosicion(UUID id)
     {

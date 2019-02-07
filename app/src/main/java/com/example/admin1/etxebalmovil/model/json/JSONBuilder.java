@@ -162,6 +162,7 @@ public abstract class JSONBuilder {
         // Add value
         map.put(JSONTag.Reserva.TAG_FECHA_INICIO, reserva.getmFechaInicio());
         map.put(JSONTag.Reserva.TAG_FECHA_FIN, reserva.getmFechaFin());
+        map.put(JSONTag.Reserva.TAG_CANTIDAD_PERSONAS, reserva.getmCantidadPersonas());
         list.add(map);
 
         table.put("values", list);
@@ -174,12 +175,17 @@ public abstract class JSONBuilder {
         map.put("value", reserva.getmFirmaAlojamiento());
         list.add(map);
         map.clear();
+        //TODO añadir fechas
         map.put("field", JSONTag.Reserva.TAG_FECHA_INICIO);
-        map.put("value", reserva.getmFechaInicio().toString());
+        map.put("value", reserva.getmFechaInicio()==null? null:reserva.getmFechaInicio().toString());
         list.add(map);
         map.clear();
         map.put("field", JSONTag.Reserva.TAG_FECHA_FIN);
-        map.put("value", reserva.getmFechaFin().toString());
+        map.put("value", reserva.getmFechaFin()==null?null:reserva.getmFechaFin().toString());
+        list.add(map);
+        map.clear();
+        map.put("field", JSONTag.Reserva.TAG_CANTIDAD_PERSONAS);
+        map.put("value", reserva.getmCantidadPersonas());
         list.add(map);
 
         table.put("where", list);

@@ -1,5 +1,7 @@
 package com.example.admin1.etxebalmovil;
 
+import com.example.admin1.etxebalmovil.model.pojo.Reserva;
+
 import java.util.Date;
 import java.util.UUID;
 
@@ -132,5 +134,24 @@ public class Reservas {
 
     public void setFirmaAlojamiento(String firmaAlojamiento) {
         this.firmaAlojamiento = firmaAlojamiento;
+    }
+    public Reserva toReservaJSON()
+    {
+        Reserva reserva=new Reserva();
+        reserva.setmNombreReserva(this.nombreReserva);
+        reserva.setmNombreCliente(this.nombreCliente);
+        reserva.setmFirmaAlojamiento(this.firmaAlojamiento);
+        //TRaducir a DATE Sql
+        reserva.setmCantidadPersonas(this.cantidad);
+
+        return reserva;
+    }
+    public void fromReservaJSON(Reserva reserva)
+    {
+        this.nombreCliente=reserva.getmNombreCliente();
+        this.firmaAlojamiento=reserva.getmFirmaAlojamiento();
+        this.cantidad=reserva.getmCantidadPersonas();
+        this.nombreReserva=reserva.getmNombreReserva();
+        //TODO DATES
     }
 }

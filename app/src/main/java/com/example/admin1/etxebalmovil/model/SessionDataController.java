@@ -23,6 +23,7 @@ import com.example.admin1.etxebalmovil.model.pojo.Tipo;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -221,17 +222,19 @@ public class SessionDataController {
         Date today = new Date(new java.util.Date().getTime());
 
         for (Reserva reserve : reservas) {
+            //TODO incluir fechas
+            /*
             if (reserve.getmFechaFin().before(today)) {
                 mReservas.remove(reserve);
-            } else {
+            } else {*/
                 mReservas.add(reserve);
-            }
+           // }
         }
     }
 
     public void setAlojamientos(List<Alojamiento> alojamientos) {
         mAlojamientos = alojamientos;
-        mAlojamientos.sort(Alojamiento.COMPARE_BY_NAME);
+        Collections.sort(mAlojamientos,Alojamiento.COMPARE_BY_NAME);
     }
 
     public void setCodigosPostales(List<CodigoPostal> codigosPostales) {
