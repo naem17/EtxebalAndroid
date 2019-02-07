@@ -16,8 +16,13 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.admin1.etxebalmovil.model.Util;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -38,7 +43,8 @@ public class MapsActivityViewALL extends FragmentActivity implements OnMapReadyC
 
     private ArrayList<Alojamientos> alojamientos;
     private GoogleMap mMap;
-
+private Spinner lista;
+private String[] datos={"3 Km","5 Km","10 Km"};
     private Marker marcador;
     double lat = 0.0;
     double log = 0.0;
@@ -53,8 +59,43 @@ public class MapsActivityViewALL extends FragmentActivity implements OnMapReadyC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps);
+        setContentView(R.layout.activity_maps_view_all);
         alojamientos=AlojamientosLab.get(getBaseContext()).getAlojamientos();
+        lista= (Spinner) findViewById(R.id.cmb_radios);
+        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, datos);
+        lista.setAdapter(adapter);
+        lista.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int i, long id) {
+                switch (i){
+                    case 0:
+                    Util.toRad(3);
+                    Toast toas=Toast.makeText(getBaseContext(),datos[i],Toast.LENGTH_SHORT);
+                    toas.show();
+                        break;
+                    case 1:
+                        Util.toRad(5);
+                        toas=Toast.makeText(getBaseContext(),datos[i],Toast.LENGTH_SHORT);
+                        toas.show();
+                        break;
+                    case 2:
+                        Util.toRad(10);
+                        toas=Toast.makeText(getBaseContext(),datos[i],Toast.LENGTH_SHORT);
+                        toas.show();
+                        break;
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+
+
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -96,7 +137,7 @@ public class MapsActivityViewALL extends FragmentActivity implements OnMapReadyC
     //Agregar el marcador en el mapa
     private void agregarMarcador(double lar, double log) {
         LatLng coordenadas = new LatLng(lar, log);
-        CameraUpdate miubicacion = CameraUpdateFactory.newLatLngZoom(coordenadas, 14);
+        CameraUpdate miubicacion = CameraUpdateFactory.newLatLngZoom(coordenadas, 15);
         if (marcador != null) marcador.remove();
         marcador = mMap.addMarker(new MarkerOptions()
                 .position(coordenadas)
@@ -172,23 +213,23 @@ public class MapsActivityViewALL extends FragmentActivity implements OnMapReadyC
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        String[] coordenadas;
         mMap = googleMap;
         miUbicacion();
-
+mMap.getUiSettings().setZoomControlsEnabled(true);
         LatLng target = null;
       // coordenadas=mAlojamientos.getCoordenadas().split(",");
         
-        for(int i=0;i<alojamientos.size();i++){
-            String[] coordenadas;
-            coordenadas=alojamientos.get(i).getCoordenadas().split(",");
-
-            Log.d("VistaTodo",coordenadas[0]+ coordenadas[1]);
-
-            target = new LatLng(Double.parseDouble(coordenadas[0]), Double.parseDouble(coordenadas[1]));
-            mMap.addMarker(new MarkerOptions()
-                    .position(target)
-                    .title("Nombre:" +alojamientos.get(i).getNombre())
-                    .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher)));
+        for(int i=0;i<alojamientos.size();i++) {
+            if (!(alojamientos.get(i).getCoordenadas().isEmpty())) {
+                coordenadas = alojamientos.get(i).getCoordenadas().split(",");
+                Log.d("VistaTodo", coordenadas[0] + coordenadas[1]);
+                target = new LatLng(Double.parseDouble(coordenadas[0]), Double.parseDouble(coordenadas[1]));
+                mMap.addMarker(new MarkerOptions()
+                        .position(target)
+                        .title("Nombre:" + alojamientos.get(i).getNombre())
+                        .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher)));
+            }
         }
         //Poner el Zoom en la marca
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(target, 20f));
