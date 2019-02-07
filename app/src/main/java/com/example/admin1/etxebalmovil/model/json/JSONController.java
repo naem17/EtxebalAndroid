@@ -286,10 +286,15 @@ public abstract class JSONController {
                     break;
                 }
             }
-            for (DatabaseObject r : data.get(JSONTag.Reserva.TAG_RESERVA)) {
-                if (((Reserva) r).getmNombreCliente().equals(controller.getUsuario().getNick())) {
-                    reservas.add((Reserva) r);
+            try {
+                for (DatabaseObject r : data.get(JSONTag.Reserva.TAG_RESERVA)) {
+                    if (((Reserva) r).getmNombreCliente().equals(controller.getUsuario().getNick())) {
+                        reservas.add((Reserva) r);
+                    }
                 }
+            }catch (Exception ex){
+                ex.printStackTrace();
+                return OTHER_ERROR;
             }
 
             controller.setReservas(reservas);
