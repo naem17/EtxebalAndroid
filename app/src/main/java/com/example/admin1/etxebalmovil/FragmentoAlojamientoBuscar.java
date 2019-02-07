@@ -10,14 +10,21 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
+import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.admin1.etxebalmovil.model.SessionDataController;
+import com.example.admin1.etxebalmovil.model.pojo.Provincia;
+import com.example.admin1.etxebalmovil.model.pojo.Tipo;
+
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class FragmentoAlojamientoBuscar extends Fragment {
 
@@ -64,6 +71,22 @@ public class FragmentoAlojamientoBuscar extends Fragment {
        surfing=view.findViewById(R.id.checkBoxSurfing);
        club=view.findViewById(R.id.checkBoxSurfing);
        tienda=view.findViewById(R.id.checkBoxTienda);
+
+       ArrayAdapter<String> arrayAdapter=new ArrayAdapter<String>(getContext(), R.layout.elemento_spinner);
+        List<Provincia> provincias= SessionDataController.getInstance().getProvincias();
+        arrayAdapter.add("Provincias:");
+        for (Provincia provincia : provincias) {
+            arrayAdapter.add(provincia.getmProvincua());
+        }
+        provincia.setAdapter(arrayAdapter);
+
+        ArrayAdapter<String> arrayAdapter2=new ArrayAdapter<String>(getContext(), R.layout.elemento_spinner);
+        arrayAdapter2.add("Tipos Alojamientos:");
+        List<Tipo> tiposArray= SessionDataController.getInstance().getTipos();
+        for (Tipo tipo : tiposArray) {
+            arrayAdapter2.add(tipo.getTipo());
+        }
+        tipos.setAdapter(arrayAdapter2);
 
        ascendente.setOnClickListener(new View.OnClickListener() {
            @Override
