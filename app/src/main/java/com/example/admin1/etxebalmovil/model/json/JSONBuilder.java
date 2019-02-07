@@ -92,13 +92,13 @@ public abstract class JSONBuilder {
         Map<String, Object> value = new HashMap<>();
         List<Object> values = new ArrayList<>();
 
-        value.put("NOMBRE_USUARIO", usuario.getNick());
-        value.put("CONTRASENIA", Util.md5(usuario.getPassword()));
-        value.put("NOMBRE", usuario.getName());
-        value.put("APELLIDOS", usuario.getLast());
-        value.put("EMAIL", usuario.getEmail());
-        value.put("TELEFONO", usuario.getTlf());
-        value.put("PERFIL", usuario.getPerfil());
+        value.put(JSONTag.Usuario.TAG_NICK, usuario.getNick());
+        value.put(JSONTag.Usuario.TAG_PASSWORD, Util.md5(usuario.getPassword()));
+        value.put(JSONTag.Usuario.TAG_NAME, usuario.getName());
+        value.put(JSONTag.Usuario.TAG_LASTNAME, usuario.getLast());
+        value.put(JSONTag.Usuario.TAG_EMAIL, usuario.getEmail());
+        value.put(JSONTag.Usuario.TAG_TELEFONO, usuario.getTlf());
+        value.put(JSONTag.Usuario.TAG_PERFIL, usuario.getPerfil());
         values.add(value);
 
         table.put("action", INSERT);
@@ -112,10 +112,12 @@ public abstract class JSONBuilder {
         Map<String, Object> value = new HashMap<>();
         List<Object> values = new ArrayList<>();
 
-        value.put("id_kodea", reserva.getmFirmaAlojamiento());
-        value.put("Nick", reserva.getmNombreCliente());
-        value.put("hasiera_data", reserva.getmFechaInicio());
-        value.put("amaiera_data", reserva.getmFechaFin());
+        value.put(JSONTag.Reserva.TAG_NOMBRE_RESERVA, reserva.getmNombreReserva());
+        value.put(JSONTag.Reserva.TAG_NOMBRE_CLIENTE, reserva.getmNombreCliente());
+        value.put(JSONTag.Reserva.TAG_FIRMA_ALOJAMIENTO, reserva.getmFirmaAlojamiento());
+        value.put(JSONTag.Reserva.TAG_FECHA_INICIO, reserva.getmFechaInicio());
+        value.put(JSONTag.Reserva.TAG_FECHA_FIN, reserva.getmFechaFin());
+        value.put(JSONTag.Reserva.TAG_CANTIDAD_PERSONAS, reserva.getmCantidadPersonas());
         values.add(value);
 
         table.put("action", INSERT);
