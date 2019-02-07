@@ -163,6 +163,33 @@ public class SessionDataController {
         return null;
     }
 
+    public Relacion getRelaById(int id){
+        for (Relacion r : mRelaciones){
+            if (r.getId() == id){
+                return r;
+            }
+        }
+        return null;
+    }
+
+    public Municipio getMunicipioByInd(int indice){
+        for (Municipio m : mMunicipios){
+            if (m.getmIndice() == indice){
+                return m;
+            }
+        }
+        return null;
+    }
+
+    public Provincia getProvinciaByCod(int codigo){
+        for (Provincia p : mProvincias){
+            if (p.getmCodigo() == codigo){
+                return p;
+            }
+        }
+        return null;
+    }
+
     public CodigoPostal getCodigoPostal(String codigoPostal) {
         for (CodigoPostal p : mCodigosPostales) {
             if (p.getmCodigoPostal() == Integer.valueOf(codigoPostal)) {
