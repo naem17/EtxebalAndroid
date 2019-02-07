@@ -9,13 +9,10 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.os.Parcelable;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -34,18 +31,16 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
-import java.lang.annotation.Target;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.UUID;
 
 public class MapsActivityViewALL extends FragmentActivity implements OnMapReadyCallback {
 
     private ArrayList<Alojamientos> alojamientos;
     private GoogleMap mMap;
     private Spinner lista;
-    private String[] datos={"3 Km","5 Km","10 Km"};
+    private String[] datos = {"3 Km", "5 Km", "10 Km"};
     private Marker marcador;
     double lat = 0.0;
     double log = 0.0;
@@ -53,7 +48,7 @@ public class MapsActivityViewALL extends FragmentActivity implements OnMapReadyC
     String direccion = "";
 
     public static Intent newIntent(Context packageContect) {
-        Intent intent = new Intent(packageContect,MapsActivityViewALL.class);
+        Intent intent = new Intent(packageContect, MapsActivityViewALL.class);
         return intent;
     }
 
@@ -61,26 +56,27 @@ public class MapsActivityViewALL extends FragmentActivity implements OnMapReadyC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps_view_all);
-        alojamientos=AlojamientosLab.get(getBaseContext()).getAlojamientos();
-        lista= (Spinner) findViewById(R.id.cmb_radios);
-        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, datos);
+        alojamientos = AlojamientosLab.get(getBaseContext()).getAlojamientos();
+        lista = (Spinner) findViewById(R.id.cmb_radios);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, datos);
         lista.setAdapter(adapter);
         lista.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int i, long id) {
-                switch (i){
+                switch (i) {
                     case 0:
-                    Toast toas=Toast.makeText(getBaseContext(),datos[i],Toast.LENGTH_SHORT);
-                    toas.show();
+                        CameraUpdate miubicacion = CameraUpdateFactory.newLatLngZoom(new LatLng(lat, log), (float) Util.toRad(3));
+                        Toast toas = Toast.makeText(getBaseContext(), datos[i], Toast.LENGTH_SHORT);
+                        toas.show();
                         break;
                     case 1:
-                        Util.toRad(5);
-                        toas=Toast.makeText(getBaseContext(),datos[i],Toast.LENGTH_SHORT);
+                        CameraUpdate miubicacion1 = CameraUpdateFactory.newLatLngZoom(new LatLng(lat, log), (float) Util.toRad(5));
+                        toas = Toast.makeText(getBaseContext(), datos[i], Toast.LENGTH_SHORT);
                         toas.show();
                         break;
                     case 2:
-                        Util.toRad(10);
-                        toas=Toast.makeText(getBaseContext(),datos[i],Toast.LENGTH_SHORT);
+                        CameraUpdate miubicacion2 = CameraUpdateFactory.newLatLngZoom(new LatLng(lat, log), (float) Util.toRad(10));
+                        toas = Toast.makeText(getBaseContext(), datos[i], Toast.LENGTH_SHORT);
                         toas.show();
                         break;
 
@@ -92,9 +88,6 @@ public class MapsActivityViewALL extends FragmentActivity implements OnMapReadyC
 
             }
         });
-
-
-
 
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -186,22 +179,23 @@ public class MapsActivityViewALL extends FragmentActivity implements OnMapReadyC
 
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION},PETICION_PERMISO_UBICACION);
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, PETICION_PERMISO_UBICACION);
 
             return;
-        }else{
+        } else {
             LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
             Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
             actualizarUbicacion(location);
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,1200,0,locListener);
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1200, 0, locListener);
             // locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,100,0,locListener);
         }
     }
 
-    public void mensaje(){
-        Toast toast= Toast.makeText(this,mensaje1,Toast.LENGTH_SHORT);
+    public void mensaje() {
+        Toast toast = Toast.makeText(this, mensaje1, Toast.LENGTH_SHORT);
         toast.show();
     }
+
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -216,18 +210,45 @@ public class MapsActivityViewALL extends FragmentActivity implements OnMapReadyC
         String[] coordenadas;
         mMap = googleMap;
         miUbicacion();
-mMap.getUiSettings().setZoomControlsEnabled(true);
+        mMap.getUiSettings().setZoomControlsEnabled(true);
         LatLng target = null;
-      // coordenadas=mAlojamientos.getCoordenadas().split(",");
-        
-        for(int i=0;i<alojamientos.size();i++) {
-            if (alojamientos.get(i).getCoordenadas().compareToIgnoreCase("null")!=0 && !alojamientos.get(i).getCoordenadas().isEmpty()) {
+
+        for (int i = 0; i < alojamientos.size(); i++) {
+            if (alojamientos.get(i).getCoordenadas().compareToIgnoreCase("null") != 0 && !alojamientos.get(i).getCoordenadas().isEmpty()) {
                 coordenadas = alojamientos.get(i).getCoordenadas().split(",");
                 target = new LatLng(Double.parseDouble(coordenadas[0]), Double.parseDouble(coordenadas[1]));
-                mMap.addMarker(new MarkerOptions()
+               /* mMap.addMarker(new MarkerOptions()
                         .position(target)
-                        .title("Nombre:" + alojamientos.get(i).getNombre())
-                        .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher)));
+                        .title(alojamientos.get(i).getNombre())
+                        .snippet(alojamientos.get(i).getDireccion())
+                        .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher)));*/
+                /*----------------------------------------------------------------------------------------------------------------------------------*/
+                if (alojamientos.get(i).getTipo().equals( "Agroturismo") ){
+                    mMap.addMarker(new MarkerOptions()
+                            .position(target)
+                            .title("" + alojamientos.get(i).getNombre())
+                            .snippet(alojamientos.get(i).getDireccion())
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.agroturismo)));
+
+                } else if (alojamientos.get(i).getTipo().equals("Albergues")) {
+                    mMap.addMarker(new MarkerOptions()
+                            .position(target)
+                            .title("" + alojamientos.get(i).getNombre())
+                            .snippet(alojamientos.get(i).getDireccion())
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.albergue)));
+                } else if (alojamientos.get(i).getTipo().equals("Campings")) {
+                    mMap.addMarker(new MarkerOptions()
+                            .position(target)
+                            .title("" + alojamientos.get(i).getNombre())
+                            .snippet(alojamientos.get(i).getDireccion())
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.campings)));
+                } else if (alojamientos.get(i).getTipo() .equals("Casas Rurales")) {
+                    mMap.addMarker(new MarkerOptions()
+                            .position(target)
+                            .title("" + alojamientos.get(i).getNombre())
+                            .snippet(alojamientos.get(i).getDireccion())
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.casarural)));
+                }
             }
         }
         //Poner el Zoom en la marca
