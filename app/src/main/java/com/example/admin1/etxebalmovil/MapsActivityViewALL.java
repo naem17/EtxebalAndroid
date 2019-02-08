@@ -26,6 +26,8 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.Circle;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -212,7 +214,7 @@ public class MapsActivityViewALL extends FragmentActivity implements OnMapReadyC
         miUbicacion();
         mMap.getUiSettings().setZoomControlsEnabled(true);
         LatLng target = null;
-
+        Circle amplitud=mMap.addCircle(new CircleOptions().center(new LatLng(lat,log)).radius(3.5).strokeColor(122562).fillColor(122562));
         for (int i = 0; i < alojamientos.size(); i++) {
             if (alojamientos.get(i).getCoordenadas().compareToIgnoreCase("null") != 0 && !alojamientos.get(i).getCoordenadas().isEmpty()) {
                 coordenadas = alojamientos.get(i).getCoordenadas().split(",");
