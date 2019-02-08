@@ -4,7 +4,6 @@
     android:id="@+id/textViewInicioSesion"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:drawableStart="@android:drawable/ic_menu_my_calendar"
+    android:drawableTop="@android:drawable/arrow_down_float"
     android:gravity="center_vertical"
-    android:text="Cerrar Sesion"
     android:textColor="@android:color/white"></TextView>

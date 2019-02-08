@@ -34,7 +34,7 @@ public class FragmentoInicioSesion extends Fragment {
                 public void onClick(View v) {
                     byte errorCode = JSONController.logInUser(mUsuarioEditText.getText().toString().trim(), mPasswordEditText.getText().toString().trim());
                     switch  (errorCode) {
-                        case JSONController.NO_ERROR: {
+                        case JSONController.NO_ERROR: case JSONController.EMPTY: {
                             Toast.makeText(getContext(), "Bienvenido " + mUsuarioEditText.getText().toString().trim(), Toast.LENGTH_LONG).show();
                             JSONController.getData();
                             Intent intent=FragmentoListarActivity.newIntent(getContext());

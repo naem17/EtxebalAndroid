@@ -40,6 +40,7 @@ public abstract class JSONController {
     public static final byte NO_ERROR = 0;
     public static final byte OTHER_ERROR = 1;
     public static final byte INPUT_ERROR = 2;
+    public static final byte EMPTY=-1;
 
     /* ///////// START OF GET CONFIG ///////// */
     /* *** URL Constants *** */
@@ -210,8 +211,6 @@ public abstract class JSONController {
                 return OTHER_ERROR;
             }
 
-            loadReserves();
-
             List<Alojamiento> alojamientos = new ArrayList<>();
             for (DatabaseObject o : data.get(JSONTag.Alojamiento.TAG_ALOJAMIENTO)) {
                 alojamientos.add((Alojamiento) o);
@@ -244,7 +243,7 @@ public abstract class JSONController {
                 return INPUT_ERROR;
             }
             if (data.isEmpty()) {
-                return OTHER_ERROR;
+                return EMPTY;
             }
 
             // Insert current user
@@ -256,6 +255,9 @@ public abstract class JSONController {
             if (loadReserves() == OTHER_ERROR) {
                 return OTHER_ERROR;
             }
+            else
+                if(loadReserves()==EMPTY)
+                    return EMPTY;
         } catch (JSONException e) {
             e.printStackTrace();
             return OTHER_ERROR;
@@ -272,7 +274,7 @@ public abstract class JSONController {
             List<Reserva> reservas = new ArrayList<>();
             // Check for errors
             if (data.isEmpty()) {
-                return OTHER_ERROR;
+                return EMPTY;
             }
 
             // Insert reserves

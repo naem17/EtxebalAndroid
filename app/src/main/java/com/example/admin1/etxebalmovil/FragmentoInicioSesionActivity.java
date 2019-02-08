@@ -46,11 +46,12 @@ public class FragmentoInicioSesionActivity extends AppCompatActivity {
             public void onClick(View v) {
                 byte errorCode = JSONController.logInUser(mUsuarioEditText.getText().toString().trim(), mPasswordEditText.getText().toString().trim());
                 switch (errorCode) {
-                    case JSONController.NO_ERROR: {
+                    case JSONController.NO_ERROR: case JSONController.EMPTY: {
                         Toast.makeText(FragmentoInicioSesionActivity.this, "Bienvenido " + mUsuarioEditText.getText().toString().trim(), Toast.LENGTH_LONG).show();
                         JSONController.getData();
                         Intent intent = FragmentoListarActivity.newIntent(FragmentoInicioSesionActivity.this);
                         startActivity(intent);
+                        finish();
                     }
                     break;
                     case JSONController.INPUT_ERROR:
@@ -62,15 +63,6 @@ public class FragmentoInicioSesionActivity extends AppCompatActivity {
                 }
             }
         });
-
-        /*mSignUp = findViewById(R.id.buttonSignUp);
-        mSignUp.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent = FragmentoListarActivity.newIntent(FragmentoInicioSesionActivity.this);
-                startActivity(intent);
-            }
-        });*/
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
