@@ -39,10 +39,6 @@ public class FragmentoInicioSesion extends Fragment {
                             JSONController.getData();
                             Intent intent=FragmentoListarActivity.newIntent(getContext());
                             startActivity(intent);
-                            getActivity().finish();
-                            //TODO preguntar si quiere log out
-
-
                         }
                             break;
                         case JSONController.INPUT_ERROR:

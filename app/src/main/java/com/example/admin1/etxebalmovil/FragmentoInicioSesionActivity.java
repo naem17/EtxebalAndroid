@@ -19,8 +19,6 @@ import java.util.UUID;
 
 public class FragmentoInicioSesionActivity extends AppCompatActivity {
 
-    //TODO que sea main activity y loguee
-
     private EditText mUsuarioEditText;
     private EditText mPasswordEditText;
     private Button mIniciarSesion;
@@ -53,7 +51,6 @@ public class FragmentoInicioSesionActivity extends AppCompatActivity {
                         JSONController.getData();
                         Intent intent = FragmentoListarActivity.newIntent(FragmentoInicioSesionActivity.this);
                         startActivity(intent);
-                        //TODO preguntar si quiere log out
                     }
                     break;
                     case JSONController.INPUT_ERROR:
