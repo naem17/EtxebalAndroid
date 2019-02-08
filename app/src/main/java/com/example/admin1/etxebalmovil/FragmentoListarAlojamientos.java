@@ -82,7 +82,7 @@ public class FragmentoListarAlojamientos extends Fragment {
             tipoAlojamiento = itemView.findViewById(R.id.textViewAlojamientoTipo);
             imagenAlojamiento = itemView.findViewById(R.id.imageViewImagenAlojamiento);
             mapa = (ImageButton) itemView.findViewById(R.id.imageButtonMapa);
-            mapa.setOnClickListener(new View.OnClickListener() {
+            /*mapa.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Toast toas = Toast.makeText(getContext(), "hola", Toast.LENGTH_SHORT);
@@ -92,7 +92,7 @@ public class FragmentoListarAlojamientos extends Fragment {
                     startActivity(mapita);
 
                 }
-            });
+            });*/
             reserva = itemView.findViewById(R.id.buttonReservar);
 
 
