@@ -114,6 +114,15 @@ public class SessionDataController {
         return true;
     }
 
+    public boolean updateReserva2(Reserva reserva, Reserva reservaOld){
+        mReservas.remove(reserva);
+        if (JSONController.setData(JSONBuilder.buildU(JSONBuilder.UPDATE, reserva, reservaOld)) == JSONController.OTHER_ERROR) {
+            return false;
+        }
+        mReservas.add(reserva);
+        return true;
+    }
+
     public boolean borrarReserva(Reserva reserva) {
         if (JSONController.setData(JSONBuilder.build(JSONBuilder.DELETE, reserva)) == JSONController.OTHER_ERROR) {
             return false;

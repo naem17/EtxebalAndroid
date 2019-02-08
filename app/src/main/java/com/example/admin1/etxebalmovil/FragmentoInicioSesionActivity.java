@@ -19,6 +19,7 @@ import java.util.UUID;
 
 public class FragmentoInicioSesionActivity extends AppCompatActivity {
 
+    //TODO que sea main activity y loguee
 
     private EditText mUsuarioEditText;
     private EditText mPasswordEditText;

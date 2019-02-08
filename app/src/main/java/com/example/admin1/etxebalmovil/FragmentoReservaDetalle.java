@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.se.omapi.Session;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -35,8 +36,10 @@ public class FragmentoReservaDetalle extends Fragment {
     private Button eliminar;
     private Button editar;
     private Button guardar;
+    private SessionDataController mSession;
 
     private Reservas reserva;
+    private Reservas reservaOld;
 
     private static final String EXTRA_RESERVA_NOMBRE = ReservasPagerActivity.class.getName() + ".nombre_reserva";
     private static final String EXTRA_RESERVA_FIRMA = ReservasPagerActivity.class.getName() + ".firma_alojamiento";
@@ -56,7 +59,7 @@ public class FragmentoReservaDetalle extends Fragment {
         super.onCreate(savedInstanceState);
         String nombre=getArguments().getString(EXTRA_RESERVA_NOMBRE);
         String firma=getArguments().getString(EXTRA_RESERVA_FIRMA);
-        reserva=ReservasLab.get(getActivity()).getReserva(nombre, firma);
+        reservaOld=ReservasLab.get(getActivity()).getReserva(nombre, firma);
     }
 
     @Nullable
@@ -78,14 +81,14 @@ public class FragmentoReservaDetalle extends Fragment {
         guardar.setVisibility(View.INVISIBLE);
 
 
-        nombreAlojamiento.setText(reserva.getNombreAlojamiento());
-        nombreReserva.setText(reserva.getNombreReserva());
-        direccion.setText(reserva.getDireccion());
-        telefono.setText(reserva.getTelefono());
-        email.setText(reserva.getEmail());
-        fechaInicio.setText(reserva.getFechaInicio().toString());
-        fechaFin.setText(reserva.getFechaFin().toString());
-        cantidad.setText(String.valueOf(reserva.getCantidad()));
+        nombreAlojamiento.setText(reservaOld.getNombreAlojamiento());
+        nombreReserva.setText(reservaOld.getNombreReserva());
+        direccion.setText(reservaOld.getDireccion());
+        telefono.setText(reservaOld.getTelefono());
+        email.setText(reservaOld.getEmail());
+        fechaInicio.setText(reservaOld.getFechaInicio().toString());
+        fechaFin.setText(reservaOld.getFechaFin().toString());
+        cantidad.setText(String.valueOf(reservaOld.getCantidad()));
 
         eliminar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,10 +101,10 @@ public class FragmentoReservaDetalle extends Fragment {
                         .setCancelable(false)
                         .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-
+                                mSession = SessionDataController.getInstance();
                                 ArrayList<Reservas> reservas=ReservasLab.get(getActivity()).getReservas();
-                                reservas.remove(reserva);
-                                SessionDataController.getInstance().borrarReserva(reserva.toReservaJSON());
+                                reservas.remove(reservaOld);
+                                mSession.borrarReserva(reservaOld.toReservaJSON());
                                 Intent intent = FragmentoListarReservasActivity.newIntent(getContext());
                                 startActivity(intent);
                                 getActivity().finish();
@@ -116,33 +119,7 @@ public class FragmentoReservaDetalle extends Fragment {
                 alertDialog.show();
             }
         });
-        eliminar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 
-                builder.setTitle("Guardar Cambios");
-
-                builder.setMessage("¿Desea guardar los cambios?")
-                        .setCancelable(true)
-                        .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                SessionDataController.getInstance().updateReserva(reserva.toReservaJSON());
-                              Intent intent=FragmentoListarReservasActivity.newIntent(getContext());
-                              startActivity(intent);
-                              getActivity().finish();
-                            }
-                        })
-                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-
-                        });
-                AlertDialog alertDialog = builder.create();
-                alertDialog.show();
-            }
-        });
         editar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -185,6 +162,8 @@ public class FragmentoReservaDetalle extends Fragment {
                                            fechaFin.setEnabled(false);
                                            cantidad.setEnabled(false);
                                            JSONController.setData(JSONBuilder.build(JSONBuilder.UPDATE, reserva.toReservaJSON()));
+                                           mSession = SessionDataController.getInstance();
+                                           mSession.updateReserva2(reserva.toReservaJSON(), reservaOld.toReservaJSON());
                                            JSONController.loadReserves();
                                            dialog.cancel();
                                        }else
