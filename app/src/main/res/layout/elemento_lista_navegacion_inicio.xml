@@ -6,5 +6,5 @@
     android:layout_height="wrap_content"
     android:drawableStart="@android:drawable/ic_menu_my_calendar"
     android:gravity="center_vertical"
-    android:text="@string/inicioSesion"
+    android:text="Cerrar Sesion"
     android:textColor="@android:color/white"></TextView>
