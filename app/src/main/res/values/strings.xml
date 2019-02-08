@@ -46,9 +46,14 @@
     <!-- Toast Login -->
     <string name="errorOtro">Algo fallo al iniciar sesion</string>
     <string name="errorUsuario">Alguno de los campos no es correcto</string>
-    <string name="Alojamientos" >Alojamientos</string>
+    <string name="Alojamientos">Alojamientos</string>
     <string name="guardar">Guardar</string>
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_maps_global">Map</string>
     <string name="title_activity_maps_view_all">Map</string>
+    <string name="date_picker_title">Fecha de reserva:</string>
+
+    <!-- Dialog date picker -->
+    <string name="dialog_start_date">Fecha de entrada:</string>
+    <string name="dialog_end_date">Fecha de salida:</string>
 </resources>

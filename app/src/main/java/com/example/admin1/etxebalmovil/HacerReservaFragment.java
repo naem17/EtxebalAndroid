@@ -21,6 +21,7 @@ import com.example.admin1.etxebalmovil.model.pojo.Reserva;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.UUID;
+import java.util.Calendar;
 
 public class HacerReservaFragment extends Fragment {
     private TextView nombreAlojamiento;
@@ -30,9 +31,15 @@ public class HacerReservaFragment extends Fragment {
     private Button reservar;
     private Button cancelar;
     private Alojamientos alojamiento;
+    private Calendar mCalendar;
+    private DatePickerDialog mDatePickerDialog;
+    private static final int REQUEST_DATE = 0;
+    private static final int REQUEST_CONFIRMATION = 1;
+    private static final int REQUEST_CANCEL = 2;
     private SessionDataController mSessionDataController;
 
     private static final String EXTRA_ALOJAMIENTO_ID = AlojamientosPagerActivity.class.getName() + ".alojamiento_id";
+    private static final String DIALOG_DATE = "DialogDate";
 
     public HacerReservaFragment(Alojamientos alojamiento) {
         this.alojamiento = alojamiento;
@@ -41,14 +48,13 @@ public class HacerReservaFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.hacer_reserva_layout, container, false);
-        nombreAlojamiento=view.findViewById(R.id.textViewAlojamientoNombre);
-        fechaInicio=view.findViewById(R.id.editTextFechaInicio);
-        fechaFin=view.findViewById(R.id.editTextFechaFin);
-        cantidad=view.findViewById(R.id.editTextCantidad);
-        reservar=view.findViewById(R.id.buttonReservar);
-        cancelar=view.findViewById(R.id.buttonCancelar);
-
+        View view = inflater.inflate(R.layout.hacer_reserva_layout, container, false);
+        nombreAlojamiento = view.findViewById(R.id.textViewAlojamientoNombre);
+        fechaInicio = view.findViewById(R.id.editTextFechaInicio);
+        fechaFin = view.findViewById(R.id.editTextFechaFin);
+        cantidad = view.findViewById(R.id.editTextCantidad);
+        reservar = view.findViewById(R.id.buttonReservar);
+        cancelar = view.findViewById(R.id.buttonCancelar);
 
         nombreAlojamiento.setText(alojamiento.getNombre());
 
@@ -63,32 +69,31 @@ public class HacerReservaFragment extends Fragment {
                         .setCancelable(true)
                         .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                boolean correcto=true;
+                                boolean correcto = true;
                                 //TODO DatePicker
-                                int capacidad=Integer.valueOf(cantidad.getText().toString());
+                                int capacidad = Integer.valueOf(cantidad.getText().toString());
 
-                                if(capacidad<=0 || capacidad>alojamiento.getCapacidad())
-                                    correcto=false;
-                                if(correcto)
-                                {
-                                    Reservas reserva = new Reservas();
-                                    reserva.setCantidad(capacidad);
+                                if (capacidad <= 0 || capacidad > alojamiento.getCapacidad())
+                                    correcto = false;
+                                if (correcto) {
+                                    mSessionDataController = SessionDataController.getInstance();
+                                    Reserva reserva = new Reserva();
+                                    reserva.setmCantidadPersonas(capacidad);
                                     //TODO set dates
-                                    reserva.setFirmaAlojamiento(alojamiento.getFirma());
-                                    reserva.setDireccion(alojamiento.getDireccion());
-                                    reserva.setEmail(alojamiento.getEmail());
+                                    reserva.setmFirmaAlojamiento(alojamiento.getFirma());
                                     //TODO meter los datos del cliente
-                                    reserva.setTelefono(alojamiento.getTelefono());
-                                    reserva.setMyID(UUID.randomUUID());
-                                    reserva.setNombreReserva(alojamiento.getNombre()+" "+reserva.getMyID().toString());
-                                    ReservasLab.get(getContext()).getReservas().add(reserva);
+                                    reserva.setmNombreReserva(mSessionDataController.getUsuario().getName() + " " + alojamiento.getFirma());
+                                    reserva.setmNombreCliente(mSessionDataController.getUsuario().getNick());
+                                    reserva.setmFechaInicio(Date.valueOf(fechaInicio.getText().toString()));
+                                    reserva.setmFechaFin(Date.valueOf(fechaFin.getText().toString()));
+                                    mSessionDataController.addReserva(reserva);
+                                    ReservasLab.get(getContext()).getmReservas().add(reserva);
                                     //TODO guardarla en la BBDD
                                     dialog.cancel();
-                                    Intent intent=FragmentoListarReservasActivity.newIntent(getContext());
+                                    Intent intent = FragmentoListarReservasActivity.newIntent(getContext());
                                     startActivity(intent);
                                     getActivity().finish();
-                                }else
-                                {
+                                } else {
                                     Toast.makeText(getActivity(), "Error al intorducir los datos.",
                                             Toast.LENGTH_LONG).show();
                                 }
@@ -119,6 +124,32 @@ public class HacerReservaFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+            /*mDateButton1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
+                    mCalendar = Calendar.getInstance();
+                    int day = mCalendar.get(Calendar.DAY_OF_MONTH);
+                    int month = mCalendar.get(Calendar.MONTH);
+                    int year = mCalendar.get(Calendar.YEAR);
+
+                    mDatePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
+                        @Override
+                        public void onDateSet(DatePicker view, int mYear, int mMonth, int mDay) {
+                            fechaInicio.setText(mYear + "-" + mMonth + "-" + mDay);
+                        }
+                    }, day, month, year);
+                    mDatePickerDialog.show();
+                }
+            });
+
+            mDateButton2.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                DatePickerDialog dialog = DatePickerDialog.newInstante(new Date(), false);
+                dialog.setTargetFragment(HacerReservaFragment.this, REQUEST_DATE);
+                dialog.show(getFragmentManager(), DIALOG_DATE);
+                }
+            });*/
     }
 }
