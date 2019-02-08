@@ -24,6 +24,7 @@ public class FragmentoInicioSesionActivity extends AppCompatActivity {
     private EditText mUsuarioEditText;
     private EditText mPasswordEditText;
     private Button mIniciarSesion;
+    private  Button mSignUp;
 
     public static Intent newIntent(Context packageContect) {
         Intent intent = new Intent(packageContect, FragmentoInicioSesionActivity.class);
@@ -53,8 +54,6 @@ public class FragmentoInicioSesionActivity extends AppCompatActivity {
                         Intent intent = FragmentoListarActivity.newIntent(FragmentoInicioSesionActivity.this);
                         startActivity(intent);
                         //TODO preguntar si quiere log out
-
-
                     }
                     break;
                     case JSONController.INPUT_ERROR:
@@ -66,6 +65,15 @@ public class FragmentoInicioSesionActivity extends AppCompatActivity {
                 }
             }
         });
+
+        /*mSignUp = findViewById(R.id.buttonSignUp);
+        mSignUp.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = FragmentoListarActivity.newIntent(FragmentoInicioSesionActivity.this);
+                startActivity(intent);
+            }
+        });*/
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
