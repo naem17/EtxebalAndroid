@@ -11,11 +11,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.admin1.etxebalmovil.model.SessionDataController;
+import com.example.admin1.etxebalmovil.model.json.JSONController;
 import com.example.admin1.etxebalmovil.model.pojo.Reserva;
 
 import java.sql.Date;
@@ -79,16 +81,14 @@ public class HacerReservaFragment extends Fragment {
                                     mSessionDataController = SessionDataController.getInstance();
                                     Reserva reserva = new Reserva();
                                     reserva.setmCantidadPersonas(capacidad);
-                                    //TODO set dates
                                     reserva.setmFirmaAlojamiento(alojamiento.getFirma());
-                                    //TODO meter los datos del cliente
                                     reserva.setmNombreReserva(mSessionDataController.getUsuario().getName() + " " + alojamiento.getFirma());
                                     reserva.setmNombreCliente(mSessionDataController.getUsuario().getNick());
                                     reserva.setmFechaInicio(Date.valueOf(fechaInicio.getText().toString()));
                                     reserva.setmFechaFin(Date.valueOf(fechaFin.getText().toString()));
                                     mSessionDataController.addReserva(reserva);
                                     ReservasLab.get(getContext()).getmReservas().add(reserva);
-                                    //TODO guardarla en la BBDD
+                                    JSONController.loadReserves();
                                     dialog.cancel();
                                     Intent intent = FragmentoListarReservasActivity.newIntent(getContext());
                                     startActivity(intent);
@@ -117,6 +117,34 @@ public class HacerReservaFragment extends Fragment {
                 getActivity().finish();
             }
         });
+        /*
+        fechaInicio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                mCalendar = Calendar.getInstance();
+                int day = mCalendar.get(Calendar.DAY_OF_MONTH);
+                int month = mCalendar.get(Calendar.MONTH);
+                int year = mCalendar.get(Calendar.YEAR);
+
+                mDatePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int mYear, int mMonth, int mDay) {
+                        fechaInicio.setText(mYear + "-" + mMonth + "-" + mDay);
+                    }
+                }, day, month, year);
+                mDatePickerDialog.show();
+            }
+        });
+
+        fechaFin.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog dialog = DatePickerDialog.newInstante(new Date(), false);
+                dialog.setTargetFragment(HacerReservaFragment.this, REQUEST_DATE);
+                dialog.show(getFragmentManager(), DIALOG_DATE);
+            }
+        });*/
         return view;
     }
 
@@ -124,32 +152,5 @@ public class HacerReservaFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-            /*mDateButton1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    mCalendar = Calendar.getInstance();
-                    int day = mCalendar.get(Calendar.DAY_OF_MONTH);
-                    int month = mCalendar.get(Calendar.MONTH);
-                    int year = mCalendar.get(Calendar.YEAR);
-
-                    mDatePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
-                        @Override
-                        public void onDateSet(DatePicker view, int mYear, int mMonth, int mDay) {
-                            fechaInicio.setText(mYear + "-" + mMonth + "-" + mDay);
-                        }
-                    }, day, month, year);
-                    mDatePickerDialog.show();
-                }
-            });
-
-            mDateButton2.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v) {
-                DatePickerDialog dialog = DatePickerDialog.newInstante(new Date(), false);
-                dialog.setTargetFragment(HacerReservaFragment.this, REQUEST_DATE);
-                dialog.show(getFragmentManager(), DIALOG_DATE);
-                }
-            });*/
     }
 }

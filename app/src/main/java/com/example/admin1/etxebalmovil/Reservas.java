@@ -15,8 +15,8 @@ public class Reservas {
     private String direccion;
     private String email;
     private String telefono;
-    private Date fechaInicio;
-    private Date fechaFin;
+    private java.sql.Date fechaInicio;
+    private java.sql.Date fechaFin;
     private int cantidad;
 
     public Reservas() {
@@ -24,7 +24,7 @@ public class Reservas {
         myID=UUID.randomUUID();
     }
 
-    public Reservas(String nombreReserva, String nombreCliente, String nombreAlojamiento, Date fechaInicio, Date fechaFin, int cantidad) {
+    public Reservas(String nombreReserva, String nombreCliente, String nombreAlojamiento, java.sql.Date fechaInicio, java.sql.Date fechaFin, int cantidad) {
         this.nombreReserva = nombreReserva;
         this.nombreCliente = nombreCliente;
         this.nombreAlojamiento = nombreAlojamiento;
@@ -34,7 +34,7 @@ public class Reservas {
         myID=UUID.randomUUID();
     }
 
-    public Reservas(UUID myID, String nombreReserva, String nombreCliente, String nombreAlojamiento, String direccion, String email, String telefono, Date fechaInicio, Date fechaFin, int cantidad) {
+    public Reservas(UUID myID, String nombreReserva, String nombreCliente, String nombreAlojamiento, String direccion, String email, String telefono, java.sql.Date fechaInicio, java.sql.Date fechaFin, int cantidad) {
         this.myID = myID;
         this.nombreReserva = nombreReserva;
         this.nombreCliente = nombreCliente;
@@ -108,7 +108,7 @@ public class Reservas {
         return fechaInicio;
     }
 
-    public void setFechaInicio(Date fechaInicio) {
+    public void setFechaInicio(java.sql.Date fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
@@ -116,7 +116,7 @@ public class Reservas {
         return fechaFin;
     }
 
-    public void setFechaFin(Date fechaFin) {
+    public void setFechaFin(java.sql.Date fechaFin) {
         this.fechaFin = fechaFin;
     }
 
@@ -141,8 +141,9 @@ public class Reservas {
         reserva.setmNombreReserva(this.nombreReserva);
         reserva.setmNombreCliente(this.nombreCliente);
         reserva.setmFirmaAlojamiento(this.firmaAlojamiento);
-        //TRaducir a DATE Sql
         reserva.setmCantidadPersonas(this.cantidad);
+        reserva.setmFechaInicio(this.fechaInicio);
+        reserva.setmFechaFin(this.fechaFin);
 
         return reserva;
     }
@@ -152,6 +153,7 @@ public class Reservas {
         this.firmaAlojamiento=reserva.getmFirmaAlojamiento();
         this.cantidad=reserva.getmCantidadPersonas();
         this.nombreReserva=reserva.getmNombreReserva();
-        //TODO DATES
+        this.fechaFin=reserva.getmFechaFin();
+        this.fechaInicio=reserva.getmFechaInicio();
     }
 }

@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.admin1.etxebalmovil.model.SessionDataController;
 import com.example.admin1.etxebalmovil.model.json.JSONBuilder;
 import com.example.admin1.etxebalmovil.model.json.JSONController;
 
@@ -82,11 +83,8 @@ public class FragmentoReservaDetalle extends Fragment {
         direccion.setText(reserva.getDireccion());
         telefono.setText(reserva.getTelefono());
         email.setText(reserva.getEmail());
-        //TODO meter fecha
-        /*
         fechaInicio.setText(reserva.getFechaInicio().toString());
         fechaFin.setText(reserva.getFechaFin().toString());
-        */
         cantidad.setText(String.valueOf(reserva.getCantidad()));
 
         eliminar.setOnClickListener(new View.OnClickListener() {
@@ -103,6 +101,7 @@ public class FragmentoReservaDetalle extends Fragment {
 
                                 ArrayList<Reservas> reservas=ReservasLab.get(getActivity()).getReservas();
                                 reservas.remove(reserva);
+                                SessionDataController.getInstance().borrarReserva(reserva.toReservaJSON());
                                 Intent intent = FragmentoListarReservasActivity.newIntent(getContext());
                                 startActivity(intent);
                                 getActivity().finish();
@@ -117,7 +116,33 @@ public class FragmentoReservaDetalle extends Fragment {
                 alertDialog.show();
             }
         });
+        eliminar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 
+                builder.setTitle("Guardar Cambios");
+
+                builder.setMessage("¿Desea guardar los cambios?")
+                        .setCancelable(true)
+                        .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                SessionDataController.getInstance().updateReserva(reserva.toReservaJSON());
+                              Intent intent=FragmentoListarReservasActivity.newIntent(getContext());
+                              startActivity(intent);
+                              getActivity().finish();
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+
+                        });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+            }
+        });
         editar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -145,21 +170,22 @@ public class FragmentoReservaDetalle extends Fragment {
 
                                        if(capacidad<=0 || capacidad>AlojamientosLab.get(getContext()).getAlojamiento(reserva.getFirmaAlojamiento()).getCapacidad())
                                            correcto=false;
+                                       Date aux1=Date.valueOf(fechaInicio.getText().toString());
+                                       Date aux2=Date.valueOf(fechaFin.getText().toString());
+                                       correcto=aux1.before(aux2);
                                        if(correcto)
                                        {
                                            reserva.setCantidad(capacidad);
+                                           reserva.setFechaInicio(aux1);
+                                           reserva.setFechaFin(aux2);
                                            guardar.setVisibility(View.INVISIBLE);
                                            editar.setVisibility(View.VISIBLE);
                                            eliminar.setVisibility(View.VISIBLE);
                                            fechaInicio.setEnabled(false);
                                            fechaFin.setEnabled(false);
                                            cantidad.setEnabled(false);
-                                           /*
-                                           JSONController.setData(JSONBuilder.build(JSONBuilder.DELETE,reserva.toReservaJSON()));
-                                           JSONController.setData(JSONBuilder.build(JSONBuilder.INSERT,reserva.toReservaJSON()));
-                                           */
                                            JSONController.setData(JSONBuilder.build(JSONBuilder.UPDATE, reserva.toReservaJSON()));
-                                           JSONController.getData();
+                                           JSONController.loadReserves();
                                            dialog.cancel();
                                        }else
                                        {

@@ -16,6 +16,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.admin1.etxebalmovil.model.SessionDataController;
+import com.example.admin1.etxebalmovil.model.json.JSONBuilder;
+import com.example.admin1.etxebalmovil.model.json.JSONController;
 
 import java.util.ArrayList;
 
@@ -96,12 +98,8 @@ public class FragmentoListarReservas extends Fragment {
             nombreAlojamiento.setText(reserva.getNombreAlojamiento());
             nombreReserva.setText(reserva.getNombreReserva());
             cantidad.setText(String.valueOf(reserva.getCantidad()));
-            //TODO Añadir fechas
-            /*
             fechaInicio.setText(reserva.getFechaInicio().toString());
             fechaFin.setText(reserva.getFechaFin().toString());
-            */
-
             cancelar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -116,6 +114,7 @@ public class FragmentoListarReservas extends Fragment {
 
                                         ArrayList<Reservas> reservas=ReservasLab.get(getActivity()).getReservas();
                                         reservas.remove(reserva);
+                                        SessionDataController.getInstance().borrarReserva(reserva.toReservaJSON());
                                         Intent intent = FragmentoListarReservasActivity.newIntent(getContext());
                                         startActivity(intent);
                                         getActivity().finish();

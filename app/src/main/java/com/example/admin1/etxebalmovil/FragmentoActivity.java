@@ -1,6 +1,8 @@
 package com.example.admin1.etxebalmovil;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -19,6 +21,9 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.admin1.etxebalmovil.model.json.JSONBuilder;
+import com.example.admin1.etxebalmovil.model.json.JSONController;
 
 import org.w3c.dom.Text;
 
@@ -70,9 +75,26 @@ public abstract class FragmentoActivity extends AppCompatActivity {
                 {
                     case 0:
                     {
-                            Intent intent=FragmentoInicioSesionActivity.newIntent(getBaseContext());
-                            startActivity(intent);
-                            finish();
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getBaseContext());
+                        builder.setTitle("Guardar Cambios");
+                        builder.setMessage("¿Desea salir de la sesión?")
+                                .setCancelable(true)
+                                .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                            Intent intent=FragmentoInicioSesionActivity.newIntent(getBaseContext());
+                                            startActivity(intent);
+                                            dialog.cancel();
+                                            finish();
+                                        }
+                                })
+                                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                    }
+
+                                });
+                        AlertDialog alertDialog = builder.create();
+                        alertDialog.show();
                     }
                     break;
                     case 1:

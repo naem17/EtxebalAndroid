@@ -263,7 +263,7 @@ public abstract class JSONController {
         return NO_ERROR;
     }
 
-    private static byte loadReserves() {
+    public static byte loadReserves() {
         String result = doRequestGET(mUserURL + LINK + DATA_TABLE + JSONTag.Reserva.TAG_RESERVA);
 
         try {
@@ -279,7 +279,6 @@ public abstract class JSONController {
             // Select only current user's reserves
             List<DatabaseObject> list = data.get(JSONTag.Reserva.TAG_RESERVA);
             Collections.sort(list, Reserva.COMPARE_BY_USER);
-            //list.sort(Reserva.COMPARE_BY_USER); // Sort by user
             String user = controller.getUsuario().getNick();
             boolean userFound = false;
             for (int i = 0; i < list.size(); i++) {
