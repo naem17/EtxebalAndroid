@@ -170,15 +170,12 @@ public abstract class JSONBuilder {
         where.put("field", JSONTag.Reserva.TAG_NOMBRE_CLIENTE);
         where.put("value", reserva.getmNombreCliente());
         wheres.add(where);
-        where.clear();
         where.put("field", JSONTag.Reserva.TAG_FIRMA_ALOJAMIENTO);
         where.put("value", reserva.getmFirmaAlojamiento());
         wheres.add(where);
-        where.clear();
         where.put("field", JSONTag.Reserva.TAG_FECHA_INICIO);
         where.put("value", "" + reserva.getmFechaInicio().toString() + "");
         wheres.add(where);
-        where.clear();
         where.put("field", JSONTag.Reserva.TAG_FECHA_FIN);
         where.put("value", "" + reserva.getmFechaFin().toString() + "");
         wheres.add(where);

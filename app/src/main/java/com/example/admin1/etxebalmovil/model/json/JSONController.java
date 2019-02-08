@@ -252,11 +252,12 @@ public abstract class JSONController {
             controller.setUsuario(usuario);
 
             // Insert reserves
-            if (loadReserves() == OTHER_ERROR) {
+            byte errorReservas = loadReserves();
+            if (errorReservas == OTHER_ERROR) {
                 return OTHER_ERROR;
             }
             else
-                if(loadReserves()==EMPTY)
+                if(errorReservas==EMPTY)
                     return EMPTY;
         } catch (JSONException e) {
             e.printStackTrace();
@@ -291,7 +292,7 @@ public abstract class JSONController {
                     break;
                 }
             }
-            try {
+            /*try {
                 for (DatabaseObject r : data.get(JSONTag.Reserva.TAG_RESERVA)) {
                     if (((Reserva) r).getmNombreCliente().equals(controller.getUsuario().getNick())) {
                         reservas.add((Reserva) r);
@@ -300,7 +301,7 @@ public abstract class JSONController {
             }catch (Exception ex){
                 ex.printStackTrace();
                 return OTHER_ERROR;
-            }
+            }*/
 
             controller.setReservas(reservas);
         } catch (JSONException e) {

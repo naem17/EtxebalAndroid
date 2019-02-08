@@ -105,7 +105,6 @@ public class FragmentoReservaDetalle extends Fragment {
                                 ArrayList<Reservas> reservas=ReservasLab.get(getActivity()).getReservas();
                                 reservas.remove(reservaOld);
                                 mSession.borrarReserva(reservaOld.toReservaJSON());
-                                JSONController.loadReserves();
                                 Intent intent = FragmentoListarReservasActivity.newIntent(getContext());
                                 startActivity(intent);
                                 getActivity().finish();
@@ -175,7 +174,6 @@ public class FragmentoReservaDetalle extends Fragment {
                                            mSession = SessionDataController.getInstance();
                                            mSession.borrarReserva(reservaOld.toReservaJSON());
                                            mSession.addReserva(reserva.toReservaJSON());
-                                           JSONController.loadReserves();
                                            dialog.cancel();
                                        }else
                                        {
