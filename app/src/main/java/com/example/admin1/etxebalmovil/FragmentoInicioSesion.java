@@ -20,6 +20,7 @@ public class FragmentoInicioSesion extends Fragment {
     private EditText mUsuarioEditText;
     private EditText mPasswordEditText;
     private Button mIniciarSesion;
+    private Button mSignUp;
 
     @Nullable
     @Override
@@ -50,6 +51,17 @@ public class FragmentoInicioSesion extends Fragment {
                     }
                 }
             });
+
+            mSignUp = v.findViewById(R.id.buttonSignUp);
+            mSignUp.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent= new Intent(getActivity(), SignUpActivity.class);
+                    startActivity(intent);
+                }
+            });
+
+
             return v;
    }
 }

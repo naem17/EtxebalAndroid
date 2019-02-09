@@ -41,6 +41,7 @@ public abstract class JSONController {
     public static final byte OTHER_ERROR = 1;
     public static final byte INPUT_ERROR = 2;
     public static final byte EMPTY=-1;
+    public static  final byte USER_EMPTY = 3;
 
     /* ///////// START OF GET CONFIG ///////// */
     /* *** URL Constants *** */
@@ -243,7 +244,7 @@ public abstract class JSONController {
                 return INPUT_ERROR;
             }
             if (data.isEmpty()) {
-                return EMPTY;
+                return USER_EMPTY;
             }
 
             // Insert current user

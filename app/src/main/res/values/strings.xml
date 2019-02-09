@@ -43,6 +43,9 @@
     <string name="misSitios">Mis Sitios</string>
     <string name="cercaDeMi">Cerca de Mí</string>
     <string name="inicioSesion">Inicio Sesión</string>
+    <string name="vacio">Por favor rellene el campo</string>
+    <string name="alguno_vacio">Alguno de los campos no cumple los requisitos</string>
+    <string name="formato">Formato Incorrecto</string>
     <!-- Toast Login -->
     <string name="errorOtro">Algo fallo al iniciar sesion</string>
     <string name="errorUsuario">Alguno de los campos no es correcto</string>

@@ -54,6 +54,9 @@ public class FragmentoInicioSesionActivity extends AppCompatActivity {
                         finish();
                     }
                     break;
+                    case JSONController.USER_EMPTY:
+                        Toast.makeText(FragmentoInicioSesionActivity.this, "Alguno de los campos esta vacio", Toast.LENGTH_LONG).show();
+                        break;
                     case JSONController.INPUT_ERROR:
                         Toast.makeText(FragmentoInicioSesionActivity.this, getString(R.string.errorUsuario), Toast.LENGTH_LONG).show();
                         break;
@@ -61,6 +64,15 @@ public class FragmentoInicioSesionActivity extends AppCompatActivity {
                         Toast.makeText(FragmentoInicioSesionActivity.this, getString(R.string.errorOtro), Toast.LENGTH_LONG).show();
                         break;
                 }
+            }
+        });
+
+        mSignUp = findViewById(R.id.buttonSignUp);
+        mSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(FragmentoInicioSesionActivity.this, SignUpActivity.class);
+                startActivity(intent);
             }
         });
 

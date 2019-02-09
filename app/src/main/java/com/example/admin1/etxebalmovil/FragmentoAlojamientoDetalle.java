@@ -71,11 +71,11 @@ public class FragmentoAlojamientoDetalle extends Fragment {
         tipoAlojamiento= vista.findViewById(R.id.textViewAlojamientoTipo);
         imagenAlojamiento= vista.findViewById(R.id.imageViewImagenAlojamiento);
         /*PROBAR SI SALEN LOS ICONOS*/
-        if (alojamiento.getTipo().equalsIgnoreCase("Albergues") || alojamiento.getTipo().equalsIgnoreCase("aterpetxeak")){
+        if (alojamiento.getTipo().equalsIgnoreCase("Albergues") || alojamiento.getTipo().equalsIgnoreCase("Aterpetxeak")){
             imagenAlojamiento.setImageResource(R.drawable.ic_alberguess);
         }else if (alojamiento.getTipo().equalsIgnoreCase("Campings")  || alojamiento.getTipo().equalsIgnoreCase("Kanpinak")){
             imagenAlojamiento.setImageResource(R.drawable.ic_campings);
-        }else  if (alojamiento.getTipo().equalsIgnoreCase("Casas Rurales")  || alojamiento.getTipo().equalsIgnoreCase("Nekazaritza-turismoak")){
+        }else  if (alojamiento.getTipo().equalsIgnoreCase("Agroturismos")  || alojamiento.getTipo().equalsIgnoreCase("Nekazaritza-turismoak")){
             imagenAlojamiento.setImageResource(R.drawable.ic_agroturismo);
         }else {
             imagenAlojamiento.setImageResource(R.drawable.ic_casasrurales);
