@@ -4,7 +4,7 @@ public final class JSONTag {
     public static final String TAG_DATA = "data";
     public static final String TAG_CURRENT_USER = "user";
     public static final String TAG_ERROR = "error";
-    public static final String TAG_DUAL = "DUAL";
+    public static final String TAG_DUAL = "DUAL2";
 
     public final class Alojamiento {
         public static final String TAG_ALOJAMIENTO = "ALOJAMIENTOS";
