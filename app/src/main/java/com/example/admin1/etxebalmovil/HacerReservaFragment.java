@@ -88,7 +88,6 @@ public class HacerReservaFragment extends Fragment {
                                     reserva.setmFechaFin(Date.valueOf(fechaFin.getText().toString()));
                                     mSessionDataController.addReserva(reserva);
                                     ReservasLab.get(getContext()).getmReservas().add(reserva);
-                                    JSONController.loadReserves();
                                     dialog.cancel();
                                     Intent intent = FragmentoListarReservasActivity.newIntent(getContext());
                                     startActivity(intent);

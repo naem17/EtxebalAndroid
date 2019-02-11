@@ -40,6 +40,8 @@ public abstract class JSONController {
     public static final byte NO_ERROR = 0;
     public static final byte OTHER_ERROR = 1;
     public static final byte INPUT_ERROR = 2;
+    public static final byte EMPTY=-1;
+    public static  final byte USER_EMPTY = 3;
 
     /* ///////// START OF GET CONFIG ///////// */
     /* *** URL Constants *** */
@@ -210,8 +212,6 @@ public abstract class JSONController {
                 return OTHER_ERROR;
             }
 
-            loadReserves();
-
             List<Alojamiento> alojamientos = new ArrayList<>();
             for (DatabaseObject o : data.get(JSONTag.Alojamiento.TAG_ALOJAMIENTO)) {
                 alojamientos.add((Alojamiento) o);
@@ -244,7 +244,7 @@ public abstract class JSONController {
                 return INPUT_ERROR;
             }
             if (data.isEmpty()) {
-                return OTHER_ERROR;
+                return USER_EMPTY;
             }
 
             // Insert current user
@@ -253,9 +253,13 @@ public abstract class JSONController {
             controller.setUsuario(usuario);
 
             // Insert reserves
-            if (loadReserves() == OTHER_ERROR) {
+            byte errorReservas = loadReserves();
+            if (errorReservas == OTHER_ERROR) {
                 return OTHER_ERROR;
             }
+            else
+                if(errorReservas==EMPTY)
+                    return EMPTY;
         } catch (JSONException e) {
             e.printStackTrace();
             return OTHER_ERROR;
@@ -272,7 +276,7 @@ public abstract class JSONController {
             List<Reserva> reservas = new ArrayList<>();
             // Check for errors
             if (data.isEmpty()) {
-                return OTHER_ERROR;
+                return EMPTY;
             }
 
             // Insert reserves
@@ -289,7 +293,7 @@ public abstract class JSONController {
                     break;
                 }
             }
-            try {
+            /*try {
                 for (DatabaseObject r : data.get(JSONTag.Reserva.TAG_RESERVA)) {
                     if (((Reserva) r).getmNombreCliente().equals(controller.getUsuario().getNick())) {
                         reservas.add((Reserva) r);
@@ -298,7 +302,7 @@ public abstract class JSONController {
             }catch (Exception ex){
                 ex.printStackTrace();
                 return OTHER_ERROR;
-            }
+            }*/
 
             controller.setReservas(reservas);
         } catch (JSONException e) {

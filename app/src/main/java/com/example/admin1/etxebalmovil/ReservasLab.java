@@ -22,6 +22,7 @@ public class ReservasLab {
 
     private ReservasLab(Context context) {
         reservas = new ArrayList<>();
+
         List<Reserva> reservasJSON=SessionDataController.getInstance().getReservas();
         for (Reserva reserva: reservasJSON
              ) {

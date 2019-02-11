@@ -20,6 +20,7 @@ public class FragmentoInicioSesion extends Fragment {
     private EditText mUsuarioEditText;
     private EditText mPasswordEditText;
     private Button mIniciarSesion;
+    private Button mSignUp;
 
     @Nullable
     @Override
@@ -34,7 +35,7 @@ public class FragmentoInicioSesion extends Fragment {
                 public void onClick(View v) {
                     byte errorCode = JSONController.logInUser(mUsuarioEditText.getText().toString().trim(), mPasswordEditText.getText().toString().trim());
                     switch  (errorCode) {
-                        case JSONController.NO_ERROR: {
+                        case JSONController.NO_ERROR: case JSONController.EMPTY: {
                             Toast.makeText(getContext(), "Bienvenido " + mUsuarioEditText.getText().toString().trim(), Toast.LENGTH_LONG).show();
                             JSONController.getData();
                             Intent intent=FragmentoListarActivity.newIntent(getContext());
@@ -50,6 +51,17 @@ public class FragmentoInicioSesion extends Fragment {
                     }
                 }
             });
+
+            mSignUp = v.findViewById(R.id.buttonSignUp);
+            mSignUp.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent= new Intent(getActivity(), SignUpActivity.class);
+                    startActivity(intent);
+                }
+            });
+
+
             return v;
    }
 }

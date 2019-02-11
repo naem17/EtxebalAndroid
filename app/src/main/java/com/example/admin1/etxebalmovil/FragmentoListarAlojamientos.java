@@ -1,6 +1,7 @@
 package com.example.admin1.etxebalmovil;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -80,7 +81,7 @@ public class FragmentoListarAlojamientos extends Fragment {
             //Inicializo todos los campos con los respectivos del Layout
             nombreAlojamiento = itemView.findViewById(R.id.textViewAlojamientoNombre);
             tipoAlojamiento = itemView.findViewById(R.id.textViewAlojamientoTipo);
-            imagenAlojamiento = itemView.findViewById(R.id.imageViewImagenAlojamiento);
+            imagenAlojamiento = itemView.findViewById(R.id.imageViewAlojamiento);
             mapa = (ImageButton) itemView.findViewById(R.id.imageButtonMapa);
             /*mapa.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -114,13 +115,16 @@ public class FragmentoListarAlojamientos extends Fragment {
             switch (alojamiento.getTipo().toLowerCase()) {
                 //TODO poner las imágenes según alojamiento
                 case "albergues":
-                    //  imagenAlojamiento.setImageDrawable();
+                    imagenAlojamiento.setImageResource(R.drawable.ic_alberguess);
                     break;
                 case "campings":
+                    imagenAlojamiento.setImageResource(R.drawable.ic_campings);
                     break;
                 case "agroturismos":
+                    imagenAlojamiento.setImageResource(R.drawable.ic_agroturismo);
                     break;
                 case "casas rurales":
+                    imagenAlojamiento.setImageResource(R.drawable.ic_casasrurales);
                     break;
             }
             reserva.setOnClickListener(new View.OnClickListener() {

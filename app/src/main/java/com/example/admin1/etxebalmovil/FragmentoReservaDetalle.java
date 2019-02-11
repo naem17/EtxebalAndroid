@@ -145,13 +145,23 @@ public class FragmentoReservaDetalle extends Fragment {
                                        //TODO DatePicker
                                        int capacidad=Integer.valueOf(cantidad.getText().toString());
 
-                                       if(capacidad<=0 || capacidad>AlojamientosLab.get(getContext()).getAlojamiento(reserva.getFirmaAlojamiento()).getCapacidad())
+                                       if(capacidad<=0 ||
+                                               capacidad>AlojamientosLab.get(getContext()).getAlojamiento(reservaOld.getFirmaAlojamiento()).getCapacidad())
                                            correcto=false;
                                        Date aux1=Date.valueOf(fechaInicio.getText().toString());
                                        Date aux2=Date.valueOf(fechaFin.getText().toString());
                                        correcto=aux1.before(aux2);
                                        if(correcto)
                                        {
+                                           reserva=new Reservas();
+                                           reserva.setNombreReserva(reservaOld.getNombreReserva());
+                                           reserva.setMyID(reservaOld.getMyID());
+                                           reserva.setTelefono(reservaOld.getTelefono());
+                                           reserva.setEmail(reservaOld.getEmail());
+                                           reserva.setDireccion(reservaOld.getDireccion());
+                                           reserva.setNombreAlojamiento(reservaOld.getNombreAlojamiento());
+                                           reserva.setNombreCliente(reservaOld.getNombreCliente());
+                                           reserva.setFirmaAlojamiento(reservaOld.getFirmaAlojamiento());
                                            reserva.setCantidad(capacidad);
                                            reserva.setFechaInicio(aux1);
                                            reserva.setFechaFin(aux2);
@@ -161,10 +171,9 @@ public class FragmentoReservaDetalle extends Fragment {
                                            fechaInicio.setEnabled(false);
                                            fechaFin.setEnabled(false);
                                            cantidad.setEnabled(false);
-                                           JSONController.setData(JSONBuilder.build(JSONBuilder.UPDATE, reserva.toReservaJSON()));
                                            mSession = SessionDataController.getInstance();
-                                           mSession.updateReserva2(reserva.toReservaJSON(), reservaOld.toReservaJSON());
-                                           JSONController.loadReserves();
+                                           mSession.borrarReserva(reservaOld.toReservaJSON());
+                                           mSession.addReserva(reserva.toReservaJSON());
                                            dialog.cancel();
                                        }else
                                        {
